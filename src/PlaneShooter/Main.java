@@ -11,7 +11,7 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        System.out.println("hello world");
+        System.out.println("hello world! testing");
 
         MainFrame mainFrame=new MainFrame();
         SwingUtilities.invokeLater(new Runnable() {
