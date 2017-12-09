@@ -15,11 +15,11 @@ public class MainFrame extends JFrame{
         startPanel=new StartPanel(this);
         anotherPanel=new AnotherPanel(this);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.pack();
     }
 
     public void showPanel(JPanel panel){
         setContentPane(panel);
-        this.pack();
         this.setVisible(true);
     }
 
