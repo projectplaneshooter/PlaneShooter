@@ -1,9 +1,11 @@
 package PlaneShooter;
 
+import PlaneShooter.GUI.GamePanel;
 import PlaneShooter.GUI.MainFrame;
 import PlaneShooter.GUI.StartPanel;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by yuyuyzl on 2017/12/8.
@@ -11,13 +13,15 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        System.out.println("hello world! testing");
+        System.out.println("hello world!");
 
         MainFrame mainFrame=new MainFrame();
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                mainFrame.showPanel(new StartPanel());
+                MainFrame mainFrame=new MainFrame();
+                GamePanel gamePanel=new GamePanel(mainFrame);
+                mainFrame.showPanel(new StartPanel(mainFrame,gamePanel));
             }
         });
     }
