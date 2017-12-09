@@ -25,7 +25,7 @@ public class StartPanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 Dimension thisSize=new Dimension(600,800);
-                System.out.println("start");
+                System.out.println("start ~~");
                 System.out.println(thisSize);
                 gamePanel.setPreferredSize(thisSize);
                 mainFrame.showPanel(gamePanel);
