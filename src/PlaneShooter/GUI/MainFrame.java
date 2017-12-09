@@ -7,10 +7,13 @@ import java.awt.*;
  * Created by yuyuyzl on 2017/12/8.
  */
 public class MainFrame extends JFrame{
+    StartPanel startPanel;
+    AnotherPanel anotherPanel;
     public MainFrame() throws HeadlessException {
         super("PlaneShooter");
+        startPanel=new StartPanel(this);
+        anotherPanel=new AnotherPanel(this);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 
     public void showPanel(JPanel panel){
@@ -19,4 +22,7 @@ public class MainFrame extends JFrame{
         this.setVisible(true);
     }
 
+    public void init(){
+        this.showPanel(startPanel);
+    }
 }

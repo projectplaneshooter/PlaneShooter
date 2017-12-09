@@ -1,5 +1,6 @@
 package PlaneShooter;
 
+import PlaneShooter.GUI.AnotherPanel;
 import PlaneShooter.GUI.MainFrame;
 import PlaneShooter.GUI.StartPanel;
 
@@ -17,7 +18,7 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                mainFrame.showPanel(new StartPanel());
+                mainFrame.init();
             }
         });
     }
