@@ -14,7 +14,7 @@ public class AnotherPanel extends JPanel{
     public AnotherPanel(MainFrame mf) {
         super();
         this.mf=mf;
-        setPreferredSize(new Dimension(1000,600));
+
         labelHeader=new JLabel("Another Panel");
         labelHeader.setFont(new Font(null,0,36));
         setBackground(Color.WHITE);

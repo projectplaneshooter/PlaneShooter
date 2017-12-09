@@ -11,6 +11,7 @@ public class MainFrame extends JFrame{
     AnotherPanel anotherPanel;
     public MainFrame() throws HeadlessException {
         super("PlaneShooter");
+        setPreferredSize(new Dimension(1000,600));
         startPanel=new StartPanel(this);
         anotherPanel=new AnotherPanel(this);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
