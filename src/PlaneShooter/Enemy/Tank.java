@@ -6,6 +6,7 @@ import PlaneShooter.Combat.ICombatUnit;
 import java.awt.*;
 
 public class Tank implements IEnemy,ICombatUnit {
+    private Point pos=new Point();
     private boolean alive=true;
     public Tank(Point pos){
         this.pos.setLocation(pos.x,pos.y);
