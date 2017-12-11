@@ -1,5 +1,7 @@
 package PlaneShooter.GUI;
 
+import PlaneShooter.Helper.KeyHelper;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,12 +11,15 @@ import java.awt.*;
 public class MainFrame extends JFrame{
     StartPanel startPanel;
     AnotherPanel anotherPanel;
+    GamePanel gamePanel;
     public MainFrame() throws HeadlessException {
         super("PlaneShooter");
         setPreferredSize(new Dimension(1000,600));
         startPanel=new StartPanel(this);
         anotherPanel=new AnotherPanel(this);
+        gamePanel=new GamePanel(this);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        KeyHelper.init();
         this.pack();
     }
 

@@ -23,7 +23,7 @@ public class StartPanel extends JPanel{
         btnSwitch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mf.showPanel(mf.anotherPanel);
+                mf.showPanel(mf.gamePanel);
             }
         });
         add(btnSwitch);
