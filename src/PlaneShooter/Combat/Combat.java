@@ -17,7 +17,6 @@ public class Combat{
     private ArrayList<ICombatUnit> combatUnits=new ArrayList<>();
 
     public void paintCombat(Graphics g){
-
         for (ICombatUnit unit: combatUnits) {
             unit.paintUnit(g);
         }

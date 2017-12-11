@@ -20,10 +20,10 @@ public class TestBody implements IBody,ICollidable,ICombatUnit {
     @Override
     public void paintUnit(Graphics g) {
         g.setColor(Color.black);
-        g.drawString(String.valueOf(health),pos.x,pos.y);
-        //if(testNumber>5)g.setColor(Color.red);
+        System.out.println("painting test body");
+//        g.drawString(String.valueOf(health),pos.x,pos.y);
+        //        //if(testNumber>5)g.setColorColor.red);
         g.drawRect(pos.x-25-testNumber,pos.y-25-testNumber,50+testNumber*2,50+testNumber*2);
-
     }
 
     @Override

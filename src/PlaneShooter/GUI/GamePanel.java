@@ -1,6 +1,7 @@
 package PlaneShooter.GUI;
 
 import PlaneShooter.Combat.Combat;
+import PlaneShooter.Enemy.Tank;
 import PlaneShooter.Plane.Body.TestBody;
 
 import javax.swing.*;
@@ -41,8 +42,13 @@ public class GamePanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 combat=new Combat();
-                combat.addCombatUnit(new TestBody(new Point(100,100)));
-
+                /**
+                 * 这里可能出错了
+                 * paint多个unit只会输出一个
+                 */
+//                combat.addCombatUnit(new TestBody(new Point(100,100)));
+                combat.addCombatUnit(new Tank(new Point(200,200)));
+//                combat.addCombatUnit(new Tank(new Point(400,400)));
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
@@ -52,6 +58,5 @@ public class GamePanel extends JPanel{
             }
         });
         add(btnStart);
-
     }
 }
