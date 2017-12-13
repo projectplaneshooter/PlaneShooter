@@ -18,6 +18,22 @@ public class TestBody implements IBody,ICollidable,ICombatUnit {
     public TestBody(Point pos){
         this.pos.setLocation(pos.x,pos.y);
     }
+
+    @Override
+    public boolean isAlive() {
+        return true;
+    }
+
+    @Override
+    public void setPos(Point pos) {
+        this.pos.setLocation(pos);
+    }
+
+    @Override
+    public Point getPos() {
+        return pos;
+    }
+
     @Override
     public void paintUnit(Graphics g) {
         g.setColor(Color.black);
