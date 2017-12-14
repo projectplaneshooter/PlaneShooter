@@ -10,6 +10,6 @@ public interface ICombatUnit {
     boolean isAlive();
     void setPos(Point pos);
     Point getPos();
-    void paintUnit(Graphics g);
+    void paintUnit(Graphics g,Combat combat);
     void updateUnit(Combat combat);
 }
