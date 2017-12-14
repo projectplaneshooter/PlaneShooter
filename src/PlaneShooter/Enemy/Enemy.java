@@ -1,64 +1,42 @@
 package PlaneShooter.Enemy;
 
 import PlaneShooter.Combat.Combat;
-import PlaneShooter.Combat.ICombatUnit;
 
 import java.awt.*;
+import java.util.LinkedList;
 
-public abstract class Enemy implements IEnemy,ICombatUnit {
-    protected boolean alive;
-    protected Point pos=new Point(),speed=new Point(),acceleration=new Point(),angle=new Point();
-    public Enemy(Point pos){
-        this.pos.setLocation(pos);
-        this.alive=true;
+/**
+ * 和plane有点区别，我觉得body不能改，这样我就把enemy自带一个body
+ */
+abstract public class Enemy extends EnemyPart implements IEnemy {
+    LinkedList<EnemyPart> component=new LinkedList<>();
+    int health=100000000;//maybe INF
+
+    public Enemy(Point pos) {
+        super(pos);
     }
 
-    public Enemy(Point pos,Point speed){
-        this.pos.setLocation(pos);
-        this.speed.setLocation(speed);
-        this.alive=true;
+    public Enemy(Point pos, int health) {
+        super(pos, health);
     }
 
-    @Override
-    public void setPos(Point pos) {
-        pos.setLocation(pos);
-        alive=true;
+    public Enemy(Point pos, Point speed) {
+        super(pos, speed);
     }
 
-     @Override
-     public void setSpeed(Point speed) {
-        this.speed=speed;
-     }
-
-     @Override
-     public void setAcceleration(Point acceleration) {
-        this.acceleration=acceleration;
-     }
-
-     @Override
-     public void setAngle(Point angle) {
-         this.angle=angle;
-     }
-
-     @Override
-    public Point getPos() {
-        return this.pos;
+    public Enemy(Point pos, Point speed, int health) {
+        super(pos, speed, health);
     }
 
     @Override
-    abstract public void paintUnit(Graphics g,Combat combat);
-
-    public void updateUnit(Combat combat){
-        this.pos.x+=this.speed.x;
-        this.pos.y+=this.speed.y;
-        this.speed.x+=this.acceleration.x;
-        this.speed.y+=this.acceleration.y;
+    public void paintUnit(Graphics g, Combat combat) {
+        for (EnemyPart unit:component){
+            unit.paintUnit(g,combat);
+        }
     }
 
     @Override
-    public boolean isAlive() {
-        return alive;
+    public void setSpeed(Point speed) {
+        this.speed = speed;
     }
-
-
 }

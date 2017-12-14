@@ -2,10 +2,11 @@ package PlaneShooter.Enemy.Weapon;
 
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Enemy.Enemy;
+import PlaneShooter.Enemy.EnemyPart;
 
 import java.awt.*;
 
-public class BulletEnemy extends Enemy {
+public class BulletEnemy extends EnemyPart {
     public BulletEnemy(Point pos) {
         super(pos);
     }
@@ -19,9 +20,7 @@ public class BulletEnemy extends Enemy {
         g.setColor(Color.BLACK);
         g.drawRect(this.pos.x-1,this.pos.y-1,2,2);
     }
-    public void updateUnit(Graphics g){
-        /**
-         * 这里得判断出界
-         */
+    public void updateUnit(Combat combat){
+        super.updateUnit(combat);
     }
 }

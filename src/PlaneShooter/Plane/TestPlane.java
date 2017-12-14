@@ -12,7 +12,6 @@ import java.awt.*;
 public class TestPlane extends Plane{
 
     int testNumber=0;
-    int health=200;
     public TestPlane(Point pos){
         super(pos);
         addComponent(new Cannon(new Point(10,0),this));

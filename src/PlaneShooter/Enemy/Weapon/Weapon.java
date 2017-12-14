@@ -2,17 +2,26 @@ package PlaneShooter.Enemy.Weapon;
 
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Enemy.Enemy;
+import PlaneShooter.Enemy.EnemyPart;
 
 import java.awt.*;
 
-public class Weapon extends Enemy {
+public class Weapon extends EnemyPart implements IWeapon{
 
     public Weapon(Point pos) {
         super(pos);
     }
 
+    public Weapon(Point pos, int health) {
+        super(pos, health);
+    }
+
     public Weapon(Point pos, Point speed) {
         super(pos, speed);
+    }
+
+    public Weapon(Point pos, Point speed, int health) {
+        super(pos, speed, health);
     }
 
     @Override

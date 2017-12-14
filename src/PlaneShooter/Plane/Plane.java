@@ -17,7 +17,7 @@ public abstract class Plane implements ICollidable,ICombatUnit,Serializable {
     private LinkedList<PlanePart> components =new LinkedList<>();
     protected int velocity;
 
-    int health;
+    int health=200;
     public Plane(Point pos){
         this.pos.setLocation(pos.x,pos.y);
     }
