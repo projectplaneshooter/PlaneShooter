@@ -32,4 +32,6 @@ abstract class Enemy implements IEnemy,ICombatUnit {
     public boolean isAlive() {
         return alive;
     }
+
+
 }

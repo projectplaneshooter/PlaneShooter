@@ -4,8 +4,8 @@ import PlaneShooter.Combat.Combat;
 
 import java.awt.*;
 
-public class Bullet extends Enemy{
-    public Bullet(Point pos){
+public class BulletEnemy extends Enemy{
+    public BulletEnemy(Point pos){
         super(pos);
     }
     @Override

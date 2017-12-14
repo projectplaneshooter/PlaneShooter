@@ -24,9 +24,13 @@ public class Tank extends Enemy{
 
     @Override
     public void updateUnit(Combat combat) {
-        this.pos.y+=1;
-        for (ICombatUnit unit:component)
+        int dx=0;
+        int dy=1;
+        pos.translate(dx,dy);
+        for (ICombatUnit unit:component) {
+            unit.getPos().translate(dx,dy);
             unit.updateUnit(combat);
+        }
 //        for (ICombatUnit unit:component);
 
     }
