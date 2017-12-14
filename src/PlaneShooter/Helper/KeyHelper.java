@@ -46,4 +46,14 @@ public class KeyHelper implements AWTEventListener {
     public static void init(){
         Toolkit.getDefaultToolkit().addAWTEventListener(INSTANCE,AWTEvent.KEY_EVENT_MASK);
     }
+
+    public static Point getMoveVector(int v){
+        int dx=0;
+        int dy=0;
+        if(KeyHelper.isKeyPressed(KeyHelper.KEY_DOWN))dy+=v;
+        if(KeyHelper.isKeyPressed(KeyHelper.KEY_UP))dy-=v;
+        if(KeyHelper.isKeyPressed(KeyHelper.KEY_LEFT))dx-=v;
+        if(KeyHelper.isKeyPressed(KeyHelper.KEY_RIGHT))dx+=v;
+        return new Point(dx,dy);
+    }
 }
