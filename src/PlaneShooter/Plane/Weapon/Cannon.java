@@ -12,9 +12,6 @@ import java.awt.*;
  * Created by yuyuyzl on 2017/12/14.
  */
 public class Cannon extends PlanePart implements IWeapon {
-    Point pos;
-    ICombatUnit parent;
-    public Combat combat;
 
     public Cannon(Point pos, ICombatUnit parent,Combat combat){
         super(pos,parent,combat);
