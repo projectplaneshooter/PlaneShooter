@@ -42,9 +42,9 @@ public class GamePanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 combat=new Combat();
+                combat.addCombatUnit(new Tank(new Point(200,200),new Point(0,1)));
+                combat.addCombatUnit(new Tank(new Point(100,100),new Point(1,1)));
                 combat.addCombatUnit(new TestPlane(new Point(100,100)));
-                combat.addCombatUnit(new Tank(new Point(200,200)));
-                combat.addCombatUnit(new Tank(new Point(400,400)));
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
