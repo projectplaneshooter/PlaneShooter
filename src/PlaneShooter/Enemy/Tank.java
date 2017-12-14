@@ -2,9 +2,9 @@ package PlaneShooter.Enemy;
 
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
+import PlaneShooter.Enemy.Weapon.Weapon;
 
 import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.LinkedList;
 import java.util.function.Predicate;
 
@@ -22,11 +22,11 @@ public class Tank extends Enemy{
     }
 
     @Override
-    public void paintUnit(Graphics g) {
+    public void paintUnit(Graphics g,Combat combat) {
         g.setColor(Color.RED);
         g.drawRect(pos.x-25,pos.y-25,50,50);
         for (ICombatUnit unit:component)
-            unit.paintUnit(g);
+            unit.paintUnit(g,combat);
     }
 
     public void updateUnit(Combat combat) {

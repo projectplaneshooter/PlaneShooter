@@ -1,10 +1,11 @@
-package PlaneShooter.Enemy;
+package PlaneShooter.Enemy.Weapon;
 
 import PlaneShooter.Combat.Combat;
+import PlaneShooter.Enemy.Enemy;
 
 import java.awt.*;
 
-public class BulletEnemy extends Enemy{
+public class BulletEnemy extends Enemy {
     public BulletEnemy(Point pos) {
         super(pos);
     }
@@ -14,7 +15,7 @@ public class BulletEnemy extends Enemy{
     }
 
     @Override
-    public void paintUnit(Graphics g) {
+    public void paintUnit(Graphics g,Combat combat) {
         g.setColor(Color.BLACK);
         g.drawRect(this.pos.x-1,this.pos.y-1,2,2);
     }

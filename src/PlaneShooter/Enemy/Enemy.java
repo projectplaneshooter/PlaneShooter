@@ -5,7 +5,7 @@ import PlaneShooter.Combat.ICombatUnit;
 
 import java.awt.*;
 
-abstract class Enemy implements IEnemy,ICombatUnit {
+public abstract class Enemy implements IEnemy,ICombatUnit {
     protected boolean alive;
     protected Point pos=new Point(),speed=new Point(),acceleration=new Point(),angle=new Point();
     public Enemy(Point pos){
@@ -46,7 +46,7 @@ abstract class Enemy implements IEnemy,ICombatUnit {
     }
 
     @Override
-    abstract public void paintUnit(Graphics g);
+    abstract public void paintUnit(Graphics g,Combat combat);
 
     public void updateUnit(Combat combat){
         this.pos.x+=this.speed.x;

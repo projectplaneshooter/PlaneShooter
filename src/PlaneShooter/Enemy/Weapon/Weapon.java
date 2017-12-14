@@ -1,9 +1,7 @@
-package PlaneShooter.Enemy;
+package PlaneShooter.Enemy.Weapon;
 
 import PlaneShooter.Combat.Combat;
-import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Enemy.Enemy;
-import PlaneShooter.Enemy.IEnemy;
 
 import java.awt.*;
 
@@ -18,7 +16,7 @@ public class Weapon extends Enemy {
     }
 
     @Override
-    public void paintUnit(Graphics g) {
+    public void paintUnit(Graphics g,Combat combat) {
         g.setColor(Color.BLACK);
         /**
          * 这里的可能是错的，得判断，因为可能是负数
