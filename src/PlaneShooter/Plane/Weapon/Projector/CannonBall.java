@@ -39,7 +39,7 @@ public class CannonBall implements ICombatUnit,ICollidable {
     }
 
     @Override
-    public void paintUnit(Graphics g) {
+    public void paintUnit(Graphics g, Combat combat) {
         g.setColor(Color.darkGray);
         g.drawRect(pos.x-1,pos.y-1,2,2);
     }

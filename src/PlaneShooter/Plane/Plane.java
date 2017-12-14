@@ -53,10 +53,10 @@ public abstract class Plane implements ICollidable,ICombatUnit {
     }
 
     @Override
-    public void paintUnit(Graphics g) {
+    public void paintUnit(Graphics g, Combat combat) {
         g.setColor(Color.black);
         for (ICombatUnit unit: components) {
-            unit.paintUnit(g);
+            unit.paintUnit(g, );
         }
     }
 

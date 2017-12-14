@@ -2,7 +2,6 @@ package PlaneShooter.Plane.Weapon;
 
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
-import PlaneShooter.Enemy.Weapon;
 import PlaneShooter.Plane.PlanePart;
 import PlaneShooter.Plane.Weapon.Projector.CannonBall;
 
@@ -18,7 +17,7 @@ public class Cannon extends PlanePart implements IWeapon {
     }
 
     @Override
-    public void paintUnit(Graphics g) {
+    public void paintUnit(Graphics g, Combat combat) {
         g.setColor(Color.black);
         g.drawLine(pos.x-5,pos.y,pos.x+5,pos.y);
         g.drawLine(pos.x,pos.y,pos.x,pos.y-10);

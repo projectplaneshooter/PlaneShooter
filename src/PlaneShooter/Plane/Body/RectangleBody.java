@@ -17,7 +17,7 @@ public class RectangleBody extends PlanePart implements IBody {
 
 
     @Override
-    public void paintUnit(Graphics g) {
+    public void paintUnit(Graphics g, Combat combat) {
         g.setColor(Color.black);
         g.drawRect(pos.x-25,pos.y-25,50,50);
     }

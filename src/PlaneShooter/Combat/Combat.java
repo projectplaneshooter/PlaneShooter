@@ -1,12 +1,7 @@
 package PlaneShooter.Combat;
 
 import java.awt.*;
-import java.awt.event.AWTEventListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Predicate;
 
 /**
@@ -21,7 +16,7 @@ public class Combat{
 
     public void paintCombat(Graphics g){
         for (ICombatUnit unit: combatUnits) {
-            unit.paintUnit(g);
+            unit.paintUnit(g,this);
         }
     }
 

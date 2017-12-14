@@ -1,15 +1,10 @@
 package PlaneShooter.Plane;
 
 import PlaneShooter.Combat.Combat;
-import PlaneShooter.Combat.ICombatUnit;
-import PlaneShooter.Helper.ICollidable;
-import PlaneShooter.Helper.KeyHelper;
-import PlaneShooter.Plane.Body.IBody;
 import PlaneShooter.Plane.Body.RectangleBody;
 import PlaneShooter.Plane.Weapon.Cannon;
 
 import java.awt.*;
-import java.util.LinkedList;
 
 /**
  * Created by yuyuyzl on 2017/12/11.
@@ -31,8 +26,8 @@ public class TestPlane extends Plane{
     }
 
     @Override
-    public void paintUnit(Graphics g) {
-        super.paintUnit(g);
+    public void paintUnit(Graphics g, Combat combat) {
+        super.paintUnit(g, combat);
         g.setColor(Color.black);
         g.drawString("HP:"+String.valueOf(health),pos.x-20,pos.y+40);
     }
