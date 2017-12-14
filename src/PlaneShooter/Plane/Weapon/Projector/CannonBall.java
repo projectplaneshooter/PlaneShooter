@@ -13,14 +13,12 @@ import java.awt.*;
 public class CannonBall implements ICombatUnit,ICollidable {
     Point pos;
     ICombatUnit parent;
-    public Combat combat;
     int speedX,speedY;
 
-    public CannonBall(Cannon parent,Combat combat,int speedX,int speedY){
+    public CannonBall(Cannon parent,int speedX,int speedY){
         this.pos=new Point(parent.getPos());
         this.speedX=speedX;
         this.speedY=speedY;
-        this.combat=combat;
     }
 
     @Override

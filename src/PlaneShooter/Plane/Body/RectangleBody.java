@@ -11,8 +11,8 @@ import java.awt.*;
  */
 public class RectangleBody extends PlanePart implements IBody {
 
-    public RectangleBody(Point pos, ICombatUnit parent,Combat combat){
-        super(pos,parent,combat);
+    public RectangleBody(Point pos, ICombatUnit parent){
+        super(pos,parent);
     }
 
 

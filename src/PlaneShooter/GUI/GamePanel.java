@@ -44,7 +44,7 @@ public class GamePanel extends JPanel{
                 combat=new Combat();
                 combat.addCombatUnit(new Tank(new Point(200,200),new Point(0,1)));
                 combat.addCombatUnit(new Tank(new Point(100,100),new Point(1,1)));
-                TestPlane testPlane=new TestPlane(new Point(100,100),combat);
+                TestPlane testPlane=new TestPlane(new Point(100,100));
                 testPlane.setVelocity(3);
                 testPlane.setHealth(10);
 

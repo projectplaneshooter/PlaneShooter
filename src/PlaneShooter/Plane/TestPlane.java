@@ -13,10 +13,10 @@ public class TestPlane extends Plane{
 
     int testNumber=0;
     int health=200;
-    public TestPlane(Point pos,Combat combat){
-        super(pos,combat);
-        addComponent(new Cannon(new Point(pos),this,combat));
-        addComponent(new RectangleBody(new Point(pos),this,combat));
+    public TestPlane(Point pos){
+        super(pos);
+        addComponent(new Cannon(new Point(pos),this));
+        addComponent(new RectangleBody(new Point(pos),this));
     }
 
 

@@ -14,13 +14,11 @@ import java.util.LinkedList;
 public abstract class Plane implements ICollidable,ICombatUnit {
     protected Point pos=new Point();
     private LinkedList<ICombatUnit> components =new LinkedList<>();
-    public Combat combat;
     protected int velocity;
 
     int health;
-    public Plane(Point pos, Combat combat){
+    public Plane(Point pos){
         this.pos.setLocation(pos.x,pos.y);
-        this.combat=combat;
     }
 
     public void addComponent(ICombatUnit component){
@@ -35,9 +33,6 @@ public abstract class Plane implements ICollidable,ICombatUnit {
         this.velocity=velocity;
     }
 
-    public void setCombat(Combat combat) {
-        this.combat = combat;
-    }
 
     @Override
     public abstract boolean isAlive();

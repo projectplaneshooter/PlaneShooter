@@ -12,8 +12,8 @@ import java.awt.*;
  */
 public class Cannon extends PlanePart implements IWeapon {
 
-    public Cannon(Point pos, ICombatUnit parent,Combat combat){
-        super(pos,parent,combat);
+    public Cannon(Point pos, ICombatUnit parent){
+        super(pos,parent);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class Cannon extends PlanePart implements IWeapon {
     @Override
     public void updateUnit(Combat combat) {
         if(combat.getWorldTick()%10==0){
-            combat.addCombatUnit(new CannonBall(this,combat,0,-5));
+            combat.addCombatUnit(new CannonBall(this,0,-5));
         }
     }
 }
