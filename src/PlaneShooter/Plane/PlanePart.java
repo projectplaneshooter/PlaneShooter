@@ -8,11 +8,11 @@ import java.awt.*;
  * Created by yuyuyzl on 2017/12/14.
  */
 public abstract class PlanePart implements ICombatUnit {
-    protected Point pos;
+    protected Point dpos;
     protected ICombatUnit parent;
 
-    public PlanePart(Point pos, ICombatUnit parent){
-        this.pos=pos;
+    public PlanePart(Point dpos, ICombatUnit parent){
+        this.dpos=dpos;
         this.parent=parent;
     }
     @Override
@@ -22,11 +22,13 @@ public abstract class PlanePart implements ICombatUnit {
 
     @Override
     public void setPos(Point pos) {
-        this.pos.setLocation(pos);
+        this.dpos.setLocation(pos);
     }
 
     @Override
     public Point getPos() {
+        Point pos=new Point(parent.getPos());
+        pos.translate(dpos.x,dpos.y);
         return pos;
     }
 }

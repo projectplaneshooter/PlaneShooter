@@ -19,7 +19,7 @@ public class RectangleBody extends PlanePart implements IBody {
     @Override
     public void paintUnit(Graphics g, Combat combat) {
         g.setColor(Color.black);
-        g.drawRect(pos.x-25,pos.y-25,50,50);
+        g.drawRect(getPos().x-25,getPos().y-25,50,50);
     }
 
     @Override

@@ -19,8 +19,8 @@ public class Cannon extends PlanePart implements IWeapon {
     @Override
     public void paintUnit(Graphics g, Combat combat) {
         g.setColor(Color.black);
-        g.drawLine(pos.x-5,pos.y,pos.x+5,pos.y);
-        g.drawLine(pos.x,pos.y,pos.x,pos.y-10);
+        g.drawLine(getPos().x-5,getPos().y,getPos().x+5,getPos().y);
+        g.drawLine(getPos().x,getPos().y,getPos().x,getPos().y-10);
     }
 
     @Override

@@ -61,7 +61,6 @@ public abstract class Plane implements ICollidable,ICombatUnit {
         Point dp=KeyHelper.getMoveVector(velocity);
         pos.translate(dp.x,dp.y);
         for (ICombatUnit unit: components) {
-            unit.getPos().translate(dp.x,dp.y);
             unit.updateUnit(combat);
         }
         //if(pos.x>300)health--;
