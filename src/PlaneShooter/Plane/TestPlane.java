@@ -15,7 +15,8 @@ public class TestPlane extends Plane{
     int health=200;
     public TestPlane(Point pos){
         super(pos);
-        addComponent(new Cannon(new Point(0,0),this));
+        addComponent(new Cannon(new Point(10,0),this));
+        addComponent(new Cannon(new Point(-10,0),this));
         addComponent(new RectangleBody(new Point(0,0),this));
     }
 

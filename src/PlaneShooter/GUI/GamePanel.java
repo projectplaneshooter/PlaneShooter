@@ -2,12 +2,15 @@ package PlaneShooter.GUI;
 
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Enemy.Tank;
+import PlaneShooter.Plane.Plane;
 import PlaneShooter.Plane.TestPlane;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 
 /**
  * Created by yuyuyzl on 2017/12/11.
@@ -44,10 +47,7 @@ public class GamePanel extends JPanel{
                 combat=new Combat();
                 combat.addCombatUnit(new Tank(new Point(200,200),new Point(0,1)));
                 combat.addCombatUnit(new Tank(new Point(100,100),new Point(1,1)));
-                TestPlane testPlane=new TestPlane(new Point(100,100));
-                testPlane.setVelocity(3);
-                testPlane.setHealth(10);
-
+                Plane testPlane=new TestPlane(new Point(100,100));
                 combat.addCombatUnit(testPlane);
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override

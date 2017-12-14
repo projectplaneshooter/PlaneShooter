@@ -3,11 +3,12 @@ package PlaneShooter.Plane;
 import PlaneShooter.Combat.ICombatUnit;
 
 import java.awt.*;
+import java.io.Serializable;
 
 /**
  * Created by yuyuyzl on 2017/12/14.
  */
-public abstract class PlanePart implements ICombatUnit {
+public abstract class PlanePart implements ICombatUnit,Serializable {
     protected Point dpos;
     protected ICombatUnit parent;
 
