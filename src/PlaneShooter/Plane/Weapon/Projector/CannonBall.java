@@ -64,6 +64,8 @@ public class CannonBall implements ICombatUnit {
     @Override
     public void updateUnit(Combat combat) {
         pos.translate(speedX,speedY);
+        if(getPos().getX()>combat.getCombatArea().getWidth()||getPos().getX()<0||
+            getPos().getY()>combat.getCombatArea().getHeight()||getPos().getY()<0)this.alive=false;
     }
 
     public CollideType getCollideType() {
