@@ -3,6 +3,7 @@ package PlaneShooter;
 import PlaneShooter.GUI.AnotherPanel;
 import PlaneShooter.GUI.MainFrame;
 import PlaneShooter.GUI.StartPanel;
+import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
 import javax.swing.*;
 
@@ -12,7 +13,13 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        System.out.println("hello world! testing");
+        try {
+            UIManager.setLookAndFeel(new WindowsLookAndFeel());
+        } catch (UnsupportedLookAndFeelException e) {
+            //e.printStackTrace();
+        }
+
+        //System.out.println("hello world! testing");
 
         MainFrame mainFrame=new MainFrame();
         SwingUtilities.invokeLater(new Runnable() {
