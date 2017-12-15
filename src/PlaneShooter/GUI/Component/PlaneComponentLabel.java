@@ -5,6 +5,8 @@ import PlaneShooter.Plane.PlanePart;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * Created by yuyuyzl on 2017/12/15.
@@ -12,6 +14,7 @@ import java.awt.*;
 public class PlaneComponentLabel extends JLabel {
 
     ICombatUnit planePart;
+    Runnable onMouseClick=null;
     public PlaneComponentLabel(ICombatUnit planePart){
         super();
         if(planePart instanceof PlanePart){
@@ -19,9 +22,37 @@ public class PlaneComponentLabel extends JLabel {
         }
         this.planePart=planePart;
         setVerticalAlignment(SwingConstants.BOTTOM);
+        setHorizontalAlignment(SwingConstants.CENTER);
         setPreferredSize(new Dimension(100,100));
         setOpaque(true);
-        setBackground(Color.lightGray);
+        setBackground(Color.white);
+        setBorder(BorderFactory.createLineBorder(Color.lightGray));
+        addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                onMouseClick.run();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
     }
 
     @Override
@@ -31,5 +62,8 @@ public class PlaneComponentLabel extends JLabel {
         planePart.paintUnit(g,null);
     }
 
+    public void setMouseClickAction(Runnable runnable){
+        onMouseClick=runnable;
+    }
 
 }

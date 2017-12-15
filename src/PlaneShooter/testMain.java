@@ -20,8 +20,6 @@ import java.io.ObjectOutputStream;
  */
 public class testMain {
     public static void main(String[] args) {
-        RegistryHelper.registerClass(Cannon.class);
-        System.out.println(Cannon.class.isAssignableFrom(ICombatUnit.class));
-        System.out.println(ICombatUnit.class.isAssignableFrom(Cannon.class));
+
     }
 }

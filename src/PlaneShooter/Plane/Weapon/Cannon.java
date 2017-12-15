@@ -14,6 +14,9 @@ import java.awt.*;
  */
 public class Cannon extends PlanePart implements IWeapon {
 
+    public Cannon(){
+        super();
+    }
     public Cannon(Point pos, ICombatUnit parent){
         super(pos,parent);
     }

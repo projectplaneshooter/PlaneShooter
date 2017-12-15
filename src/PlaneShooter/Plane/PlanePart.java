@@ -14,6 +14,9 @@ public abstract class PlanePart implements Serializable,IPlane {
 
     public abstract String getName();
 
+    public PlanePart(){
+        this(new Point(0,0),null);
+    }
     public PlanePart(Point dpos, ICombatUnit parent){
         this.dpos=dpos;
         this.parent=parent;
