@@ -1,5 +1,5 @@
 package PlaneShooter.Helper;
 
 public enum CollideType {
-    ENEMY,EMEMYBULLET,PLANE,PLANEBULLET;
+    ENEMY,ENEMYBULLET,PLANE,PLANEBULLET
 }

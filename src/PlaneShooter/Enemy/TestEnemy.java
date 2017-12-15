@@ -44,6 +44,6 @@ public class TestEnemy extends Enemy {
 
     @Override
     public int getSize() {
-        return 70;
+        return 30;
     }
 }

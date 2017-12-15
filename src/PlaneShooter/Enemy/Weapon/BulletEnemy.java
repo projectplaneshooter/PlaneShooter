@@ -9,7 +9,7 @@ import PlaneShooter.Helper.ICollidable;
 import java.awt.*;
 
 public class BulletEnemy extends EnemyPart {
-    int power;
+    private int power;
     public BulletEnemy(Point pos,int power) {
         super(pos);
         this.power=power;
@@ -46,6 +46,6 @@ public class BulletEnemy extends EnemyPart {
         this.alive=false;
     }
     public CollideType getCollideType() {
-        return CollideType.EMEMYBULLET;
+        return CollideType.ENEMYBULLET;
     }
 }
