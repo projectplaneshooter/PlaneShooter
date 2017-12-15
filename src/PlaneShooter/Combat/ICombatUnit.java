@@ -1,5 +1,7 @@
 package PlaneShooter.Combat;
 
+import PlaneShooter.Helper.ICollidable;
+
 import java.awt.*;
 
 /**
