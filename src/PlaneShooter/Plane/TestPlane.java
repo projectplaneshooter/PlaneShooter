@@ -46,6 +46,6 @@ public class TestPlane extends Plane{
 
     @Override
     public int getSize() {
-        return 1;
+        return 30;
     }
 }
