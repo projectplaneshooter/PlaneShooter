@@ -2,6 +2,8 @@ package PlaneShooter.Plane.Weapon;
 
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
+import PlaneShooter.Helper.CollideType;
+import PlaneShooter.Helper.ICollidable;
 import PlaneShooter.Plane.PlanePart;
 import PlaneShooter.Plane.Weapon.Projector.CannonBall;
 
@@ -38,5 +40,19 @@ public class Cannon extends PlanePart implements IWeapon {
     @Override
     public int getPower() {
         return 10;
+    }
+
+    @Override
+    public void onCollide(ICollidable object) {
+    }
+
+    @Override
+    public int getSize() {
+        return 5;
+    }
+
+    @Override
+    public CollideType getCollideType() {
+        return CollideType.PLANEBULLET;
     }
 }

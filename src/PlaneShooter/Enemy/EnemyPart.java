@@ -2,6 +2,7 @@ package PlaneShooter.Enemy;
 
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
+import PlaneShooter.Helper.CollideType;
 
 import java.awt.*;
 import java.util.LinkedList;
@@ -60,6 +61,10 @@ abstract public class EnemyPart implements ICombatUnit{
         if (this.health<=0) this.alive=false;
         this.pos.translate(this.speed.x,this.speed.y);
         this.speed.translate(this.acceleration.x,this.acceleration.y);
+    }
+
+    public CollideType getCollideType() {
+        return CollideType.ENEMY;
     }
 
     @Override

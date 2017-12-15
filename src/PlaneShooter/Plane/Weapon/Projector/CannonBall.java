@@ -2,6 +2,7 @@ package PlaneShooter.Plane.Weapon.Projector;
 
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
+import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
 import PlaneShooter.Plane.Weapon.Cannon;
 
@@ -9,9 +10,11 @@ import java.awt.*;
 
 /**
  * Created by yuyuyzl on 2017/12/14.
+ * modified by zlc1114
  */
-public class CannonBall implements ICombatUnit,ICollidable {
+public class CannonBall implements ICombatUnit {
     Point pos;
+    boolean alive;
     ICombatUnit parent;
     int speedX,speedY;
 
@@ -19,11 +22,12 @@ public class CannonBall implements ICombatUnit,ICollidable {
         this.pos=new Point(parent.getPos());
         this.speedX=speedX;
         this.speedY=speedY;
+        this.alive=true;
     }
 
     @Override
     public boolean isAlive() {
-        return pos.x>=0&&pos.x<=1000&&pos.y>=0&&pos.y<=600;
+        return alive;
     }
 
     @Override
@@ -37,6 +41,21 @@ public class CannonBall implements ICombatUnit,ICollidable {
     }
 
     @Override
+    public int getPower() {
+        return 10;
+    }
+
+    @Override
+    public void onCollide(ICollidable object) {
+        this.alive=false;
+    }
+
+    @Override
+    public int getSize() {
+        return 1;
+    }
+
+    @Override
     public void paintUnit(Graphics g, Combat combat) {
         g.setColor(Color.darkGray);
         g.drawRect(pos.x-1,pos.y-1,2,2);
@@ -45,5 +64,9 @@ public class CannonBall implements ICombatUnit,ICollidable {
     @Override
     public void updateUnit(Combat combat) {
         pos.translate(speedX,speedY);
+    }
+
+    public CollideType getCollideType() {
+        return CollideType.PLANEBULLET;
     }
 }

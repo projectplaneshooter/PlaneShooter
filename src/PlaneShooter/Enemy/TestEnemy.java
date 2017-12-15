@@ -36,4 +36,14 @@ public class TestEnemy extends Enemy {
         if (combat.getWorldTick()%50==0)
             combat.addCombatUnit(new BulletEnemy(new Point(this.pos),new Point(0,2), 10));
     }
+
+    @Override
+    public int getPower() {
+        return 1;
+    }
+
+    @Override
+    public int getSize() {
+        return 70;
+    }
 }

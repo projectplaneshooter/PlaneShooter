@@ -3,24 +3,25 @@ package PlaneShooter.Enemy.Weapon;
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Enemy.Enemy;
 import PlaneShooter.Enemy.EnemyPart;
+import PlaneShooter.Helper.ICollidable;
 
 import java.awt.*;
 
-public class Weapon extends EnemyPart implements IWeapon{
+public class TankGun extends EnemyPart implements IWeapon{
     int power=1;//默认战五渣
-    public Weapon(Point pos) {
+    public TankGun(Point pos) {
         super(pos);
     }
 
-    public Weapon(Point pos, int health) {
+    public TankGun(Point pos, int health) {
         super(pos, health);
     }
 
-    public Weapon(Point pos, Point speed) {
+    public TankGun(Point pos, Point speed) {
         super(pos, speed);
     }
 
-    public Weapon(Point pos, Point speed, int health) {
+    public TankGun(Point pos, Point speed, int health) {
         super(pos, speed, health);
     }
 
@@ -47,11 +48,18 @@ public class Weapon extends EnemyPart implements IWeapon{
         this.speed=speed;
     }
 
-    public void getHurt(int value) {
-        this.alive=false;
-    }
     @Override
     public int getPower() {
         return power;
+    }
+
+    @Override
+    public void onCollide(ICollidable object) {
+        this.alive=false;
+    }
+
+    @Override
+    public int getSize() {
+        return 1;
     }
 }

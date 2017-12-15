@@ -40,7 +40,12 @@ public class TestPlane extends Plane{
     }
 
     @Override
-    public void getHurt(int value) {
-        this.health-=value;
+    public int getPower() {
+        return 1;
+    }
+
+    @Override
+    public int getSize() {
+        return 1;
     }
 }

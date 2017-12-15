@@ -12,6 +12,7 @@ import PlaneShooter.Plane.Plane;
 import PlaneShooter.Plane.PlanePart;
 import sun.awt.image.ImageWatched;
 
+import javax.smartcardio.CommandAPDU;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.function.Predicate;
@@ -20,32 +21,31 @@ import java.util.function.Predicate;
  * Created by yuyuyzl on 2017/12/8.
  */
 public class CollisionHelper {
-    private static void checkCollision(IEnemy enemy,IPlane plane){
+    private static void checkCollision(ICollidable enemy,ICollidable plane){
         if (enemy instanceof BulletEnemy) System.out.println("EnemyBullet");
         if (plane instanceof IWeapon) System.out.println("EnemyBullet");
-        if (enemy.getPos().distance(plane.getPos())<=100){
+        if (enemy.getPos().distance(plane.getPos())<=enemy.getSize()+plane.getSize()){
             System.out.println("ATTACK enemy "+enemy.getPos()+" + "+plane.getPos());
-            if (enemy instanceof IWeapon && plane instanceof Plane) {
-                plane.getHurt(((IWeapon) enemy).getPower());
-                enemy.getHurt(1);
-            }else if (plane instanceof IWeapon){
-                enemy.getHurt(((IWeapon) plane).getPower());
-                plane.getHurt(1);
-            }else{
-                enemy.getHurt(1);
-                plane.getHurt(1);
-            }
+            enemy.onCollide(plane);
+            plane.onCollide(enemy);
         }
     }
     public static void updateCombat(ArrayList<ICombatUnit> combatUnits){
-        ArrayList<IEnemy> enemyParts=new ArrayList<>();
-        ArrayList<IPlane> planeParts=new ArrayList<>();
-        for (ICombatUnit unit:combatUnits) {
-            if (unit instanceof IEnemy) enemyParts.add((IEnemy) unit);
-            else if (unit instanceof IPlane) planeParts.add((IPlane) unit);
+        ArrayList<ICollidable> enemyParts=new ArrayList<>();
+        ArrayList<ICollidable> planeParts=new ArrayList<>();
+        for (ICollidable unit:combatUnits) {
+            switch (unit.getCollideType()){
+                case ENEMY:
+                case EMEMYBULLET:
+                    enemyParts.add(unit);
+                    break;
+                case PLANE:
+                case PLANEBULLET:
+                    planeParts.add(unit);
+            }
         }
-        for (IEnemy enemy:enemyParts) {
-            for (IPlane plane : planeParts) {
+        for (ICollidable enemy:enemyParts) {
+            for (ICollidable plane : planeParts) {
                 checkCollision(enemy, plane);
             }
         }

@@ -2,6 +2,7 @@ package PlaneShooter.Plane;
 
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
+import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
 import PlaneShooter.Helper.KeyHelper;
 
@@ -51,6 +52,11 @@ public abstract class Plane implements ICollidable,Serializable,IPlane {
     }
 
     @Override
+    public void onCollide(ICollidable object) {
+        health-=object.getPower();
+    }
+
+    @Override
     public void paintUnit(Graphics g, Combat combat) {
         g.setColor(Color.black);
         for (ICombatUnit unit: components) {
@@ -68,5 +74,9 @@ public abstract class Plane implements ICollidable,Serializable,IPlane {
         }
         //if(pos.x>300)health--;
         if(health<=0)combat.endCombat();
+    }
+
+    public CollideType getCollideType() {
+        return CollideType.PLANE;
     }
 }

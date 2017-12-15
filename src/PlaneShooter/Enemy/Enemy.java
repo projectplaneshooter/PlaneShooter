@@ -1,6 +1,8 @@
 package PlaneShooter.Enemy;
 
 import PlaneShooter.Combat.Combat;
+import PlaneShooter.Helper.CollideType;
+import PlaneShooter.Helper.ICollidable;
 
 import java.awt.*;
 import java.util.LinkedList;
@@ -34,16 +36,16 @@ abstract public class Enemy extends EnemyPart implements IEnemy {
     }
 
     @Override
-    public void getHurt(int value) {
-        this.health-=value;
-    }
-
-    @Override
     public void setSpeed(Point speed) {
         this.speed = speed;
     }
 
     void addComponent(EnemyPart unit){
         component.add(unit);
+    }
+
+    @Override
+    public void onCollide(ICollidable object) {
+        this.health-=object.getPower();
     }
 }

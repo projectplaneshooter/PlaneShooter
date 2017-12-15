@@ -2,6 +2,8 @@ package PlaneShooter.Plane.Body;
 
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
+import PlaneShooter.Helper.CollideType;
+import PlaneShooter.Helper.ICollidable;
 import PlaneShooter.Plane.PlanePart;
 
 import java.awt.*;
@@ -29,5 +31,24 @@ public class RectangleBody extends PlanePart implements IBody {
     @Override
     public String getName() {
         return "Rectangle Body";
+    }
+
+    @Override
+    public int getPower() {
+        return 1;
+    }
+
+    @Override
+    public void onCollide(ICollidable object) {
+    }
+
+    @Override
+    public int getSize() {
+        return 70;
+    }
+
+    @Override
+    public CollideType getCollideType() {
+        return CollideType.PLANE;
     }
 }
