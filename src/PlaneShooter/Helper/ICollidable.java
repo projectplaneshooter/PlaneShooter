@@ -7,8 +7,8 @@ import java.awt.*;
  */
 public interface ICollidable {
     Point getPos();
-    void getHurt(int value);
     int getPower();
+    void onCollide(ICollidable object);
     int getSize();//shape
     CollideType getCollideType();
 }

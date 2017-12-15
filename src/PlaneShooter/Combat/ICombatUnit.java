@@ -7,7 +7,7 @@ import java.awt.*;
 /**
  * Created by yuyuyzl on 2017/12/11.
  */
-public interface ICombatUnit {
+public interface ICombatUnit extends ICollidable{
     boolean isAlive();
     void setPos(Point pos);
     Point getPos();
