@@ -1,5 +1,8 @@
 package PlaneShooter;
 
+import PlaneShooter.Combat.ICombatUnit;
+import PlaneShooter.Plane.Body.IBody;
+import PlaneShooter.Plane.Body.RectangleBody;
 import PlaneShooter.Plane.Plane;
 import PlaneShooter.Plane.TestPlane;
 
