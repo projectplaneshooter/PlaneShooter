@@ -45,8 +45,4 @@ public class Tank extends Enemy{
         Predicate<ICombatUnit> p=(u) -> !u.isAlive();//组件打掉了
         component.removeIf(p);
     }
-
-    void addComponent(EnemyPart unit){
-        component.add(unit);
-    }
 }

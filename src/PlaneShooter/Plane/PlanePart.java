@@ -35,4 +35,7 @@ public abstract class PlanePart implements ICombatUnit,Serializable {
         pos.translate(dpos.x,dpos.y);
         return pos;
     }
+
+    public void getHurt(int power) {
+    }
 }

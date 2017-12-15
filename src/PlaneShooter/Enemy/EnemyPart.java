@@ -66,4 +66,6 @@ abstract public class EnemyPart implements ICombatUnit{
     public boolean isAlive() {
         return alive;
     }
+
+    protected abstract void getHurt(int value);
 }

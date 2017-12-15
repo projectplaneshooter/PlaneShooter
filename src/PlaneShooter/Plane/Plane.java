@@ -69,7 +69,4 @@ public abstract class Plane implements ICollidable,ICombatUnit,Serializable {
         //if(pos.x>300)health--;
         if(health<=0)combat.endCombat();
     }
-
-
-
 }

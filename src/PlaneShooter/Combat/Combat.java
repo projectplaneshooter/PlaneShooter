@@ -1,5 +1,7 @@
 package PlaneShooter.Combat;
 
+import PlaneShooter.Helper.CollisionHelper;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.function.Predicate;
@@ -30,6 +32,9 @@ public class Combat{
         combatUnitsAdd.clear();
         for (ICombatUnit unit: combatUnits) {
             unit.updateUnit(this);
+        }
+        if (worldTick % 1 == 0) {
+            CollisionHelper.updateCombat(combatUnits);
         }
         Predicate<ICombatUnit> p=(u) -> !u.isAlive();
         combatUnits.removeIf(p);

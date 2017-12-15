@@ -7,12 +7,19 @@ import PlaneShooter.Enemy.EnemyPart;
 import java.awt.*;
 
 public class BulletEnemy extends EnemyPart {
-    public BulletEnemy(Point pos) {
+    int power;
+    public BulletEnemy(Point pos,int power) {
         super(pos);
+        this.power=power;
     }
 
-    public BulletEnemy(Point pos, Point speed) {
+    public BulletEnemy(Point pos, Point speed, int power) {
         super(pos, speed);
+        this.power=power;
+    }
+
+    public int getPower() {
+        return power;
     }
 
     @Override
@@ -22,5 +29,10 @@ public class BulletEnemy extends EnemyPart {
     }
     public void updateUnit(Combat combat){
         super.updateUnit(combat);
+    }
+
+    @Override
+    public void getHurt(int value) {
+        this.alive=false;
     }
 }

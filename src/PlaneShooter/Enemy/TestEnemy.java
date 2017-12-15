@@ -32,8 +32,8 @@ public class TestEnemy extends Enemy {
 
     public void updateUnit(Combat combat){
         super.updateUnit(combat);
-        if (Math.random()<=0.005) this.speed.setLocation(-this.speed.x,-this.speed.y);
+        if (Math.random()<=0.01) this.speed.setLocation(-this.speed.x,-this.speed.y);
         if (combat.getWorldTick()%50==0)
-            combat.addCombatUnit(new BulletEnemy(new Point(this.pos),new Point(0,2)));
+            combat.addCombatUnit(new BulletEnemy(new Point(this.pos),new Point(0,2), 10));
     }
 }

@@ -10,8 +10,6 @@ import java.util.LinkedList;
  */
 abstract public class Enemy extends EnemyPart implements IEnemy {
     LinkedList<EnemyPart> component=new LinkedList<>();
-    int health=100000000;//maybe INF
-
     public Enemy(Point pos) {
         super(pos);
     }
@@ -36,7 +34,16 @@ abstract public class Enemy extends EnemyPart implements IEnemy {
     }
 
     @Override
+    public void getHurt(int value) {
+        this.health-=value;
+    }
+
+    @Override
     public void setSpeed(Point speed) {
         this.speed = speed;
+    }
+
+    void addComponent(EnemyPart unit){
+        component.add(unit);
     }
 }

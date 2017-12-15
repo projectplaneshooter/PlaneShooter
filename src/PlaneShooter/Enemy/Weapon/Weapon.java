@@ -7,7 +7,7 @@ import PlaneShooter.Enemy.EnemyPart;
 import java.awt.*;
 
 public class Weapon extends EnemyPart implements IWeapon{
-
+    int power=1;//默认战五渣
     public Weapon(Point pos) {
         super(pos);
     }
@@ -38,8 +38,17 @@ public class Weapon extends EnemyPart implements IWeapon{
         super.updateUnit(combat);
         if(combat.getWorldTick()%50==0) {
             Point bulletSpeed = new Point(this.speed.x * 2, this.speed.y * 2);
-            combat.addCombatUnit(new BulletEnemy(this.pos, bulletSpeed));
+            combat.addCombatUnit(new BulletEnemy(this.pos, bulletSpeed, this.power));
         }
     }
 
+    @Override
+    protected void getHurt(int value) {
+        this.alive=false;
+    }
+
+    @Override
+    public int getPower() {
+        return power;
+    }
 }
