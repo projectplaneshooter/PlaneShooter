@@ -29,4 +29,9 @@ public class Cannon extends PlanePart implements IWeapon {
             combat.addCombatUnit(new CannonBall(this,0,-5));
         }
     }
+
+    @Override
+    public String getName() {
+        return "Cannon";
+    }
 }

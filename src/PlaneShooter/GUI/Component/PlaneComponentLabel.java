@@ -12,14 +12,24 @@ import java.awt.*;
 public class PlaneComponentLabel extends JLabel {
 
     ICombatUnit planePart;
-    public PlaneComponentLabel(PlanePart planePart){
+    public PlaneComponentLabel(ICombatUnit planePart){
+        super();
+        if(planePart instanceof PlanePart){
+            super.setText(((PlanePart)planePart).getName());
+        }
         this.planePart=planePart;
+        setVerticalAlignment(SwingConstants.BOTTOM);
+        setPreferredSize(new Dimension(100,100));
+        setOpaque(true);
+        setBackground(Color.lightGray);
     }
 
     @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        planePart.setPos(this.getLocation());
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        planePart.setPos(new Point(getPreferredSize().width/2,getPreferredSize().height/2));
         planePart.paintUnit(g,null);
     }
+
+
 }

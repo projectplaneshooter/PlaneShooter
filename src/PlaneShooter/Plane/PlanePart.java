@@ -12,6 +12,8 @@ public abstract class PlanePart implements ICombatUnit,Serializable {
     protected Point dpos;
     protected ICombatUnit parent;
 
+    public abstract String getName();
+
     public PlanePart(Point dpos, ICombatUnit parent){
         this.dpos=dpos;
         this.parent=parent;

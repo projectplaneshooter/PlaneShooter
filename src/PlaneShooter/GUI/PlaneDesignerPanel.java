@@ -18,6 +18,12 @@ public class PlaneDesignerPanel extends JPanel {
     JLabel labelHeader;
     JButton btnSwitch;
     Plane result;
+    Timer timer=new Timer(10, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            repaint();
+        }
+    });
     public PlaneDesignerPanel(MainFrame mf) {
         super();
         this.mf=mf;
@@ -35,7 +41,11 @@ public class PlaneDesignerPanel extends JPanel {
         add(btnSwitch);
 
         PlaneComponentLabel labelComponent=new PlaneComponentLabel(new RectangleBody(new Point(0,0),null));
+        add(labelComponent);
+        timer.start();
     }
+
+
 
     public Plane getResult() {
         return result;

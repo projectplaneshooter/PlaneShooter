@@ -25,4 +25,9 @@ public class RectangleBody extends PlanePart implements IBody {
     @Override
     public void updateUnit(Combat combat) {
     }
+
+    @Override
+    public String getName() {
+        return "Rectangle Body";
+    }
 }
