@@ -22,8 +22,8 @@ import java.util.function.Predicate;
  */
 public class CollisionHelper {
     private static void checkCollision(ICollidable enemy,ICollidable plane){
-        if (enemy.getCollideType()==CollideType.ENEMYBULLET) System.out.println("EnemyBullet");
-        if (plane.getCollideType()==CollideType.PLANEBULLET) System.out.println("PlaneBullet");
+//        if (enemy.getCollideType()==CollideType.ENEMYBULLET) System.out.println("EnemyBullet");
+//        if (plane.getCollideType()==CollideType.PLANEBULLET) System.out.println("PlaneBullet");
         if (enemy.getPos().distance(plane.getPos())<=enemy.getSize()+plane.getSize()){
             System.out.println("ATTACK enemy "+enemy.getPos()+" + "+plane.getPos());
             enemy.onCollide(plane);
@@ -44,6 +44,7 @@ public class CollisionHelper {
                     planeParts.add(unit);
             }
         }
+        System.out.println("THIS SIZE : "+enemyParts.size()+"  "+planeParts.size());
         for (ICollidable enemy:enemyParts) {
             for (ICollidable plane : planeParts) {
                 checkCollision(enemy, plane);
