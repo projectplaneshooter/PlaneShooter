@@ -15,10 +15,22 @@ public class Combat{
     private ArrayList<ICombatUnit> combatUnits=new ArrayList<>();
     private ArrayList<ICombatUnit> combatUnitsAdd=new ArrayList<>();
     private long worldTick=0;
+    private Rectangle combatArea;
+
+    public Combat(Rectangle area) {
+        combatArea=new Rectangle(area);
+    }
+
+    public Rectangle getCombatArea() {
+        return combatArea;
+    }
 
     public void paintCombat(Graphics g){
+        g.drawRect(combatArea.x,combatArea.y,combatArea.width,combatArea.height);
+        Graphics gn=g.create(combatArea.x,combatArea.y,combatArea.width,combatArea.height);
+        gn.drawRect(0,0,combatArea.width,combatArea.height);
         for (ICombatUnit unit: combatUnits) {
-            unit.paintUnit(g,this);
+            unit.paintUnit(gn,this);
         }
     }
 

@@ -15,7 +15,7 @@ public class MainFrame extends JFrame{
     PlaneDesignerPanel planeDesignerPanel;
     public MainFrame() throws HeadlessException {
         super("PlaneShooter");
-        setPreferredSize(new Dimension(1000,600));
+        setPreferredSize(new Dimension(1000,700));
         startPanel=new StartPanel(this);
         anotherPanel=new AnotherPanel(this);
         gamePanel=new GamePanel(this);
