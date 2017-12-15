@@ -3,6 +3,7 @@ package PlaneShooter;
 import PlaneShooter.GUI.AnotherPanel;
 import PlaneShooter.GUI.MainFrame;
 import PlaneShooter.GUI.StartPanel;
+import PlaneShooter.Helper.RegistryHelper;
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
 import javax.swing.*;
@@ -19,7 +20,7 @@ public class Main {
             //e.printStackTrace();
         }
 
-        //System.out.println("hello world! testing");
+        RegistryHelper.initRegistry();
 
         MainFrame mainFrame=new MainFrame();
         SwingUtilities.invokeLater(new Runnable() {
