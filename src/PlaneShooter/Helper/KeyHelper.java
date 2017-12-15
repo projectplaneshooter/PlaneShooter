@@ -13,14 +13,10 @@ import java.util.Map;
 public class KeyHelper implements AWTEventListener {
     private static KeyHelper INSTANCE=new KeyHelper();
     private Map<Integer, Boolean> keyMap = new HashMap<>();
-    public static final int KEY_DOWN=40;
-    public static final int KEY_UP=38;
-    public static final int KEY_LEFT=37;
-    public static final int KEY_RIGHT=39;
 
     private void keyPressed(KeyEvent e) {
         keyMap.put(e.getKeyCode(),true);
-        System.out.println(e.getKeyCode());
+
     }
 
     private void keyReleased(KeyEvent e) {
@@ -50,10 +46,10 @@ public class KeyHelper implements AWTEventListener {
     public static Point getMoveVector(int v){
         int dx=0;
         int dy=0;
-        if(KeyHelper.isKeyPressed(KeyHelper.KEY_DOWN))dy+=v;
-        if(KeyHelper.isKeyPressed(KeyHelper.KEY_UP))dy-=v;
-        if(KeyHelper.isKeyPressed(KeyHelper.KEY_LEFT))dx-=v;
-        if(KeyHelper.isKeyPressed(KeyHelper.KEY_RIGHT))dx+=v;
+        if(KeyHelper.isKeyPressed(KeyEvent.VK_DOWN))dy+=v;
+        if(KeyHelper.isKeyPressed(KeyEvent.VK_UP))dy-=v;
+        if(KeyHelper.isKeyPressed(KeyEvent.VK_LEFT))dx-=v;
+        if(KeyHelper.isKeyPressed(KeyEvent.VK_RIGHT))dx+=v;
         return new Point(dx,dy);
     }
 }

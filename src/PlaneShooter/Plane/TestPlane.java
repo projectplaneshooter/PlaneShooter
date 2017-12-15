@@ -17,6 +17,8 @@ public class TestPlane extends Plane{
         addComponent(new Cannon(new Point(10,0),this));
         addComponent(new Cannon(new Point(-10,0),this));
         addComponent(new RectangleBody(new Point(0,0),this));
+        velocity=3;
+        health=200;
     }
 
 
