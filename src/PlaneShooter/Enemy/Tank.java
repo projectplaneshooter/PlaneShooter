@@ -37,13 +37,6 @@ public class Tank extends Enemy{
             unit.paintUnit(g,combat);
     }
 
-    public void updateUnit(Combat combat) {
-        super.updateUnit(combat);
-        for (ICombatUnit unit:component)
-            unit.updateUnit(combat);
-        Predicate<ICombatUnit> p=(u) -> !u.isAlive();//组件打掉了
-        component.removeIf(p);
-    }
 
     @Override
     public int getPower() {

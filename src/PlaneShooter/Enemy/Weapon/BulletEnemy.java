@@ -41,6 +41,8 @@ public class BulletEnemy extends EnemyPart {
     }
     public void updateUnit(Combat combat){
         super.updateUnit(combat);
+        if ((this.pos.x-100<=0||combat.getCombatArea().x+100<=this.pos.x)&&
+                (this.pos.y-100<=0||combat.getCombatArea().y+100<=this.pos.y)) this.alive=false;
     }
     public void getHurt(int value) {
         this.alive=false;
