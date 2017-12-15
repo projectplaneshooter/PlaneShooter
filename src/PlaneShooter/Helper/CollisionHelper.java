@@ -6,6 +6,7 @@ import PlaneShooter.Enemy.Enemy;
 import PlaneShooter.Enemy.EnemyPart;
 import PlaneShooter.Enemy.IEnemy;
 import PlaneShooter.Enemy.Weapon.BulletEnemy;
+import PlaneShooter.Enemy.Weapon.IWeapon;
 import PlaneShooter.Plane.IPlane;
 import PlaneShooter.Plane.Plane;
 import PlaneShooter.Plane.PlanePart;
@@ -20,12 +21,19 @@ import java.util.function.Predicate;
  */
 public class CollisionHelper {
     private static void checkCollision(IEnemy enemy,IPlane plane){
-//        if (enemy instanceof BulletEnemy) System.out.println();
+        if (enemy instanceof BulletEnemy) System.out.println("EnemyBullet");
+        if (plane instanceof IWeapon) System.out.println("EnemyBullet");
         if (enemy.getPos().distance(plane.getPos())<=100){
-//            System.out.println("ATTACK "+enemy.toString());
-            if (enemy instanceof BulletEnemy) {
-                plane.getHurt(((BulletEnemy) enemy).getPower());
-                ((BulletEnemy) enemy).getHurt(1);
+            System.out.println("ATTACK enemy "+enemy.getPos()+" + "+plane.getPos());
+            if (enemy instanceof IWeapon && plane instanceof Plane) {
+                plane.getHurt(((IWeapon) enemy).getPower());
+                enemy.getHurt(1);
+            }else if (plane instanceof IWeapon){
+                enemy.getHurt(((IWeapon) plane).getPower());
+                plane.getHurt(1);
+            }else{
+                enemy.getHurt(1);
+                plane.getHurt(1);
             }
         }
     }

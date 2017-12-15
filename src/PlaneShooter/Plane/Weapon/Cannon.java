@@ -34,4 +34,9 @@ public class Cannon extends PlanePart implements IWeapon {
     public String getName() {
         return "Cannon";
     }
+
+    @Override
+    public int getPower() {
+        return 10;
+    }
 }

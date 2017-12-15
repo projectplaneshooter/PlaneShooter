@@ -41,6 +41,6 @@ public class TestPlane extends Plane{
 
     @Override
     public void getHurt(int value) {
-
+        this.health-=value;
     }
 }

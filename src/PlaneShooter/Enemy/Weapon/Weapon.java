@@ -41,7 +41,13 @@ public class Weapon extends EnemyPart implements IWeapon{
             combat.addCombatUnit(new BulletEnemy(this.pos, bulletSpeed, this.power));
         }
     }
-    protected void getHurt(int value) {
+
+    @Override
+    public void setSpeed(Point speed) {
+        this.speed=speed;
+    }
+
+    public void getHurt(int value) {
         this.alive=false;
     }
     @Override

@@ -1,5 +1,7 @@
 package PlaneShooter.Enemy.Weapon;
 
-public interface IWeapon {
+import PlaneShooter.Enemy.IEnemy;
+
+public interface IWeapon extends IEnemy{
     int getPower();
 }
