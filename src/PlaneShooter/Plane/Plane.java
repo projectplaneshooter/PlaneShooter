@@ -12,7 +12,7 @@ import java.util.LinkedList;
 /**
  * Created by yuyuyzl on 2017/12/11.
  */
-public abstract class Plane implements ICollidable,ICombatUnit,Serializable {
+public abstract class Plane implements ICollidable,Serializable,IPlane {
     protected Point pos=new Point();
     private LinkedList<PlanePart> components =new LinkedList<>();
     protected int velocity;

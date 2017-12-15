@@ -30,8 +30,6 @@ public class BulletEnemy extends EnemyPart {
     public void updateUnit(Combat combat){
         super.updateUnit(combat);
     }
-
-    @Override
     public void getHurt(int value) {
         this.alive=false;
     }

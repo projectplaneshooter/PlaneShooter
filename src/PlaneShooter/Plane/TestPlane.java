@@ -38,4 +38,9 @@ public class TestPlane extends Plane{
     public void updateUnit(Combat combat) {
         super.updateUnit(combat);
     }
+
+    @Override
+    public void getHurt(int value) {
+
+    }
 }

@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Created by yuyuyzl on 2017/12/14.
  */
-public abstract class PlanePart implements ICombatUnit,Serializable {
+public abstract class PlanePart implements Serializable,IPlane {
     protected Point dpos;
     protected ICombatUnit parent;
 
