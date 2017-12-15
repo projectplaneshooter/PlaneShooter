@@ -15,6 +15,5 @@ import java.io.ObjectOutputStream;
  */
 public class testMain {
     public static void main(String[] args) {
-        System.out.println(KeyEvent.VK_DOWN);
     }
 }

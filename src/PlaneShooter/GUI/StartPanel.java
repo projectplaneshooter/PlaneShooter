@@ -10,23 +10,34 @@ import java.awt.event.ActionListener;
  */
 public class StartPanel extends JPanel{
     MainFrame mf;
-    JButton btnSwitch;
+    JButton btnStart;
+    JButton btnDesigner;
     public StartPanel(MainFrame mf) {
         super();
         this.mf=mf;
-
         JLabel labelHeader=new JLabel("Plane Shooter");
         labelHeader.setFont(new Font(null,0,36));
         setBackground(Color.WHITE);
         add(labelHeader);
-        btnSwitch=new JButton("Switch");
-        btnSwitch.addActionListener(new ActionListener() {
+        btnStart =new JButton("Switch");
+        btnStart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mf.showPanel(mf.gamePanel);
             }
         });
-        add(btnSwitch);
+
+        btnDesigner =new JButton("Designer");
+        btnDesigner.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mf.showPanel(mf.planeDesignerPanel);
+            }
+        });
+
+
+        add(btnStart);
+        add(btnDesigner);
     }
 
 }

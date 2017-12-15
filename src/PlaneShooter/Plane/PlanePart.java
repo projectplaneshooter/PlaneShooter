@@ -28,7 +28,8 @@ public abstract class PlanePart implements ICombatUnit,Serializable {
 
     @Override
     public Point getPos() {
-        Point pos=new Point(parent.getPos());
+        Point pos;
+        if(parent!=null) pos=new Point(parent.getPos());else pos=new Point(0,0);
         pos.translate(dpos.x,dpos.y);
         return pos;
     }
