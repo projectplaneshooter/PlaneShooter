@@ -47,7 +47,9 @@ public class Combat{
         combatUnitsAdd.clear();
         for (ICombatUnit unit: combatUnits) {
             unit.updateUnit(this);
-            if (unit.getCollideType()== CollideType.PLANE) PlanePosition=unit.getPos();
+            if (unit.getCollideType()==CollideType.PLANE) PlanePosition=unit.getPos();
+//            if (unit.getCollideType()==CollideType.PLANE)
+//                System.out.println("plane pos = "+unit.getPos());
         }
         if (worldTick % 1 == 0) {
             CollisionHelper.updateCombat(combatUnits);

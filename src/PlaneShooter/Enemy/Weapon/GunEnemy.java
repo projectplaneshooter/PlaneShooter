@@ -43,7 +43,7 @@ class GunEnemy extends EnemyPart implements IWeapon{
         Point pos;
         if (parent==null) pos=new Point();
         else pos=parent.getPos();
-        pos.translate(this.pos.x,this.pos.y);
+        pos.translate(this.getSpeed().x,this.getSpeed().y);
         return pos;
     }
 

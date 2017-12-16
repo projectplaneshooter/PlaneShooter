@@ -34,12 +34,12 @@ public class BulletEnemy extends EnemyPart {
     @Override
     public void paintUnit(Graphics g,Combat combat) {
         g.setColor(Color.BLACK);
-        g.drawRect(this.pos.x-1,this.pos.y-1,2,2);
+        g.drawRect(this.getPos().x-1,this.getPos().y-1,2,2);
     }
     public void updateUnit(Combat combat){
         super.updateUnit(combat);
-        if (!combat.getCombatArea().contains(this.getPos()))
-           this.alive=false;
+        if(getPos().getX()>combat.getCombatArea().getWidth()||getPos().getX()<0||
+           getPos().getY()>combat.getCombatArea().getHeight()||getPos().getY()<0) this.alive=false;
     }
     
     public CollideType getCollideType() {

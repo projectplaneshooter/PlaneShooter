@@ -1,6 +1,7 @@
 package PlaneShooter.Plane;
 
 import PlaneShooter.Combat.ICombatUnit;
+import PlaneShooter.Helper.CollideType;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -40,5 +41,9 @@ public abstract class PlanePart implements Serializable,IPlane {
     }
 
     public void getHurt(int power) {
+    }
+
+    public CollideType getCollideType() {
+        return CollideType.PLANEPART;
     }
 }

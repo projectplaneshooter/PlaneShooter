@@ -46,8 +46,6 @@ public class GamePanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 combat=new Combat(new Rectangle(0,100,1000,600));
-//                combat.addCombatUnit(new Tank(new Point(200,200),new Point(0,1)));
-//                combat.addCombatUnit(new Tank(new Point(100,100),new Point(1,1)));
                 combat.addCombatUnit(new TestEnemy(new Point(300,100),new Point(1,0),200));
                 combat.addCombatUnit(new TestEnemy(new Point(500,100),new Point(-1,0),200));
                 combat.addCombatUnit(new Tank(new Point(500,50),new Point(0,1),500));

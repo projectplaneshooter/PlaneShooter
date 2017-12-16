@@ -12,7 +12,7 @@ public class CollisionHelper {
 //        if (enemy.getCollideType()==CollideType.ENEMYBULLET) System.out.println("EnemyBullet");
 //        if (plane.getCollideType()==CollideType.PLANEBULLET) System.out.println("PlaneBullet");
         if (enemy.getPos().distance(plane.getPos())<=enemy.getSize()+plane.getSize()){
-            System.out.println("ATTACK enemy "+enemy.getPos()+" + "+plane.getPos());
+//            System.out.println("ATTACK enemy "+enemy.getPos()+" + "+plane.getPos());
             enemy.onCollide(plane);
             plane.onCollide(enemy);
         }
@@ -27,6 +27,7 @@ public class CollisionHelper {
                     enemyParts.add(unit);
                     break;
                 case PLANE:
+                case PLANEPART:
                 case PLANEBULLET:
                     planeParts.add(unit);
             }
