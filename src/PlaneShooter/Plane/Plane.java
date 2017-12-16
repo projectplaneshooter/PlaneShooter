@@ -22,8 +22,6 @@ public abstract class Plane implements ICollidable,Serializable,IPlane {
         this.pos.setLocation(pos.x,pos.y);
     }
 
-
-
     public void addComponent(PlanePart component){
         this.components.add(component);
     }
@@ -35,7 +33,6 @@ public abstract class Plane implements ICollidable,Serializable,IPlane {
     public void setVelocity(int velocity){
         this.velocity=velocity;
     }
-
 
     @Override
     public abstract boolean isAlive();

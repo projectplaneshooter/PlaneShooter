@@ -1,6 +1,7 @@
-package PlaneShooter.Enemy.Weapon;
+package PlaneShooter.Enemy.Weapon.Bullet;
 
 import PlaneShooter.Combat.Combat;
+import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Enemy.Enemy;
 import PlaneShooter.Enemy.EnemyPart;
 import PlaneShooter.Helper.CollideType;
@@ -10,13 +11,9 @@ import java.awt.*;
 
 public class BulletEnemy extends EnemyPart {
     private int power;
-    public BulletEnemy(Point pos,int power) {
-        super(pos);
-        this.power=power;
-    }
 
     public BulletEnemy(Point pos, Point speed, int power) {
-        super(pos, speed);
+        super(pos, speed ,1, null);
         this.power=power;
     }
 
@@ -44,9 +41,7 @@ public class BulletEnemy extends EnemyPart {
         if (!combat.getCombatArea().contains(this.getPos()))
            this.alive=false;
     }
-    public void getHurt(int value) {
-        this.alive=false;
-    }
+    
     public CollideType getCollideType() {
         return CollideType.ENEMYBULLET;
     }

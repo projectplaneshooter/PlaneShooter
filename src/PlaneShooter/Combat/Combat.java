@@ -1,6 +1,8 @@
 package PlaneShooter.Combat;
 
+import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.CollisionHelper;
+import PlaneShooter.Plane.Plane;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ public class Combat{
     private ArrayList<ICombatUnit> combatUnitsAdd=new ArrayList<>();
     private long worldTick=0;
     private Rectangle combatArea;
+    public Point PlanePosition = new Point();
 
     public Combat(Rectangle area) {
         combatArea=new Rectangle(area);
@@ -44,6 +47,7 @@ public class Combat{
         combatUnitsAdd.clear();
         for (ICombatUnit unit: combatUnits) {
             unit.updateUnit(this);
+            if (unit.getCollideType()== CollideType.PLANE) PlanePosition=unit.getPos();
         }
         if (worldTick % 1 == 0) {
             CollisionHelper.updateCombat(combatUnits);
