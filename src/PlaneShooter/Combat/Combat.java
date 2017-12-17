@@ -25,6 +25,7 @@ public class Combat{
     }
 
     public Rectangle getCombatArea() {
+
         return combatArea;
     }
 

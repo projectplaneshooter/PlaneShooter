@@ -6,19 +6,10 @@ import PlaneShooter.Plane.Weapon.Cannon;
 
 import java.awt.*;
 
-/**
- * Created by yuyuyzl on 2017/12/11.
- */
-public class TestPlane extends Plane{
+public class CustomizedPlane extends Plane {
 
-
-    public TestPlane(Point pos){
+    public CustomizedPlane(Point pos){
         super(pos);
-        addComponent(new Cannon(new Point(10,0),this));
-        addComponent(new Cannon(new Point(-10,0),this));
-        addComponent(new RectangleBody(new Point(0,0),this));
-        velocity=3;
-        health=200;
     }
 
 
@@ -47,5 +38,9 @@ public class TestPlane extends Plane{
     @Override
     public int getSize() {
         return 30;
+    }
+
+    public void calculateStats(){
+
     }
 }

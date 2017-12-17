@@ -46,4 +46,8 @@ public abstract class PlanePart implements Serializable,IPlane {
     public CollideType getCollideType() {
         return CollideType.PLANEPART;
     }
+
+    public void calculateStatsA(Integer health,Integer velocity){
+
+    }
 }

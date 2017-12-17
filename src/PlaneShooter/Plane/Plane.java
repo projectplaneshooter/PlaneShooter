@@ -16,8 +16,8 @@ import java.util.LinkedList;
 public abstract class Plane implements ICollidable,Serializable,IPlane {
     protected Point pos=new Point();
     private LinkedList<PlanePart> components =new LinkedList<>();
-    protected int velocity;
-    protected int health;
+    protected int velocity=0;
+    protected int health=0;
     public Plane(Point pos){
         this.pos.setLocation(pos.x,pos.y);
     }

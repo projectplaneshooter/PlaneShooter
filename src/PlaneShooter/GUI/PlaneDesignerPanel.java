@@ -22,7 +22,6 @@ public class PlaneDesignerPanel extends JPanel {
     MainFrame mf;
     JLabel labelHeader;
     JButton btnSwitch;
-    Plane result;
     ICombatUnit unitSelected=null;
     Timer timer=new Timer(10, new ActionListener() {
         @Override
@@ -75,6 +74,41 @@ public class PlaneDesignerPanel extends JPanel {
             }
         }
 
+        addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                System.out.println(e.getButton());
+                switch (e.getButton()){
+                    case MouseEvent.BUTTON1:
+                        //todo finish this
+                        break;
+                    case MouseEvent.BUTTON3:
+                        unitSelected=null;
+                        break;
+                }
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
         timer.start();
     }
 
@@ -85,6 +119,6 @@ public class PlaneDesignerPanel extends JPanel {
     }
 
     public Plane getResult() {
-        return result;
+        return null;
     }
 }
