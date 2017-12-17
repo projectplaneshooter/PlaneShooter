@@ -18,8 +18,15 @@ import java.io.ObjectOutputStream;
 /**
  * Created by yuyuyzl on 2017/12/14.
  */
-public class testMain {
-    public static void main(String[] args) {
 
+
+public class testMain {
+    static void doA(Integer n){
+        n=n*3;
+    }
+    public static void main(String[] args) {
+        Integer n=1;
+        doA(n);
+        System.out.println(n);
     }
 }
