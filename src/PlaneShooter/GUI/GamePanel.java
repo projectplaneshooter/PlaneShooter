@@ -21,6 +21,7 @@ public class GamePanel extends JPanel{
     MainFrame mf;
     JLabel labelHeader;
     JButton btnStart;
+    JButton btnBack;
     Combat combat;
     Timer timer=new Timer(10, new ActionListener() {
         @Override
@@ -62,5 +63,16 @@ public class GamePanel extends JPanel{
             }
         });
         add(btnStart);
+
+        btnBack=new JButton("Back");
+        btnBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                combat=null;
+                timer.stop();
+                mf.showPanel(mf.startPanel);
+            }
+        });
+        add(btnBack);
     }
 }

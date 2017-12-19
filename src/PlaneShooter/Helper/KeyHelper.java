@@ -10,9 +10,13 @@ import java.util.Map;
 /**
  * Created by yuyuyzl on 2017/12/11.
  */
+
+
 public class KeyHelper implements AWTEventListener {
     private static KeyHelper INSTANCE=new KeyHelper();
     private Map<Integer, Boolean> keyMap = new HashMap<>();
+
+
 
     private void keyPressed(KeyEvent e) {
         keyMap.put(e.getKeyCode(),true);
@@ -43,13 +47,13 @@ public class KeyHelper implements AWTEventListener {
         Toolkit.getDefaultToolkit().addAWTEventListener(INSTANCE,AWTEvent.KEY_EVENT_MASK);
     }
 
-    public static Point getMoveVector(int v){
+    public static Point getMoveVector(int v,MoveKeySet keySet){
         int dx=0;
         int dy=0;
-        if(KeyHelper.isKeyPressed(KeyEvent.VK_DOWN))dy+=v;
-        if(KeyHelper.isKeyPressed(KeyEvent.VK_UP))dy-=v;
-        if(KeyHelper.isKeyPressed(KeyEvent.VK_LEFT))dx-=v;
-        if(KeyHelper.isKeyPressed(KeyEvent.VK_RIGHT))dx+=v;
+        if(KeyHelper.isKeyPressed(keySet.KeyDown))dy+=v;
+        if(KeyHelper.isKeyPressed(keySet.KeyUp))dy-=v;
+        if(KeyHelper.isKeyPressed(keySet.KeyLeft))dx-=v;
+        if(KeyHelper.isKeyPressed(keySet.KeyRight))dx+=v;
         return new Point(dx,dy);
     }
 }

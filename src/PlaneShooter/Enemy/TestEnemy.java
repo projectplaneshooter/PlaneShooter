@@ -20,7 +20,7 @@ public class TestEnemy extends Enemy {
 
     public void updateUnit(Combat combat){
         super.updateUnit(combat);
-        if (Math.random()<=0.01) this.speed.setLocation(-this.speed.x,-this.speed.y);
+        if (Math.random()<=0.01||this.pos.x<=0||this.pos.x>=1000) this.speed.setLocation(-this.speed.x,-this.speed.y);
     }
 
     @Override

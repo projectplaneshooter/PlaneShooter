@@ -5,6 +5,7 @@ import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
 import PlaneShooter.Helper.KeyHelper;
+import PlaneShooter.Helper.MoveKeySet;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -18,6 +19,7 @@ public abstract class Plane implements ICollidable,Serializable,IPlane {
     private LinkedList<PlanePart> components =new LinkedList<>();
     protected int velocity=0;
     protected int health=0;
+    private MoveKeySet moveKeySet=MoveKeySet.KEY_SET_ARROW;
     public Plane(Point pos){
         this.pos.setLocation(pos.x,pos.y);
     }
@@ -63,7 +65,7 @@ public abstract class Plane implements ICollidable,Serializable,IPlane {
     @Override
     public void updateUnit(Combat combat) {
         //testNumber=(int)(Math.random()*10);
-        Point dp=KeyHelper.getMoveVector(velocity);
+        Point dp=KeyHelper.getMoveVector(velocity,moveKeySet);
         pos.translate(dp.x,dp.y);
         for (ICombatUnit unit: components) {
             unit.updateUnit(combat);

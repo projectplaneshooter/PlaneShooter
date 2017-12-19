@@ -75,4 +75,14 @@ public class Combat{
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
+    public boolean canEndCombat(){
+        if(combatUnitsAdd!=null)return false;
+        if(!stage.isEmpty())return false;
+        boolean yy=true;
+        for(ICombatUnit combatUnit: combatUnits){
+            //todo finish enemy check
+        }
+        return yy;
+    }
 }
