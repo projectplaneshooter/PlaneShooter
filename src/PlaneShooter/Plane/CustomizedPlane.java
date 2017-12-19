@@ -22,6 +22,10 @@ public class CustomizedPlane extends Plane {
     public void paintUnit(Graphics g, Combat combat) {
         super.paintUnit(g, combat);
         g.setColor(Color.black);
+        if(components.isEmpty()){
+            g.drawLine(getPos().x-2,getPos().y-2,getPos().x+2,getPos().y+2);
+            g.drawLine(getPos().x+2,getPos().y-2,getPos().x-2,getPos().y+2);
+        }
         g.drawString("HP:"+String.valueOf(health),pos.x-20,pos.y+40);
     }
 

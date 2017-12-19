@@ -16,7 +16,7 @@ import java.util.LinkedList;
  */
 public abstract class Plane implements ICollidable,Serializable,IPlane {
     protected Point pos=new Point();
-    private LinkedList<PlanePart> components =new LinkedList<>();
+    protected LinkedList<PlanePart> components =new LinkedList<>();
     protected int velocity=0;
     protected int health=0;
     private MoveKeySet moveKeySet=MoveKeySet.KEY_SET_ARROW;
