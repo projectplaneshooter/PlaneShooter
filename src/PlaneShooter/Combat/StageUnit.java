@@ -9,7 +9,7 @@ public class StageUnit implements Comparable<StageUnit> {
     ICombatUnit combatUnit;
     int appearTime;
 
-    public StageUnit(ICombatUnit combatUnit, int appearTime, Point position) {
+    public StageUnit(ICombatUnit combatUnit, int appearTime) {
         this.combatUnit = combatUnit;
         this.appearTime = appearTime;
     }

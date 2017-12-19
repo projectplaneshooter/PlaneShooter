@@ -1,6 +1,7 @@
 package PlaneShooter.GUI;
 
 import PlaneShooter.Combat.Combat;
+import PlaneShooter.Combat.DefaultStage;
 import PlaneShooter.Enemy.Tank;
 import PlaneShooter.Enemy.TestEnemy;
 import PlaneShooter.Plane.Plane;
@@ -46,9 +47,10 @@ public class GamePanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 combat=new Combat(new Rectangle(0,100,1000,600));
-                combat.addCombatUnit(new TestEnemy(new Point(300,100),new Point(1,0),200));
-                combat.addCombatUnit(new TestEnemy(new Point(500,100),new Point(-1,0),200));
-                combat.addCombatUnit(new Tank(new Point(500,50),new Point(0,1),500));
+                //combat.addCombatUnit(new TestEnemy(new Point(300,100),new Point(1,0),200));
+                //combat.addCombatUnit(new TestEnemy(new Point(500,100),new Point(-1,0),200));
+                //combat.addCombatUnit(new Tank(new Point(500,50),new Point(0,1),500));
+                combat.setStage(DefaultStage.get(1));
                 Plane testPlane=new TestPlane(new Point(500,500));
                 combat.addCombatUnit(testPlane);
                 SwingUtilities.invokeLater(new Runnable() {

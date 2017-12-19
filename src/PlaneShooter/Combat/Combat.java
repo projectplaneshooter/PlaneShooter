@@ -19,13 +19,13 @@ public class Combat{
     private long worldTick=0;
     private Rectangle combatArea;
     public Point PlanePosition = new Point();
+    private Stage stage;
 
     public Combat(Rectangle area) {
         combatArea=new Rectangle(area);
     }
 
     public Rectangle getCombatArea() {
-
         return combatArea;
     }
 
@@ -44,6 +44,7 @@ public class Combat{
 
     public void updateCombat(){
         worldTick++;
+        if(stage!=null)stage.processCombat(this);
         combatUnits.addAll(combatUnitsAdd);
         combatUnitsAdd.clear();
         for (ICombatUnit unit: combatUnits) {
@@ -69,5 +70,9 @@ public class Combat{
 
     public long getWorldTick() {
         return worldTick;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

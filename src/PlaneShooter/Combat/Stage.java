@@ -1,6 +1,7 @@
 package PlaneShooter.Combat;
 
 import java.util.Collection;
+import java.util.PriorityQueue;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -8,7 +9,8 @@ import java.util.TreeSet;
  * Created by yuyuyzl on 2017/12/17.
  */
 public class Stage {
-    private SortedSet<StageUnit> units=new TreeSet<>();
+    private PriorityQueue<StageUnit> units=new PriorityQueue<>();
+    private int tickZero=0;
 
     public Stage(){}
     public Stage(Collection<StageUnit> units){
@@ -20,9 +22,19 @@ public class Stage {
     }
 
     public void processCombat(Combat combat){
-        while(combat.getWorldTick()>=units.first().appearTime){
-            combat.addCombatUnit(units.first().combatUnit);
-            units.remove(units.first());
+
+        while(!units.isEmpty()&&combat.getWorldTick()>=(units.peek().appearTime+tickZero)){
+            combat.addCombatUnit(units.peek().combatUnit);
+            units.remove();
         }
+    }
+
+    public Stage setTickZero(int tickZero){
+        this.tickZero=tickZero;
+        return this;
+    }
+
+    public boolean isEmpty(){
+        return units.isEmpty();
     }
 }
