@@ -4,6 +4,7 @@ import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.DefaultStage;
 import PlaneShooter.Enemy.Tank;
 import PlaneShooter.Enemy.TestEnemy;
+import PlaneShooter.Helper.FileHelper;
 import PlaneShooter.Plane.Plane;
 import PlaneShooter.Plane.TestPlane;
 
@@ -52,8 +53,12 @@ public class GamePanel extends JPanel{
                 //combat.addCombatUnit(new TestEnemy(new Point(500,100),new Point(-1,0),200));
                 //combat.addCombatUnit(new Tank(new Point(500,50),new Point(0,1),500));
                 combat.setStage(DefaultStage.get(1));
-                Plane testPlane=new TestPlane(new Point(500,500));
-                combat.addCombatUnit(testPlane);
+
+                Plane plane= FileHelper.importPlane("PlaneFromDesigner.sav");
+                if(plane==null) plane=new TestPlane(new Point(500,500));else {
+                    plane.setPos(new Point(500,500));
+                }
+                combat.addCombatUnit(plane);
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {

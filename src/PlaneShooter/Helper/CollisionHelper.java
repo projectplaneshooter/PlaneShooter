@@ -32,7 +32,7 @@ public class CollisionHelper {
                     planeParts.add(unit);
             }
         }
-        System.out.println("THIS SIZE : "+enemyParts.size()+"  "+planeParts.size());
+        //System.out.println("THIS SIZE : "+enemyParts.size()+"  "+planeParts.size());
         for (ICollidable enemy:enemyParts) {
             for (ICollidable plane : planeParts) {
                 checkCollision(enemy, plane);

@@ -45,6 +45,15 @@ public class CustomizedPlane extends Plane {
     }
 
     public void calculateStats(){
+        int maxHealthNow=planeStat.maxHealth;
+        planeStat=new PlaneStat();
+        for(PlanePart c : components){
+            c.calculateStats(planeStat);
+        }
+        health+=planeStat.maxHealth-maxHealthNow;
+    }
 
+    public int getPartCount(){
+        return components.size();
     }
 }

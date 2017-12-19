@@ -17,7 +17,7 @@ import java.util.LinkedList;
 public abstract class Plane implements ICollidable,Serializable,IPlane {
     protected Point pos=new Point();
     protected LinkedList<PlanePart> components =new LinkedList<>();
-    protected int velocity=0;
+    protected PlaneStat planeStat=new PlaneStat();
     protected int health=0;
     private MoveKeySet moveKeySet=MoveKeySet.KEY_SET_ARROW;
     public Plane(Point pos){
@@ -33,7 +33,11 @@ public abstract class Plane implements ICollidable,Serializable,IPlane {
     }
 
     public void setVelocity(int velocity){
-        this.velocity=velocity;
+        this.planeStat.velocity=velocity;
+    }
+
+    public void setMaxHealth(int maxHealth){
+        this.planeStat.maxHealth=maxHealth;
     }
 
     @Override
@@ -65,7 +69,7 @@ public abstract class Plane implements ICollidable,Serializable,IPlane {
     @Override
     public void updateUnit(Combat combat) {
         //testNumber=(int)(Math.random()*10);
-        Point dp=KeyHelper.getMoveVector(velocity,moveKeySet);
+        Point dp=KeyHelper.getMoveVector(this.planeStat.velocity,moveKeySet);
         pos.translate(dp.x,dp.y);
         for (ICombatUnit unit: components) {
             unit.updateUnit(combat);

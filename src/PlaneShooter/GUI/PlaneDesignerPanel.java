@@ -3,6 +3,7 @@ package PlaneShooter.GUI;
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.GUI.Component.PlaneComponentLabel;
+import PlaneShooter.Helper.FileHelper;
 import PlaneShooter.Helper.RegistryHelper;
 import PlaneShooter.Plane.CustomizedPlane;
 import PlaneShooter.Plane.Plane;
@@ -23,19 +24,22 @@ public class PlaneDesignerPanel extends JPanel {
     MainFrame mf;
     JLabel labelHeader;
     JButton btnSwitch;
+    JButton btnSave;
     PlanePart unitSelected=null;
     Combat combat=new Combat(new Rectangle(600,300,200,200));
-
+    private PlaneDesignerPanel pdp=this;
     CustomizedPlane plane;
     Timer timer=new Timer(10, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(unitSelected!=null){
-                Point mousePos=getMousePosition();
-                if(mousePos!=null)unitSelected.setPos(mousePos);
+            if (pdp.mf.getContentPane() == pdp) {
+                if (unitSelected != null) {
+                    Point mousePos = getMousePosition();
+                    if (mousePos != null) unitSelected.setPos(mousePos);
+                }
+                combat.updateCombat();
+                repaint();
             }
-            combat.updateCombat();
-            repaint();
         }
     });
 
@@ -46,6 +50,19 @@ public class PlaneDesignerPanel extends JPanel {
         labelHeader.setFont(new Font(null,0,36));
         setBackground(Color.WHITE);
         add(labelHeader);
+
+        btnSave=new JButton("Save");
+        btnSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(plane.getPartCount()>0){
+                    if(FileHelper.exportPlane("PlaneFromDesigner.sav",plane)){
+                        JOptionPane.showMessageDialog(mf,"Plane Saved!");
+                    }else JOptionPane.showMessageDialog(mf,"Oops, something happened.");
+                }
+            }
+        });
+        add(btnSave);
         btnSwitch=new JButton("Back");
         btnSwitch.addActionListener(new ActionListener() {
             @Override
@@ -94,8 +111,11 @@ public class PlaneDesignerPanel extends JPanel {
                             if(combat.getCombatArea().contains(e.getPoint())){
                                 Point posOnPlane=new Point(e.getPoint());
                                 posOnPlane.translate(-combat.getCombatArea().x,-combat.getCombatArea().y);
+                                posOnPlane.translate(-plane.getPos().x,-plane.getPos().y);
                                 unitSelected.setPos(posOnPlane);
+                                unitSelected.setParent(plane);
                                 plane.addComponent(unitSelected);
+                                plane.calculateStats();
                                 unitSelected=null;
                             }
                         }

@@ -5,6 +5,7 @@ import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
 import PlaneShooter.Plane.PlanePart;
+import PlaneShooter.Plane.PlaneStat;
 import PlaneShooter.Plane.Weapon.Projector.CannonBall;
 
 import java.awt.*;
@@ -57,5 +58,11 @@ public class Cannon extends PlanePart implements IWeapon {
     @Override
     public CollideType getCollideType() {
         return CollideType.PLANEBULLET;
+    }
+
+    @Override
+    public PlaneStat calculateStats(PlaneStat planeStat) {
+        planeStat.maxHealth+=5;
+        return planeStat;
     }
 }

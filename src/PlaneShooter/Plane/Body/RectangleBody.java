@@ -5,6 +5,7 @@ import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
 import PlaneShooter.Plane.PlanePart;
+import PlaneShooter.Plane.PlaneStat;
 
 import java.awt.*;
 
@@ -53,5 +54,12 @@ public class RectangleBody extends PlanePart implements IBody {
     @Override
     public CollideType getCollideType() {
         return CollideType.PLANE;
+    }
+
+    @Override
+    public PlaneStat calculateStats(PlaneStat planeStat) {
+        planeStat.maxHealth+=200;
+        if(planeStat.velocity<3)planeStat.velocity=3;
+        return planeStat;
     }
 }

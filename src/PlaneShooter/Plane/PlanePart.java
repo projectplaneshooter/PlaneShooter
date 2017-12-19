@@ -43,11 +43,13 @@ public abstract class PlanePart implements Serializable,IPlane {
     public void getHurt(int power) {
     }
 
+    public void setParent(ICombatUnit parent){
+        this.parent=parent;
+    }
+
     public CollideType getCollideType() {
         return CollideType.PLANEPART;
     }
 
-    public PlaneStat calculateStatsA(PlaneStat planeStat){
-        return planeStat;
-    }
+    public abstract PlaneStat calculateStats(PlaneStat planeStat);
 }
