@@ -14,7 +14,7 @@ import java.util.LinkedList;
 /**
  * Created by yuyuyzl on 2017/12/11.
  */
-public abstract class Plane implements ICollidable,Serializable,IPlane {
+public abstract class Plane implements Serializable,IPlane {
     protected Point pos=new Point();
     protected LinkedList<PlanePart> components =new LinkedList<>();
     protected PlaneStat planeStat=new PlaneStat();

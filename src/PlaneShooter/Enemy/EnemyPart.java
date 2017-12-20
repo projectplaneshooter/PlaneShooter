@@ -3,11 +3,12 @@ package PlaneShooter.Enemy;
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Helper.CollideType;
+import PlaneShooter.Helper.ICollidable;
 
 import java.awt.*;
 import java.util.LinkedList;
 
-abstract public class EnemyPart implements ICombatUnit{
+abstract public class EnemyPart implements ICombatUnit, ICollidable {
     protected boolean alive;
     protected Enemy parent;
     protected Point pos=new Point(),speed=new Point(),acceleration=new Point(),angle=new Point();

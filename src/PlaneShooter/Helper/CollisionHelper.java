@@ -20,19 +20,21 @@ public class CollisionHelper {
     public static void updateCombat(ArrayList<ICombatUnit> combatUnits){
         ArrayList<ICollidable> enemyParts=new ArrayList<>();
         ArrayList<ICollidable> planeParts=new ArrayList<>();
-        for (ICollidable unit:combatUnits) {
-            switch (unit.getCollideType()){
-                case ENEMY:
-                case ENEMYBULLET:
-                    enemyParts.add(unit);
-                    break;
-                case PLANE:
-                case PLANEPART:
-                case PLANEBULLET:
-                    planeParts.add(unit);
-            }
+        for (ICombatUnit Unit:combatUnits)
+            if (Unit instanceof ICollidable){
+                ICollidable unit=(ICollidable) Unit;
+                switch (unit.getCollideType()){
+                    case ENEMY:
+                    case ENEMYBULLET:
+                        enemyParts.add(unit);
+                        break;
+                    case PLANE:
+                    case PLANEPART:
+                    case PLANEBULLET:
+                        planeParts.add(unit);
+                }
         }
-        //System.out.println("THIS SIZE : "+enemyParts.size()+"  "+planeParts.size());
+//        System.out.println("THIS SIZE : "+enemyParts.size()+"  "+planeParts.size());
         for (ICollidable enemy:enemyParts) {
             for (ICollidable plane : planeParts) {
                 checkCollision(enemy, plane);

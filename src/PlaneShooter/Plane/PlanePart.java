@@ -2,6 +2,7 @@ package PlaneShooter.Plane;
 
 import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Helper.CollideType;
+import PlaneShooter.Helper.ICollidable;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -38,9 +39,6 @@ public abstract class PlanePart implements Serializable,IPlane {
         if(parent!=null) pos=new Point(parent.getPos());else pos=new Point(0,0);
         pos.translate(dpos.x,dpos.y);
         return pos;
-    }
-
-    public void getHurt(int power) {
     }
 
     public void setParent(ICombatUnit parent){

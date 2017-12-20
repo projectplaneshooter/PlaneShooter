@@ -12,7 +12,7 @@ import java.awt.*;
  * Created by yuyuyzl on 2017/12/14.
  * modified by zlc1114
  */
-public class CannonBall implements ICombatUnit {
+public class CannonBall implements ICombatUnit,ICollidable{
     Point pos;
     boolean alive;
     ICombatUnit parent;

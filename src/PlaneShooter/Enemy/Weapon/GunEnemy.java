@@ -9,7 +9,7 @@ import PlaneShooter.Helper.ICollidable;
 
 import java.awt.*;
 
-class GunEnemy extends EnemyPart implements IWeapon{
+class GunEnemy extends EnemyPart implements IWeapon, ICollidable{
     int power=1;//默认战五渣
     public GunEnemy(Point pos, int power, Enemy parent) {
         super(pos,new Point(),1, parent);
