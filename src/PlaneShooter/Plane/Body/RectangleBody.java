@@ -22,6 +22,8 @@ public class RectangleBody extends PlanePart implements IBody {
     }
 
 
+
+
     @Override
     public void paintUnit(Graphics g, Combat combat) {
         g.setColor(Color.black);

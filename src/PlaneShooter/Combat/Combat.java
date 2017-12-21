@@ -30,6 +30,7 @@ public class Combat{
     }
 
     public void paintCombat(Graphics g){
+        g.setColor(Color.black);
         g.drawRect(combatArea.x,combatArea.y,combatArea.width,combatArea.height);
         Graphics gn=g.create(combatArea.x,combatArea.y,combatArea.width,combatArea.height);
         gn.drawRect(0,0,combatArea.width,combatArea.height);
