@@ -2,7 +2,6 @@ package PlaneShooter.Helper;
 
 import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Plane.Body.RectangleBody;
-import PlaneShooter.Plane.Body.RectangleBodyS;
 import PlaneShooter.Plane.Weapon.Cannon;
 
 import java.util.ArrayList;
@@ -20,7 +19,6 @@ public class RegistryHelper {
 
     public static void initRegistry(){
         registerClass(RectangleBody.class);
-        registerClass(RectangleBodyS.class);
         registerClass(Cannon.class);
     }
 }
