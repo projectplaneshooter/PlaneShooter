@@ -3,6 +3,7 @@ package PlaneShooter.Enemy;
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Enemy.Weapon.StrangeTrackGun;
 import PlaneShooter.Enemy.Weapon.TrackGun;
+import PlaneShooter.Helper.ResourceHelper;
 
 import java.awt.*;
 /*无health默认无法摧毁*/
@@ -15,7 +16,8 @@ public class TestEnemy extends Enemy {
     public void paintUnit(Graphics g, Combat combat) {
         super.paintUnit(g,combat);
         g.setColor(Color.black);
-        g.drawRect(getPos().x-25,getPos().y-25,50,50);
+        //g.drawRect(getPos().x-25,getPos().y-25,50,50);
+        g.drawImage(ResourceHelper.Enemy_Plane,getPos().x-25, getPos().y-25,50,50,null);
     }
 
     public void updateUnit(Combat combat){

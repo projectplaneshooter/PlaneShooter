@@ -4,6 +4,7 @@ import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
+import PlaneShooter.Helper.ResourceHelper;
 import PlaneShooter.Plane.PlanePart;
 import PlaneShooter.Plane.PlaneStat;
 import PlaneShooter.Plane.Weapon.Projector.CannonBall;
@@ -25,8 +26,9 @@ public class Cannon extends PlanePart implements IWeapon {
     @Override
     public void paintUnit(Graphics g, Combat combat) {
         g.setColor(Color.black);
-        g.drawLine(getPos().x-5,getPos().y,getPos().x+5,getPos().y);
-        g.drawLine(getPos().x,getPos().y,getPos().x,getPos().y-10);
+        //g.drawLine(getPos().x-5,getPos().y,getPos().x+5,getPos().y);
+        //g.drawLine(getPos().x,getPos().y,getPos().x,getPos().y-10);
+        g.drawImage(ResourceHelper.Part_Cannon_Full,getPos().x-2, getPos().y,6,10,null);
     }
 
     @Override
@@ -62,7 +64,7 @@ public class Cannon extends PlanePart implements IWeapon {
 
     @Override
     public PlaneStat calculateStats(PlaneStat planeStat) {
-        planeStat.maxHealth+=5;
+        planeStat.maxHealth-=40;
         return planeStat;
     }
 }
