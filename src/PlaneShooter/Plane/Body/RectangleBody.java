@@ -4,6 +4,7 @@ import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
+import PlaneShooter.Helper.ResourceHelper;
 import PlaneShooter.Plane.PlanePart;
 import PlaneShooter.Plane.PlaneStat;
 
@@ -27,7 +28,8 @@ public class RectangleBody extends PlanePart implements IBody {
     @Override
     public void paintUnit(Graphics g, Combat combat) {
         g.setColor(Color.black);
-        g.drawRect(getPos().x-25,getPos().y-25,50,50);
+        //g.drawRect(getPos().x-25,getPos().y-25,50,50);
+        g.drawImage(ResourceHelper.Part_RectangleBody_Full,getPos().x-25,getPos().y-25,50,50,null);
     }
 
     @Override

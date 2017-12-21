@@ -2,10 +2,9 @@ package PlaneShooter.Helper;
 
 import PlaneShooter.Plane.Plane;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.io.*;
 
 /**
  * Created by yuyuyzl on 2017/12/14.
@@ -34,5 +33,15 @@ public class FileHelper {
             return false;
         }
         return true;
+    }
+
+    public static Image loadImageFromFile(String pathname){
+        File src=new File(pathname);
+        try {
+            return ImageIO.read(src);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
