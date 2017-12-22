@@ -12,8 +12,8 @@ import java.util.function.Predicate;
 /**
  * 和plane有点区别，我觉得body不能改，这样我就把enemy自带一个body
  */
-abstract public class Enemy extends EnemyPart implements IEnemy {
-    LinkedList<EnemyPart> component=new LinkedList<>();
+public abstract class Enemy extends EnemyPart implements IEnemy {
+    LinkedList<EnemyPart> components=new LinkedList<>();
 
     public Enemy(Point pos, Point speed, int health) {
         super(pos, speed, health, null);
@@ -21,7 +21,7 @@ abstract public class Enemy extends EnemyPart implements IEnemy {
 
     @Override
     public void paintUnit(Graphics g, Combat combat) {
-        for (EnemyPart unit:component){
+        for (EnemyPart unit:components){
             unit.paintUnit(g,combat);
         }
         g.setColor(Color.black);
@@ -30,10 +30,10 @@ abstract public class Enemy extends EnemyPart implements IEnemy {
 
     public void updateUnit(Combat combat) {
         super.updateUnit(combat);
-        for (ICombatUnit unit:component)
+        for (ICombatUnit unit:components)
             unit.updateUnit(combat);
         Predicate<ICombatUnit> p=(u) -> !u.isAlive();//组件打掉了
-        component.removeIf(p);
+        components.removeIf(p);
     }
 
     @Override
@@ -42,7 +42,15 @@ abstract public class Enemy extends EnemyPart implements IEnemy {
     }
 
     void addComponent(EnemyPart unit){
-        component.add(unit);
+        components.add(unit);
+    }
+
+    public CollideType getCollideType() {
+        return CollideType.ENEMY;
+    }
+
+    public LinkedList<EnemyPart> getComponents(){
+        return components;
     }
 
     @Override

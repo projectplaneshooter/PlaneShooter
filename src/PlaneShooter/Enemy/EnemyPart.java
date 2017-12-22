@@ -56,10 +56,6 @@ abstract public class EnemyPart implements ICombatUnit, ICollidable {
         this.speed.translate(this.acceleration.x,this.acceleration.y);
     }
 
-    public CollideType getCollideType() {
-        return CollideType.ENEMY;
-    }
-
     @Override
     public boolean isAlive() {
         return alive;

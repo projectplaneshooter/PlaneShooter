@@ -1,6 +1,9 @@
 package PlaneShooter.Helper;
 
 import PlaneShooter.Combat.ICombatUnit;
+import PlaneShooter.Enemy.Enemy;
+import PlaneShooter.Enemy.EnemyPart;
+import PlaneShooter.Plane.Plane;
 
 import java.util.ArrayList;
 
@@ -25,16 +28,19 @@ public class CollisionHelper {
                 ICollidable unit=(ICollidable) Unit;
                 switch (unit.getCollideType()){
                     case ENEMY:
+                        enemyParts.addAll(((Enemy)unit).getComponents());//实现不同
                     case ENEMYBULLET:
                         enemyParts.add(unit);
                         break;
                     case PLANE:
+                        planeParts.addAll(((Plane)unit).getComponents());//实现不同
+                        break;
                     case PLANEPART:
                     case PLANEBULLET:
                         planeParts.add(unit);
                 }
         }
-//        System.out.println("THIS SIZE : "+enemyParts.size()+"  "+planeParts.size());
+        System.out.println("THIS SIZE : "+enemyParts.size()+"  "+planeParts.size());
         for (ICollidable enemy:enemyParts) {
             for (ICollidable plane : planeParts) {
                 checkCollision(enemy, plane);

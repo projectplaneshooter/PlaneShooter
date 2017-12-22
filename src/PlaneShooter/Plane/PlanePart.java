@@ -41,6 +41,12 @@ public abstract class PlanePart implements Serializable,IPlane {
         return pos;
     }
 
+    @Override
+    public void onCollide(ICollidable object) {
+        if (this.parent instanceof ICollidable)
+            ((ICollidable) this.parent).onCollide(object);
+    }
+
     public void setParent(ICombatUnit parent){
         this.parent=parent;
     }

@@ -50,6 +50,7 @@ public class Cannon extends PlanePart implements IWeapon {
 
     @Override
     public void onCollide(ICollidable object) {
+        super.onCollide(object);
     }
 
     @Override

@@ -48,16 +48,17 @@ public class RectangleBody extends PlanePart implements IBody {
 
     @Override
     public void onCollide(ICollidable object) {
+        super.onCollide(object);
     }
 
     @Override
     public int getSize() {
-        return 70;
+        return 30;
     }
 
     @Override
     public CollideType getCollideType() {
-        return CollideType.PLANE;
+        return CollideType.PLANEPART;
     }
 
     @Override

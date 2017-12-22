@@ -5,6 +5,7 @@ import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Enemy.Enemy;
 import PlaneShooter.Enemy.EnemyPart;
 import PlaneShooter.Enemy.Weapon.Bullet.BulletEnemy;
+import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
 
 import java.awt.*;
@@ -65,5 +66,10 @@ class GunEnemy extends EnemyPart implements IWeapon, ICollidable{
     @Override
     public int getSize() {
         return 1;
+    }
+
+    @Override
+    public CollideType getCollideType() {
+        return CollideType.ENEMYPART;
     }
 }

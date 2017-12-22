@@ -78,6 +78,10 @@ public abstract class Plane implements Serializable,IPlane {
         if(health<=0)combat.endCombat();
     }
 
+    public LinkedList<PlanePart> getComponents() {
+        return components;
+    }
+
     public CollideType getCollideType() {
         return CollideType.PLANE;
     }
