@@ -6,6 +6,7 @@ import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
 import PlaneShooter.Helper.KeyHelper;
 import PlaneShooter.Helper.MoveKeySet;
+import PlaneShooter.Plane.Body.IBody;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -62,7 +63,10 @@ public abstract class Plane implements Serializable,IPlane {
     public void paintUnit(Graphics g, Combat combat) {
         g.setColor(Color.black);
         for (ICombatUnit unit: components) {
-            unit.paintUnit(g, combat);
+            if(unit instanceof IBody)unit.paintUnit(g, combat);
+        }
+        for (ICombatUnit unit: components) {
+            if(!(unit instanceof IBody))unit.paintUnit(g, combat);
         }
     }
 
@@ -85,4 +89,6 @@ public abstract class Plane implements Serializable,IPlane {
     public CollideType getCollideType() {
         return CollideType.PLANE;
     }
+
+
 }

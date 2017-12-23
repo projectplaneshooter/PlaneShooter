@@ -53,6 +53,10 @@ public class CustomizedPlane extends Plane {
         health+=planeStat.maxHealth-maxHealthNow;
     }
 
+    public boolean isStatLegal(){
+        return planeStat.maxHealth>0&&planeStat.velocity>0;
+    }
+
     public int getPartCount(){
         return components.size();
     }

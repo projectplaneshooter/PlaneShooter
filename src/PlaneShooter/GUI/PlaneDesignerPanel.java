@@ -8,6 +8,7 @@ import PlaneShooter.Helper.RegistryHelper;
 import PlaneShooter.Plane.CustomizedPlane;
 import PlaneShooter.Plane.Plane;
 import PlaneShooter.Plane.PlanePart;
+import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +16,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.*;
+import java.util.Stack;
 
 /**
  * Created by yuyuyzl on 2017/12/14.
@@ -25,7 +28,9 @@ public class PlaneDesignerPanel extends JPanel {
     JLabel labelHeader;
     JButton btnSwitch;
     JButton btnSave;
+    JButton btnUndo;
     PlanePart unitSelected=null;
+    Stack<byte[]> undoStack=new Stack<>();
     Combat combat=new Combat(new Rectangle(600,300,200,200));
     private PlaneDesignerPanel pdp=this;
     CustomizedPlane plane;
@@ -51,15 +56,30 @@ public class PlaneDesignerPanel extends JPanel {
         setBackground(Color.WHITE);
         add(labelHeader);
 
+        btnUndo=new JButton("Undo");
+        btnUndo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                popFromUndo();
+            }
+        });
+        add(btnUndo);
         btnSave=new JButton("Save");
         btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(plane.getPartCount()>0){
-                    if(FileHelper.exportPlane("PlaneFromDesigner.sav",plane)){
-                        JOptionPane.showMessageDialog(mf,"Plane Saved!");
-                    }else JOptionPane.showMessageDialog(mf,"Oops, something happened.");
+                if(plane.getPartCount()==0){
+                    JOptionPane.showMessageDialog(mf,"You have built nothing yet!");
+                    return;
                 }
+                if(!plane.isStatLegal()){
+                    JOptionPane.showMessageDialog(mf,"Illegal Plane Stats. Please rebuild it.");
+                    return;
+                }
+                if(FileHelper.exportPlane("PlaneFromDesigner.sav",plane)){
+                    JOptionPane.showMessageDialog(mf,"Plane Saved!");
+                }else JOptionPane.showMessageDialog(mf,"Oops, something happened.");
+
             }
         });
         add(btnSave);
@@ -67,6 +87,7 @@ public class PlaneDesignerPanel extends JPanel {
         btnSwitch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                reset();
                 mf.showPanel(mf.startPanel);
             }
         });
@@ -109,6 +130,7 @@ public class PlaneDesignerPanel extends JPanel {
                     case MouseEvent.BUTTON1:
                         if(unitSelected!=null){
                             if(combat.getCombatArea().contains(e.getPoint())){
+                                pushToUndo();
                                 Point posOnPlane=new Point(e.getPoint());
                                 posOnPlane.translate(-combat.getCombatArea().x,-combat.getCombatArea().y);
                                 posOnPlane.translate(-plane.getPos().x,-plane.getPos().y);
@@ -141,8 +163,8 @@ public class PlaneDesignerPanel extends JPanel {
 
             }
         });
-        plane=new CustomizedPlane(new Point(combat.getCombatArea().width/2,combat.getCombatArea().height/2));
-        combat.addCombatUnit(plane);
+        reset();
+
         timer.start();
     }
 
@@ -151,6 +173,42 @@ public class PlaneDesignerPanel extends JPanel {
         super.paint(g);
         if(unitSelected!=null && getMousePosition()!=null)unitSelected.paintUnit(g,null);
         combat.paintCombat(g);
+    }
+
+    public void reset(){
+        undoStack=new Stack<>();
+        combat=new Combat(new Rectangle(600,300,200,200));
+        plane=new CustomizedPlane(new Point(combat.getCombatArea().width/2,combat.getCombatArea().height/2));
+        combat.addCombatUnit(plane);
+    }
+
+    private void pushToUndo(){
+        try {
+            ByteArrayOutputStream baos=new ByteArrayOutputStream();
+            ObjectOutputStream os=new ObjectOutputStream(baos);
+            os.writeObject(plane);
+            undoStack.push(baos.toByteArray());
+            os.close();
+            baos.close();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+    private void popFromUndo(){
+        if(!undoStack.empty())
+        try {
+            ByteArrayInputStream bais=new ByteArrayInputStream(undoStack.pop());
+            ObjectInputStream is=new ObjectInputStream(bais);
+            combat=new Combat(new Rectangle(600,300,200,200));
+            plane=(CustomizedPlane)is.readObject();
+            combat.addCombatUnit(plane);
+            bais.close();
+            is.close();
+
+        }catch (Exception e1){
+            e1.printStackTrace();
+        }
     }
 
     public Plane getResult() {
