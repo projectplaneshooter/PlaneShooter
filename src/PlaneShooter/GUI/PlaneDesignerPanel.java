@@ -29,7 +29,11 @@ public class PlaneDesignerPanel extends JPanel {
     JButton btnSwitch;
     JButton btnSave;
     JButton btnUndo;
+    JCheckBox cbGrid;
+    JCheckBox cbMirror;
+
     PlanePart unitSelected=null;
+    PlanePart unitSelectedMirror=null;
     Stack<byte[]> undoStack=new Stack<>();
     Combat combat=new Combat(new Rectangle(600,300,200,200));
     private PlaneDesignerPanel pdp=this;
@@ -40,7 +44,11 @@ public class PlaneDesignerPanel extends JPanel {
             if (pdp.mf.getContentPane() == pdp) {
                 if (unitSelected != null) {
                     Point mousePos = getMousePosition();
-                    if (mousePos != null) unitSelected.setPos(mousePos);
+                    if (mousePos != null) {
+                        if(cbGrid.isSelected())unitSelected.setPos(getGrided(mousePos));
+                        else unitSelected.setPos(mousePos);
+                    }
+
                 }
                 combat.updateCombat();
                 repaint();
@@ -93,6 +101,11 @@ public class PlaneDesignerPanel extends JPanel {
         });
         add(btnSwitch);
 
+        cbGrid=new JCheckBox("Grid");
+        cbMirror=new JCheckBox("Mirror");
+        add(cbGrid);
+        add(cbMirror);
+
         //PlaneComponentLabel labelComponent=new PlaneComponentLabel(new RectangleBody(new Point(0,0),null));
         //add(labelComponent);
         //timer.start();
@@ -103,6 +116,7 @@ public class PlaneDesignerPanel extends JPanel {
                 labelComponent.setMouseClickAction(() -> {
                     try {
                         unitSelected = (PlanePart) clazz.newInstance();
+                        unitSelectedMirror = (PlanePart) clazz.newInstance();
                     } catch (InstantiationException e) {
                         e.printStackTrace();
                     } catch (IllegalAccessException e) {
@@ -125,20 +139,29 @@ public class PlaneDesignerPanel extends JPanel {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                System.out.println(e.getButton());
+                //System.out.println(e.getButton());
                 switch (e.getButton()){
                     case MouseEvent.BUTTON1:
                         if(unitSelected!=null){
                             if(combat.getCombatArea().contains(e.getPoint())){
                                 pushToUndo();
                                 Point posOnPlane=new Point(e.getPoint());
+                                if(cbGrid.isSelected())posOnPlane=getGrided(posOnPlane);
                                 posOnPlane.translate(-combat.getCombatArea().x,-combat.getCombatArea().y);
                                 posOnPlane.translate(-plane.getPos().x,-plane.getPos().y);
                                 unitSelected.setPos(posOnPlane);
                                 unitSelected.setParent(plane);
                                 plane.addComponent(unitSelected);
+                                if(cbMirror.isSelected()){
+                                    Point posOnPlaneMirror=new Point(posOnPlane);
+                                    posOnPlaneMirror.translate(-2*posOnPlane.x,0);
+                                    unitSelectedMirror.setPos(posOnPlaneMirror);
+                                    unitSelectedMirror.setParent(plane);
+                                    plane.addComponent(unitSelectedMirror);
+                                }
                                 plane.calculateStats();
                                 unitSelected=null;
+                                unitSelectedMirror=null;
                             }
                         }
                         break;
@@ -209,6 +232,16 @@ public class PlaneDesignerPanel extends JPanel {
         }catch (Exception e1){
             e1.printStackTrace();
         }
+    }
+
+    public Point getGrided(Point p){
+        Point pp=new Point(p);
+        int dx=pp.x%5;
+        if(dx>=3)dx-=5;
+        int dy=pp.y%5;
+        if(dy>=3)dy-=5;
+        pp.translate(-dx,-dy);
+        return pp;
     }
 
     public Plane getResult() {

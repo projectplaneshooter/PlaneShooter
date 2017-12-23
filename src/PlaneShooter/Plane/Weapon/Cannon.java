@@ -28,7 +28,7 @@ public class Cannon extends PlanePart implements IWeapon {
         g.setColor(Color.black);
         //g.drawLine(getPos().x-5,getPos().y,getPos().x+5,getPos().y);
         //g.drawLine(getPos().x,getPos().y,getPos().x,getPos().y-10);
-        g.drawImage(ResourceHelper.Part_Cannon_Full,getPos().x-2, getPos().y,6,10,null);
+        g.drawImage(ResourceHelper.Part_Cannon_Full,getPos().x-3, getPos().y,7,10,null);
     }
 
     @Override
