@@ -8,6 +8,7 @@ import PlaneShooter.Plane.Plane;
 import PlaneShooter.Plane.TestPlane;
 import PlaneShooter.Plane.Weapon.Cannon;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
@@ -21,12 +22,7 @@ import java.io.ObjectOutputStream;
 
 
 public class testMain {
-    static void doA(Integer n){
-        n=n*3;
-    }
     public static void main(String[] args) {
-        Integer n=1;
-        doA(n);
-        System.out.println(n);
+
     }
 }
