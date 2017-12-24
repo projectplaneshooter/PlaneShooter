@@ -22,7 +22,6 @@ public class StartPanel extends JPanel{
         labelHeader.setFont(new Font(null,0,36));
         setBackground(null);
         add(labelHeader);
-
         btnStart =new JButton("Switch");
         btnStart.addActionListener(new ActionListener() {
             @Override
