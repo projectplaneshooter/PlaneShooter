@@ -20,7 +20,8 @@ import java.io.*;
 import java.util.Stack;
 
 /**
- * Created by yuyuyzl on 2017/12/14.
+ * 这是飞机设计器窗体。
+ * 使用了一个空白的Combat来进行飞机的建造和展示。
  */
 
 public class PlaneDesignerPanel extends JPanel {
@@ -205,6 +206,10 @@ public class PlaneDesignerPanel extends JPanel {
         combat.addCombatUnit(plane);
     }
 
+    /**
+     * 这里使用了一个byte[]类型的列表来存储每一步操作前的飞机，利用Serializable接口和对象输入输出流简化了本应用DeepCopy实现的功能。
+     * 自我感觉还算能用。
+     */
     private void pushToUndo(){
         try {
             ByteArrayOutputStream baos=new ByteArrayOutputStream();

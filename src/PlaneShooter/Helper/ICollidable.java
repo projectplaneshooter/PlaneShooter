@@ -3,7 +3,8 @@ package PlaneShooter.Helper;
 import java.awt.*;
 
 /**
- * Created by yuyuyzl on 2017/12/8.
+ * 所有需要进行碰撞监测的战斗单位都应当实现这个接口。
+ * 通过这个接口提供的信息来进行碰撞监测以及处理碰撞后的操作。
  */
 public interface ICollidable {
     Point getPos();

@@ -16,7 +16,8 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
 /**
- * Created by yuyuyzl on 2017/12/11.
+ * 这是实际进行游戏时展示的JPanel。
+ * 它持有一个Timer，用于进行（多线程的）Combat的更新操作。
  */
 public class GamePanel extends JPanel{
     MainFrame mf;

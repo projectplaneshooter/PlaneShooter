@@ -9,7 +9,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * Created by yuyuyzl on 2017/12/15.
+ * 这是一个封装好的用于展示飞机部件并且可以接收点击事件的JLabel。
+ * 主要用于设计器中，实现了部件工具箱的自动化生成。
  */
 public class PlaneComponentLabel extends JLabel {
 

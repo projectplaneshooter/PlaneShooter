@@ -3,6 +3,10 @@ package PlaneShooter.Helper;
 import java.awt.event.KeyEvent;
 import java.io.Serializable;
 
+/**
+ * 这个类是按键组。
+ * 如果有两个飞机持有不同的按键组的话，就可以进行单机双人游戏了。
+ */
 public class MoveKeySet implements Serializable{
 
     public static final MoveKeySet KEY_SET_WASD=new MoveKeySet(KeyEvent.VK_W,KeyEvent.VK_S,KeyEvent.VK_A,KeyEvent.VK_D);

@@ -8,10 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by yuyuyzl on 2017/12/11.
+ * 这个类用于处理键盘相关的AWT事件，并封装成一些有用的模块以方便使用。
  */
-
-
 public class KeyHelper implements AWTEventListener {
     private static KeyHelper INSTANCE=new KeyHelper();
     private Map<Integer, Boolean> keyMap = new HashMap<>();

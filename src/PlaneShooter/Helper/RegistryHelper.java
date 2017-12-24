@@ -6,6 +6,9 @@ import PlaneShooter.Plane.Weapon.Cannon;
 
 import java.util.ArrayList;
 
+/**
+ * 每一个需要加入到编辑器中的元件都应该在这个类中进行注册。
+ */
 public class RegistryHelper {
     private static ArrayList<Class> planePartClasses =new ArrayList<>();
 

@@ -7,7 +7,7 @@ import java.awt.*;
 import java.io.*;
 
 /**
- * Created by yuyuyzl on 2017/12/14.
+ * 这里有一些关于文件读写的函数。
  */
 public class FileHelper {
     public static Plane importPlane(String filename){
