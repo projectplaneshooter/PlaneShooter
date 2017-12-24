@@ -17,7 +17,7 @@ public class StartPanel extends JPanel{
     public StartPanel(MainFrame mf) {
         super();
         this.mf=mf;
-        /*
+/*
         JLabel labelHeader=new JLabel("Plane Shooter");
         labelHeader.setFont(new Font(null,0,36));
         setBackground(null);
