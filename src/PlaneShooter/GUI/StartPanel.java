@@ -1,5 +1,7 @@
 package PlaneShooter.GUI;
 
+import PlaneShooter.Helper.ResourceHelper;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -44,7 +46,8 @@ public class StartPanel extends JPanel{
         //todo @ZST check this
 */
 
-        JLabel lbl_Start=new JLabel("start");
+        //JLabel lbl_Start=new JLabel("start");
+        JLabel lbl_Start=new JLabel(new ImageIcon("res/back01.png"));
         lbl_Start.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -105,4 +108,10 @@ public class StartPanel extends JPanel{
 
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(ResourceHelper.main,0,0,1000,600,null);
+        repaint();
+    }
 }
