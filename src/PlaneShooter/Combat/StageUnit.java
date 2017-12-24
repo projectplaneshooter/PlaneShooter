@@ -3,7 +3,7 @@ package PlaneShooter.Combat;
 import java.awt.*;
 
 /**
- * Created by yuyuyzl on 2017/12/17.
+ * 一个关卡单位=一个单位+应该出现的时间。
  */
 public class StageUnit implements Comparable<StageUnit> {
     ICombatUnit combatUnit;

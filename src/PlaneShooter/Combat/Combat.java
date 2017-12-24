@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.function.Predicate;
 
 /**
- * Created by yuyuyzl on 2017/12/8.
+ * Combat是一整场游戏的抽象，也可以被视作游戏世界。
+ * 由这个类的实例持有所有的战斗单位，并在uodateCombat方法中统一更新他们。
+ * 同时，这个类还负责接收父窗体Graphics并绘制这场战斗到窗体中。
  */
 public class Combat{
 
@@ -21,6 +23,10 @@ public class Combat{
     public Point PlanePosition = new Point();
     private Stage stage;
 
+    /**
+     * 构造器中需要传入这场战斗相对于父窗体的位置以便之后进行Graphics的裁剪。
+     * @param area
+     */
     public Combat(Rectangle area) {
         combatArea=new Rectangle(area);
     }
@@ -39,12 +45,20 @@ public class Combat{
         }
     }
 
+    /**
+     * 这个方法把传入的Unit添加到战斗中。
+     * 为了避免在遍历数组的时候往数组中添加元素，使用一个combatUnitsAdd列表作为缓冲。
+     * @param unit
+     */
     public void addCombatUnit(ICombatUnit unit){
         combatUnitsAdd.add(unit);
         if (unit instanceof Plane)
             PlanePosition=unit.getPos();
     }
 
+    /**
+     * 这个方法遍历并调用其持有的所有单位的updateUnit方法从而完成更新。
+     */
     public void updateCombat(){
         worldTick++;
         if(stage!=null)stage.processCombat(this);

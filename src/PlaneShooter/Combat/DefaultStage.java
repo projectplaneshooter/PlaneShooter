@@ -5,6 +5,9 @@ import PlaneShooter.Enemy.TestEnemy;
 
 import java.awt.*;
 
+/**
+ * 这个类提供默认的关卡配置。
+ */
 public class DefaultStage {
     public static Stage get(int number){
         Stage stage=new Stage();

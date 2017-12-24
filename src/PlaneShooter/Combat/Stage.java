@@ -6,7 +6,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
- * Created by yuyuyzl on 2017/12/17.
+ * 这是关卡配置的抽象，主要保存了一系列敌人&出现时间的组合，并提供了一些方法来更新Combat并维护队列。
  */
 public class Stage {
     private PriorityQueue<StageUnit> units=new PriorityQueue<>();
@@ -21,6 +21,10 @@ public class Stage {
         this.units.add(u);
     }
 
+    /**
+     * 这个方法会自动把应该添加到Combat但没有加进去的单位加到传入的Combat中。
+     * @param combat
+     */
     public void processCombat(Combat combat){
 
         while(!units.isEmpty()&&combat.getWorldTick()>=(units.peek().appearTime+tickZero)){
@@ -29,6 +33,12 @@ public class Stage {
         }
     }
 
+    /**
+     * 这个方法用于解决一些情况，
+     * 例如需要把两个Stage接起来玩，你可能就需要把第二个Stage的起始时间设置成第一个Stage的结束时间。
+     * @param tickZero
+     * @return
+     */
     public Stage setTickZero(int tickZero){
         this.tickZero=tickZero;
         return this;
