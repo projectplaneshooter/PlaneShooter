@@ -44,14 +44,6 @@ public class StartPanel extends JPanel{
         add(btnDesigner);
         //todo @ZST check this
 */
-        JPanel p = new JPanel(){
-            @Override
-            public void paintComponent(Graphics g) {
-                ImageIcon icon = new ImageIcon("res/main.jpg");
-                Image img = icon.getImage();
-                g.drawImage(img, 0, 0, 6000, 8000, icon.getImageObserver());
-            }
-        };
 
         JLabel lbl_Start=new JLabel("start");
         lbl_Start.addMouseListener(new MouseListener() {
@@ -81,7 +73,6 @@ public class StartPanel extends JPanel{
             }
         });
         add(lbl_Start);
-        lbl_Start.add(p);
 
         JLabel lbl_Design=new JLabel("design");
         lbl_Design.addMouseListener(new MouseListener() {
@@ -111,10 +102,6 @@ public class StartPanel extends JPanel{
             }
         });
         add(lbl_Design);
-        lbl_Design.add(p);
-
-
-
 
 
     }
