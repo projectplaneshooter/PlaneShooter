@@ -8,7 +8,10 @@ import java.awt.*;
 import java.io.Serializable;
 
 /**
- * Created by yuyuyzl on 2017/12/14.
+ * 这个类是所有可作为飞机元件的组件（武器、机身）的父类。
+ * 需要注意的是，出于打包和恢复时的可靠性的考虑，PlanePart不直接持有它自己在Combat上的绝对位置，
+ * 而是持有它和它的父元素的相对位置（dpos）。
+ * 在getPos方法中，使用其父元素的位置和相对位置来推出它自己在Combat上的绝对位置并返回。
  */
 public abstract class PlanePart implements Serializable,IPlane {
     protected Point dpos;
@@ -55,5 +58,11 @@ public abstract class PlanePart implements Serializable,IPlane {
         return CollideType.PLANEPART;
     }
 
+    /**
+     * 用于在这个组件被安装到飞机上以后更新飞机的属性。
+     * 例如，一个矩形机身可以给飞机增加40点最大生命值。
+     * @param planeStat
+     * @return
+     */
     public abstract PlaneStat calculateStats(PlaneStat planeStat);
 }

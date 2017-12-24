@@ -13,7 +13,8 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
- * Created by yuyuyzl on 2017/12/11.
+ * 这个类是玩家可操控的飞机的父类。
+ * 它持有一系列PlanePart对象，并且负责在Update自己的时候更新它持有的所有PlanePart。
  */
 public abstract class Plane implements Serializable,IPlane {
     protected Point pos=new Point();

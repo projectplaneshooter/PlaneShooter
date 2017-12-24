@@ -6,6 +6,10 @@ import PlaneShooter.Plane.Weapon.Cannon;
 
 import java.awt.*;
 
+/**
+ * 在设计器中设计出来的飞机都是这个类的实例。
+ * 它扩展了Plane类，并加入了一些特有的方法使得设计器正常工作。
+ */
 public class CustomizedPlane extends Plane {
 
     public CustomizedPlane(Point pos){
