@@ -5,6 +5,7 @@ import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.GUI.Component.PlaneComponentLabel;
 import PlaneShooter.Helper.FileHelper;
 import PlaneShooter.Helper.RegistryHelper;
+import PlaneShooter.Helper.ResourceHelper;
 import PlaneShooter.Plane.CustomizedPlane;
 import PlaneShooter.Plane.Plane;
 import PlaneShooter.Plane.PlanePart;
@@ -57,9 +58,122 @@ public class PlaneDesignerPanel extends JPanel {
         }
     });
 
+    JPanel p = new JPanel(){
+        @Override
+        protected void paintComponent(Graphics g) {
+            ImageIcon icon = new ImageIcon("res/Factory.jpg");
+            Image img = icon.getImage();
+            g.drawImage(img, 0, 0, 1000, 600, icon.getImageObserver());
+        }
+    };
+
+
     public PlaneDesignerPanel(MainFrame mf) {
         super();
         this.mf=mf;
+
+        JLabel lbl_Undo=new JLabel(new ImageIcon("res/undo.png"));
+        lbl_Undo.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                popFromUndo();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        add(lbl_Undo);
+        lbl_Undo.add(p);
+
+        JLabel lbl_Save=new JLabel(new ImageIcon("res/save.png"));
+        lbl_Save.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(plane.getPartCount()==0){
+                    JOptionPane.showMessageDialog(mf,"You have built nothing yet!");
+                    return;
+                }
+                if(!plane.isStatLegal()){
+                    JOptionPane.showMessageDialog(mf,"Illegal Plane Stats. Please rebuild it.");
+                    return;
+                }
+                if(FileHelper.exportPlane("PlaneFromDesigner.sav",plane)){
+                    JOptionPane.showMessageDialog(mf,"Plane Saved!");
+                }else JOptionPane.showMessageDialog(mf,"Oops, something happened.");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        add(lbl_Save);
+        lbl_Save.add(p);
+
+
+        JLabel lbl_Back=new JLabel(new ImageIcon("res/back01.png"));
+        lbl_Back.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                reset();
+                mf.showPanel(mf.startPanel);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        add(lbl_Back);
+        lbl_Back.add(p);
+     /*
         labelHeader=new JLabel("Plane Designer");
         labelHeader.setFont(new Font(null,0,36));
         setBackground(Color.WHITE);
@@ -101,7 +215,7 @@ public class PlaneDesignerPanel extends JPanel {
             }
         });
         add(btnSwitch);
-
+*/
         cbGrid=new JCheckBox("Grid");
         cbMirror=new JCheckBox("Mirror");
         add(cbGrid);
@@ -251,5 +365,12 @@ public class PlaneDesignerPanel extends JPanel {
 
     public Plane getResult() {
         return plane;
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(ResourceHelper.Factory,0,0,1000,600,null);
+        repaint();
     }
 }
