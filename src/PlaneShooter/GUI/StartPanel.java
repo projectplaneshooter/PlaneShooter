@@ -14,16 +14,17 @@ import java.awt.event.MouseListener;
  */
 public class StartPanel extends JPanel{
     MainFrame mf;
-    JButton btnStart;
-    JButton btnDesigner;
+    //JButton btnStart;
+    //JButton btnDesigner;
     public StartPanel(MainFrame mf) {
         super();
         this.mf=mf;
-/*
+        /*
         JLabel labelHeader=new JLabel("Plane Shooter");
         labelHeader.setFont(new Font(null,0,36));
         setBackground(null);
         add(labelHeader);
+
         btnStart =new JButton("Switch");
         btnStart.addActionListener(new ActionListener() {
             @Override
@@ -45,9 +46,19 @@ public class StartPanel extends JPanel{
         add(btnDesigner);
         //todo @ZST check this
 */
+        JPanel p = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                ImageIcon icon = new ImageIcon("res/main.jpg");
+                Image img = icon.getImage();
+                g.drawImage(img, 0, 0, 1000, 600, icon.getImageObserver());
+            }
+        };
+        //p.setBackground(null);
+        //p.setOpaque(false);
 
         //JLabel lbl_Start=new JLabel("start");
-        JLabel lbl_Start=new JLabel(new ImageIcon("res/back01.png"));
+        JLabel lbl_Start=new JLabel(new ImageIcon("res/start.png"));
         lbl_Start.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -75,8 +86,10 @@ public class StartPanel extends JPanel{
             }
         });
         add(lbl_Start);
+        lbl_Start.add(p);
 
-        JLabel lbl_Design=new JLabel("design");
+        JLabel lbl_Design=new JLabel(new ImageIcon("res/design.png"));
+
         lbl_Design.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -104,7 +117,7 @@ public class StartPanel extends JPanel{
             }
         });
         add(lbl_Design);
-
+        lbl_Design.add(p);
 
     }
 
