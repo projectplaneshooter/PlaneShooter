@@ -12,8 +12,8 @@ import java.awt.event.MouseListener;
  */
 public class StartPanel extends JPanel{
     MainFrame mf;
-    //JButton btnStart;
-    //JButton btnDesigner;
+    JButton btnStart;
+    JButton btnDesigner;
     public StartPanel(MainFrame mf) {
         super();
         this.mf=mf;
@@ -46,14 +46,12 @@ public class StartPanel extends JPanel{
 */
         JPanel p = new JPanel(){
             @Override
-            protected void paintComponent(Graphics g) {
+            public void paintComponent(Graphics g) {
                 ImageIcon icon = new ImageIcon("res/main.jpg");
                 Image img = icon.getImage();
                 g.drawImage(img, 0, 0, 6000, 8000, icon.getImageObserver());
             }
         };
-        //p.setBackground(null);
-        //p.setOpaque(false);
 
         JLabel lbl_Start=new JLabel("start");
         lbl_Start.addMouseListener(new MouseListener() {
