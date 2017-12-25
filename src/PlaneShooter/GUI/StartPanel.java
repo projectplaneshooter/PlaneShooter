@@ -20,6 +20,7 @@ public class StartPanel extends JPanel{
     public StartPanel(MainFrame mf) {
         super();
         this.mf=mf;
+        this.setLayout(new GridLayout(5, 1, 10, 10));
         /*
         JLabel labelHeader=new JLabel("Plane Shooter");
         labelHeader.setFont(new Font(null,0,36));
@@ -59,6 +60,12 @@ public class StartPanel extends JPanel{
         //p.setOpaque(false);
 
         //JLabel lbl_Start=new JLabel("start");
+        JLabel lbl_Blank01=new JLabel("   ");
+        add(lbl_Blank01);
+
+        JLabel lbl_Blank02=new JLabel("   ");
+        add(lbl_Blank02);
+
         JLabel lbl_Start=new JLabel(new ImageIcon("res/start.png"));
         lbl_Start.addMouseListener(new MouseListener() {
             @Override

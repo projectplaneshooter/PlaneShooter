@@ -72,6 +72,20 @@ public class PlaneDesignerPanel extends JPanel {
     public PlaneDesignerPanel(MainFrame mf) {
         super();
         this.mf=mf;
+        this.setLayout(new GridLayout(7, 1, 10, 10));
+//第一行
+        JLabel lbl_Blank01_00=new JLabel("   ");
+        this.add(lbl_Blank01_00);
+//第二行
+        JLabel lbl_Blank02_00=new JLabel("   ");
+        this.add(lbl_Blank02_00);
+
+//第三行
+        JPanel pl01=new JPanel(new GridLayout(1, 5, 10, 10));
+        this.add(pl01);
+
+        JLabel lbl_Blank03_01=new JLabel("   ");
+        pl01.add(lbl_Blank03_01);
 
         JLabel lbl_Undo=new JLabel(new ImageIcon("res/undo.png"));
         lbl_Undo.addMouseListener(new MouseListener() {
@@ -102,6 +116,7 @@ public class PlaneDesignerPanel extends JPanel {
         });
         add(lbl_Undo);
         lbl_Undo.add(p);
+        pl01.add(lbl_Undo);
 
         JLabel lbl_Save=new JLabel(new ImageIcon("res/save.png"));
         lbl_Save.addMouseListener(new MouseListener() {
@@ -142,7 +157,7 @@ public class PlaneDesignerPanel extends JPanel {
         });
         add(lbl_Save);
         lbl_Save.add(p);
-
+        pl01.add(lbl_Save);
 
         JLabel lbl_Back=new JLabel(new ImageIcon("res/back01.png"));
         lbl_Back.addMouseListener(new MouseListener() {
@@ -174,6 +189,11 @@ public class PlaneDesignerPanel extends JPanel {
         });
         add(lbl_Back);
         lbl_Back.add(p);
+        pl01.add(lbl_Back);
+
+        JLabel lbl_Blank03_05=new JLabel("   ");
+        pl01.add(lbl_Blank03_05);
+
      /*
         labelHeader=new JLabel("Plane Designer");
         labelHeader.setFont(new Font(null,0,36));
@@ -217,10 +237,41 @@ public class PlaneDesignerPanel extends JPanel {
         });
         add(btnSwitch);
 */
+
+
+//第四行
+        JPanel pl02=new JPanel(new GridLayout(1, 3, 10, 10));
+        this.add(pl02);
+
+        JLabel lbl_Blank04_01=new JLabel("   ");
+        pl02.add(lbl_Blank04_01);
+
         cbGrid=new JCheckBox("Grid");
-        cbMirror=new JCheckBox("Mirror");
         add(cbGrid);
+        pl02.add(cbGrid);
+
+        JLabel lbl_Blank04_03=new JLabel("   ");
+        pl02.add(lbl_Blank04_03);
+
+        JLabel lbl_Blank04_04=new JLabel("   ");
+        pl02.add(lbl_Blank04_04);
+
+//第五行
+        JPanel pl03=new JPanel(new GridLayout(1, 3, 10, 10));
+        this.add(pl03);
+
+        JLabel lbl_Blank05_01=new JLabel("   ");
+        pl03.add(lbl_Blank05_01);
+
+        cbMirror=new JCheckBox("Mirror");
         add(cbMirror);
+        pl03.add(cbMirror);
+
+        JLabel lbl_Blank05_03=new JLabel("   ");
+        pl03.add(lbl_Blank05_03);
+
+        JLabel lbl_Blank05_04=new JLabel("   ");
+        pl03.add(lbl_Blank05_04);
 
         //PlaneComponentLabel labelComponent=new PlaneComponentLabel(new RectangleBody(new Point(0,0),null));
         //add(labelComponent);

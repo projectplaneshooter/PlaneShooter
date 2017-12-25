@@ -65,15 +65,15 @@ public class GamePanel extends JPanel{
         lbl_Start.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                combat=new Combat(new Rectangle(0,100,1000,600));
+                combat=new Combat(new Rectangle(0,100,1000,500));
                 //combat.addCombatUnit(new TestEnemy(new Point(300,100),new Point(1,0),200));
                 //combat.addCombatUnit(new TestEnemy(new Point(500,100),new Point(-1,0),200));
                 //combat.addCombatUnit(new Tank(new Point(500,50),new Point(0,1),500));
                 combat.setStage(DefaultStage.get(1));
 
                 Plane plane= FileHelper.importPlane("PlaneFromDesigner.sav");
-                if(plane==null) plane=new TestPlane(new Point(500,500));else {
-                    plane.setPos(new Point(500,500));
+                if(plane==null) plane=new TestPlane(new Point(500,400));else {
+                    plane.setPos(new Point(500,400));
                 }
                 combat.addCombatUnit(plane);
                 SwingUtilities.invokeLater(new Runnable() {
