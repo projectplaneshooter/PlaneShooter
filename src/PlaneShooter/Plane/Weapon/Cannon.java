@@ -64,7 +64,7 @@ public class Cannon extends PlanePart implements IWeapon {
         Polygon contour=new Polygon();
         double XAddx,XAddy,YAddx,YAddy;
         XAddx = 0;
-        XAddy = 1 / Math.sqrt(2);
+        XAddy = 1;
         YAddx = -XAddy;
         YAddy = XAddx;
         contour.addPoint((int) (this.getPos().x),(int) (this.getPos().y));

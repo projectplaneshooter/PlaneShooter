@@ -39,7 +39,7 @@ class GunEnemy extends EnemyPart implements IWeapon, ICollidable{
         Point parentPos=parent.getPos();
         Point parentSpeed=parent.getSpeed();
 //        g.drawLine(parentPos.x,parentPos.y,parentPos.x+parentSpeed.x*5,parentPos.y+parentSpeed.y*5);
-//        g.drawPolygon(this.getContour());
+        g.drawPolygon(this.getContour());
     }
 
     public Point getPos(){
@@ -77,12 +77,12 @@ class GunEnemy extends EnemyPart implements IWeapon, ICollidable{
         double XAddx,XAddy,YAddx,YAddy;
         if (len == 0) {
             XAddx = 0;
-            XAddy = 1 / Math.sqrt(2);
+            XAddy = 1;
             YAddx = -XAddy;
             YAddy = XAddx;
         } else{
-            XAddx = parent.getSpeed().x / len / Math.sqrt(2);
-            XAddy = parent.getSpeed().y / len / Math.sqrt(2);
+            XAddx = parent.getSpeed().x / len;
+            XAddy = parent.getSpeed().y / len;
             YAddx = -XAddy;
             YAddy = XAddx;
         }

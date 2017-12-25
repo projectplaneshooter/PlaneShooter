@@ -41,7 +41,7 @@ public class TestEnemy extends Enemy {
         double len = this.getSpeed().distance(0,0);
         double XAddx,XAddy,YAddx,YAddy;
         XAddx = 0;
-        XAddy = 1 / Math.sqrt(2);
+        XAddy = 1;
         YAddx = -XAddy;
         YAddy = XAddx;
 //        if (len == 0) {
@@ -55,11 +55,12 @@ public class TestEnemy extends Enemy {
 //            YAddx = -XAddy;
 //            YAddy = XAddx;
 //        }
-        contour.addPoint((int) (this.getPos().x + 40 * XAddx),(int) (this.getPos().y + 40 * XAddy));
-        contour.addPoint((int) (this.getPos().x + 10 * YAddx),(int) (this.getPos().y + 10 * YAddy));
-        contour.addPoint((int) (this.getPos().x - 10 * XAddx + 30 * YAddx),(int) (this.getPos().y - 10 * XAddy + 30 * YAddy));
-        contour.addPoint((int) (this.getPos().x - 10 * XAddx - 30 * YAddx),(int) (this.getPos().y - 10 * XAddy - 30 * YAddy));
-        contour.addPoint((int) (this.getPos().x - 10 * YAddx),(int) (this.getPos().y - 10 * YAddy));
+        contour.addPoint((int) (this.getPos().x - 20 * XAddx),(int) (this.getPos().y - 20 * XAddy));
+        contour.addPoint((int) (this.getPos().x - 3 * XAddx  + 10 * YAddx),(int) (this.getPos().y - 3 * XAddy + 10 * YAddy));
+        contour.addPoint((int) (this.getPos().x + 20 * YAddx),(int) (this.getPos().y + 20 * YAddy));
+        contour.addPoint((int) (this.getPos().x + 5 * XAddx),(int) (this.getPos().y + 5 * XAddy));
+        contour.addPoint((int) (this.getPos().x - 20 * YAddx),(int) (this.getPos().y - 20 * YAddy));
+        contour.addPoint((int) (this.getPos().x - 3 * XAddx - 10 * YAddx),(int) (this.getPos().y - 3 * XAddy - 10 * YAddy));
         return contour;
     }
 }

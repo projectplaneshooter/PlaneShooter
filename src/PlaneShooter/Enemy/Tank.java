@@ -53,19 +53,19 @@ public class Tank extends Enemy{
         double XAddx,XAddy,YAddx,YAddy;
         if (len == 0) {
             XAddx = 0;
-            XAddy = 1 / Math.sqrt(2);
+            XAddy = 1;
             YAddx = -XAddy;
             YAddy = XAddx;
         } else{
-            XAddx = this.getSpeed().x / len / Math.sqrt(2);
-            XAddy = this.getSpeed().y / len / Math.sqrt(2);
+            XAddx = this.getSpeed().x / len;
+            XAddy = this.getSpeed().y / len;
             YAddx = -XAddy;
             YAddy = XAddx;
         }
-        contour.addPoint((int) (this.getPos().x + 30 * XAddx + 30 * YAddx),(int) (this.getPos().y + 30 * XAddy + 30 * YAddy));
-        contour.addPoint((int) (this.getPos().x + 30 * XAddx - 30 * YAddx),(int) (this.getPos().y + 30 * XAddy - 30 * YAddy));
-        contour.addPoint((int) (this.getPos().x - 30 * XAddx - 30 * YAddx),(int) (this.getPos().y - 30 * XAddy - 30 * YAddy));
-        contour.addPoint((int) (this.getPos().x - 30 * XAddx + 30 * YAddx),(int) (this.getPos().y - 30 * XAddy + 30 * YAddy));
+        contour.addPoint((int) (this.getPos().x + 25 * XAddx + 25 * YAddx),(int) (this.getPos().y + 25 * XAddy + 25 * YAddy));
+        contour.addPoint((int) (this.getPos().x + 25 * XAddx - 25 * YAddx),(int) (this.getPos().y + 25 * XAddy - 25 * YAddy));
+        contour.addPoint((int) (this.getPos().x - 25 * XAddx - 25 * YAddx),(int) (this.getPos().y - 25 * XAddy - 25 * YAddy));
+        contour.addPoint((int) (this.getPos().x - 25 * XAddx + 25 * YAddx),(int) (this.getPos().y - 25 * XAddy + 25 * YAddy));
         return contour;
     }
 }
