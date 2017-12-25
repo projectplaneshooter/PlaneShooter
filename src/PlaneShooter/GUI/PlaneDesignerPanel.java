@@ -4,6 +4,7 @@ import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.GUI.Component.PlaneComponentLabel;
 import PlaneShooter.Helper.FileHelper;
+import PlaneShooter.Helper.KeyHelper;
 import PlaneShooter.Helper.RegistryHelper;
 import PlaneShooter.Helper.ResourceHelper;
 import PlaneShooter.Plane.CustomizedPlane;
@@ -370,7 +371,7 @@ public class PlaneDesignerPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(ResourceHelper.Factory,0,0,1000,600,null);
+        if(KeyHelper.hasBackground())g.drawImage(ResourceHelper.Factory,0,0,1000,600,null);
         repaint();
     }
 }

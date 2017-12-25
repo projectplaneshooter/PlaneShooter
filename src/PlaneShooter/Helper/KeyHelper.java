@@ -13,12 +13,12 @@ import java.util.Map;
 public class KeyHelper implements AWTEventListener {
     private static KeyHelper INSTANCE=new KeyHelper();
     private Map<Integer, Boolean> keyMap = new HashMap<>();
-
+    private boolean showBgImg=true;
 
 
     private void keyPressed(KeyEvent e) {
         keyMap.put(e.getKeyCode(),true);
-
+        if(e.getKeyCode()==KeyEvent.VK_B)showBgImg=!showBgImg;
     }
 
     private void keyReleased(KeyEvent e) {
@@ -53,5 +53,9 @@ public class KeyHelper implements AWTEventListener {
         if(KeyHelper.isKeyPressed(keySet.KeyLeft))dx-=v;
         if(KeyHelper.isKeyPressed(keySet.KeyRight))dx+=v;
         return new Point(dx,dy);
+    }
+
+    public static boolean hasBackground(){
+        return KeyHelper.INSTANCE.showBgImg;
     }
 }
