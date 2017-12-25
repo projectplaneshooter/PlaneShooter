@@ -77,7 +77,7 @@ public class Combat{
         combatUnitsAdd.clear();
         Predicate<ICombatUnit> p=(u) -> !u.isAlive();
         combatUnits.removeIf(p);
-        if(canEndCombat())endCombat();
+        if(stage!=null&&canEndCombat())endCombat();
     }
 
     public void endCombat(){
