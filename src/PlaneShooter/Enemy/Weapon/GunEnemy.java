@@ -11,34 +11,35 @@ import PlaneShooter.Helper.ICollidable;
 import java.awt.*;
 
 class GunEnemy extends EnemyPart implements IWeapon, ICollidable{
-    int power=1;//默认战五渣
+    int power=5;//默认战五渣
     public GunEnemy(Point pos, int power, Enemy parent) {
         super(pos,new Point(),1, parent);
-        this.power=power;
+        this.power=power;this.health=20;
     }
 
     public GunEnemy(Point pos, int health, int power, Enemy parent) {
         super(pos,new Point(),health, parent);
-        this.power=power;
+        this.power=power;this.health=20;
     }
 
     public GunEnemy(Point pos, Point speed, int power, Enemy parent) {
         super(pos, speed,1, parent);
-        this.power=power;
+        this.power=power;this.health=20;
     }
 
     public GunEnemy(Point pos, Point speed, int health, int power, Enemy parent) {
         super(pos, speed, health, parent);
-        this.power=power;
+        this.power=power;this.health=20;
     }
 
+    /*drawn nothing*/
     @Override
     public void paintUnit(Graphics g,Combat combat) {
         g.setColor(Color.BLACK);
         Point parentPos=parent.getPos();
         Point parentSpeed=parent.getSpeed();
 //        g.drawLine(parentPos.x,parentPos.y,parentPos.x+parentSpeed.x*5,parentPos.y+parentSpeed.y*5);
-        g.drawPolygon(this.getContour());
+//        g.drawPolygon(this.getContour());
     }
 
     public Point getPos(){
@@ -56,12 +57,12 @@ class GunEnemy extends EnemyPart implements IWeapon, ICollidable{
 
     @Override
     public int getPower() {
-        return power;
+        return 1;
     }
 
     @Override
     public void onCollide(ICollidable object) {
-        this.alive=false;
+        this.health -= object.getPower();
     }
 
     @Override
@@ -71,20 +72,19 @@ class GunEnemy extends EnemyPart implements IWeapon, ICollidable{
 
     @Override
     public Polygon getContour() {
-
         Polygon contour=new Polygon();
         double len = parent.getSpeed().distance(0,0);
         double XAddx,XAddy,YAddx,YAddy;
         if (len == 0) {
-            XAddx = 1;
-            XAddy = 0;
-            YAddx = 0;
-            YAddy = 1;
+            XAddx = 0;
+            XAddy = 1 / Math.sqrt(2);
+            YAddx = -XAddy;
+            YAddy = XAddx;
         } else{
-            XAddx=parent.getSpeed().x / len / Math.sqrt(2);
-            XAddy=parent.getSpeed().y / len / Math.sqrt(2);
-            YAddx=-XAddy;
-            YAddy=XAddx;
+            XAddx = parent.getSpeed().x / len / Math.sqrt(2);
+            XAddy = parent.getSpeed().y / len / Math.sqrt(2);
+            YAddx = -XAddy;
+            YAddy = XAddx;
         }
         contour.addPoint((int) (this.getPos().x + 10 * XAddx),(int) (this.getPos().y + 10 * XAddy));
         contour.addPoint((int) (this.getPos().x + 5 * XAddx + 2 * YAddx),(int) (this.getPos().y + 5 * XAddy + 2 * YAddy));

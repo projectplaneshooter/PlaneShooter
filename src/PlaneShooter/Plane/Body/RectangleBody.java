@@ -32,6 +32,7 @@ public class RectangleBody extends PlanePart implements IBody {
         g.setColor(Color.black);
         //g.drawRect(getPos().x-25,getPos().y-25,50,50);
         g.drawImage(ResourceHelper.Part_RectangleBody_Full,getPos().x-25,getPos().y-25,50,50,null);
+//        g.drawPolygon(this.getContour());
     }
 
     @Override
@@ -62,19 +63,10 @@ public class RectangleBody extends PlanePart implements IBody {
     public Polygon getContour() {
         Polygon contour=new Polygon();
         double XAddx,XAddy,YAddx,YAddy;
-        if (parent == null ||!(parent instanceof Plane)){
-            XAddx = 1;
-            XAddy = 0;
-            YAddx = 0;
-            YAddy = 1;
-        }else{
-            Point dp=((Plane) parent).dp;
-            double len = dp.distance(0,0);
-            XAddx=dp.x / len / Math.sqrt(2);
-            XAddy=dp.y / len / Math.sqrt(2);
-            YAddx=-XAddy;
-            YAddy=XAddx;
-        }
+        XAddx = 0;
+        XAddy = 1 / Math.sqrt(2);
+        YAddx = -XAddy;
+        YAddy = XAddx;
         contour.addPoint((int) (this.getPos().x + 30 * XAddx + 30 * YAddx),(int) (this.getPos().y + 30 * XAddy + 30 * YAddy));
         contour.addPoint((int) (this.getPos().x + 30 * XAddx - 30 * YAddx),(int) (this.getPos().y + 30 * XAddy - 30 * YAddy));
         contour.addPoint((int) (this.getPos().x - 30 * XAddx - 30 * YAddx),(int) (this.getPos().y - 30 * XAddy - 30 * YAddy));

@@ -23,7 +23,8 @@ public class BulletEnemy extends EnemyPart implements ICollidable {
 
     @Override
     public void onCollide(ICollidable object) {
-        this.alive=false;
+        if (object.getCollideType() != CollideType.PLANEBULLET)
+            this.alive=false;
     }
 
     @Override

@@ -29,6 +29,7 @@ public class Cannon extends PlanePart implements IWeapon {
         //g.drawLine(getPos().x-5,getPos().y,getPos().x+5,getPos().y);
         //g.drawLine(getPos().x,getPos().y,getPos().x,getPos().y-10);
         g.drawImage(ResourceHelper.Part_Cannon_Full,getPos().x-5, getPos().y,11,15,null);
+//        g.drawPolygon(this.getContour());
     }
 
     @Override
@@ -45,7 +46,7 @@ public class Cannon extends PlanePart implements IWeapon {
 
     @Override
     public int getPower() {
-        return 10;
+        return 1;
     }
 
     @Override
@@ -61,16 +62,22 @@ public class Cannon extends PlanePart implements IWeapon {
     @Override
     public Polygon getContour() {
         Polygon contour=new Polygon();
-        contour.addPoint(this.getPos().x - 1,this.getPos().y - 1);
-        contour.addPoint(this.getPos().x - 1,this.getPos().y + 1);
-        contour.addPoint(this.getPos().x + 1,this.getPos().y + 1);
-        contour.addPoint(this.getPos().x + 1,this.getPos().y - 1);
+        double XAddx,XAddy,YAddx,YAddy;
+        XAddx = 0;
+        XAddy = 1 / Math.sqrt(2);
+        YAddx = -XAddy;
+        YAddy = XAddx;
+        contour.addPoint((int) (this.getPos().x),(int) (this.getPos().y));
+        contour.addPoint((int) (this.getPos().x + 5 * XAddx - 5 * YAddx),(int) (this.getPos().y + 5 * XAddy - 5 * YAddy));
+        contour.addPoint((int) (this.getPos().x + 15 * XAddx - 5 * YAddx),(int) (this.getPos().y + 15 * XAddy - 5 * YAddy));
+        contour.addPoint((int) (this.getPos().x + 15 * XAddx + 5 * YAddx),(int) (this.getPos().y + 15 * XAddy + 5 * YAddy));
+        contour.addPoint((int) (this.getPos().x + 5 * XAddx + 5 * YAddx),(int) (this.getPos().y + 5 * XAddy + 5 * YAddy));
         return contour;
     }
 
     @Override
     public CollideType getCollideType() {
-        return CollideType.PLANEBULLET;
+        return CollideType.PLANEPART;
     }
 
     @Override

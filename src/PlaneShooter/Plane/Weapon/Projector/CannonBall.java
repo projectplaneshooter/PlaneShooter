@@ -47,7 +47,8 @@ public class CannonBall implements ICombatUnit,ICollidable{
 
     @Override
     public void onCollide(ICollidable object) {
-        this.alive=false;
+        if (object.getCollideType() != CollideType.ENEMYBULLET)
+            this.alive=false;
     }
 
     @Override
@@ -69,6 +70,7 @@ public class CannonBall implements ICombatUnit,ICollidable{
     public void paintUnit(Graphics g, Combat combat) {
         g.setColor(Color.darkGray);
         g.drawRect(pos.x-1,pos.y-1,2,2);
+//        g.drawPolygon(this.getContour());
     }
 
     @Override

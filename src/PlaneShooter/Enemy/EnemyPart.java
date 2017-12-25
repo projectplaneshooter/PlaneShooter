@@ -12,7 +12,7 @@ abstract public class EnemyPart implements ICombatUnit, ICollidable {
     protected boolean alive;
     protected Enemy parent;
     protected Point pos=new Point(),speed=new Point();
-    int health;//maybe INF
+    protected int health;//maybe INF
 
     public EnemyPart(Point pos,Point speed, int health, Enemy parent){
         this.pos.setLocation(pos);

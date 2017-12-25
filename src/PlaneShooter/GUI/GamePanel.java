@@ -139,6 +139,7 @@ public class GamePanel extends JPanel{
         });
         add(lbl_Back);
         lbl_Back.add(p);
+
     }
 
     @Override
