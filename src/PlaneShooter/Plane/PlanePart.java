@@ -36,6 +36,10 @@ public abstract class PlanePart implements Serializable,IPlane {
         this.dpos.setLocation(pos);
     }
 
+    /**
+     * 在这里调用了父元素的getPos方法，计算出这个元素相对Combat的位置。
+     * @return
+     */
     @Override
     public Point getPos() {
         Point pos;

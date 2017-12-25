@@ -18,7 +18,7 @@ public class DefaultStage {
                 stage.addStageUnit(new StageUnit(new TestEnemy(new Point(500,100),new Point(1,0),200),2000));
                 stage.addStageUnit(new StageUnit(new TestEnemy(new Point(100,100),new Point(1,0),200),2000));
                 stage.addStageUnit(new StageUnit(new TestEnemy(new Point(300,100),new Point(1,0),200),2000));
-                stage.addStageUnit(new StageUnit(new Tank(new Point(500,50),new Point(0,1),500),5000));
+                stage.addStageUnit(new StageUnit(new Tank(new Point(500,50),new Point(0,1),500),1000));
         }
 
         return stage;

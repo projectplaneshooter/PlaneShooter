@@ -1,5 +1,7 @@
 package PlaneShooter.Combat;
 
+import PlaneShooter.Enemy.Enemy;
+import PlaneShooter.Enemy.EnemyPart;
 import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.CollisionHelper;
 import PlaneShooter.Plane.Plane;
@@ -16,6 +18,7 @@ import java.util.function.Predicate;
 public class Combat{
 
     private boolean stillAlive=true;
+    private int endStat=0;
     private ArrayList<ICombatUnit> combatUnits=new ArrayList<>();
     private ArrayList<ICombatUnit> combatUnitsAdd=new ArrayList<>();
     private long worldTick=0;
@@ -70,8 +73,11 @@ public class Combat{
         if (worldTick % 1 == 0) {
             CollisionHelper.updateCombat(combatUnits);
         }
+        combatUnits.addAll(combatUnitsAdd);
+        combatUnitsAdd.clear();
         Predicate<ICombatUnit> p=(u) -> !u.isAlive();
         combatUnits.removeIf(p);
+        if(canEndCombat())endCombat();
     }
 
     public void endCombat(){
@@ -91,12 +97,17 @@ public class Combat{
     }
 
     public boolean canEndCombat(){
-        if(combatUnitsAdd!=null)return false;
+        //if(combatUnitsAdd!=null)return false;
         if(!stage.isEmpty())return false;
         boolean yy=true;
+
         for(ICombatUnit combatUnit: combatUnits){
-            //todo finish enemy check
+            if(combatUnit instanceof Enemy || combatUnit instanceof EnemyPart){
+                yy=false;
+                //System.out.println(combatUnit.getClass().getName());
+            }
         }
+        if(yy)endStat=1;
         return yy;
     }
 }
