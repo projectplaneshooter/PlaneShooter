@@ -59,6 +59,16 @@ public class Cannon extends PlanePart implements IWeapon {
     }
 
     @Override
+    public Polygon getContour() {
+        Polygon contour=new Polygon();
+        contour.addPoint(this.getPos().x - 1,this.getPos().y - 1);
+        contour.addPoint(this.getPos().x - 1,this.getPos().y + 1);
+        contour.addPoint(this.getPos().x + 1,this.getPos().y + 1);
+        contour.addPoint(this.getPos().x + 1,this.getPos().y - 1);
+        return contour;
+    }
+
+    @Override
     public CollideType getCollideType() {
         return CollideType.PLANEBULLET;
     }

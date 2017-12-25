@@ -25,6 +25,7 @@ public abstract class Plane implements Serializable,IPlane {
     public Plane(Point pos){
         this.pos.setLocation(pos.x,pos.y);
     }
+    public Point dp = new Point();
 
     public void addComponent(PlanePart component){
         this.components.add(component);
@@ -74,7 +75,7 @@ public abstract class Plane implements Serializable,IPlane {
     @Override
     public void updateUnit(Combat combat) {
         //testNumber=(int)(Math.random()*10);
-        Point dp=KeyHelper.getMoveVector(this.planeStat.velocity,moveKeySet);
+        dp=KeyHelper.getMoveVector(this.planeStat.velocity,moveKeySet);
         pos.translate(dp.x,dp.y);
         for (ICombatUnit unit: components) {
             unit.updateUnit(combat);

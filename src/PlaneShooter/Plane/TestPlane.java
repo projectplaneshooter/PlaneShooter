@@ -48,4 +48,9 @@ public class TestPlane extends Plane{
     public int getSize() {
         return 30;
     }
+
+    @Override
+    public Polygon getContour() {
+        return null;
+    }
 }

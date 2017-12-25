@@ -5,7 +5,6 @@ import PlaneShooter.Combat.DefaultStage;
 import PlaneShooter.Enemy.Tank;
 import PlaneShooter.Enemy.TestEnemy;
 import PlaneShooter.Helper.FileHelper;
-import PlaneShooter.Helper.KeyHelper;
 import PlaneShooter.Helper.ResourceHelper;
 import PlaneShooter.Plane.Plane;
 import PlaneShooter.Plane.TestPlane;
@@ -140,13 +139,12 @@ public class GamePanel extends JPanel{
         });
         add(lbl_Back);
         lbl_Back.add(p);
-
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if(KeyHelper.hasBackground())g.drawImage(ResourceHelper.star,0,0,1000,600,null);
+        g.drawImage(ResourceHelper.star,0,0,1000,600,null);
         repaint();
     }
         /*

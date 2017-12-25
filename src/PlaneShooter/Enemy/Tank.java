@@ -43,6 +43,29 @@ public class Tank extends Enemy{
 
     @Override
     public int getSize() {
-        return 30;
+        return 50;
+    }
+
+    @Override
+    public Polygon getContour() {
+        Polygon contour=new Polygon();
+        double len = this.getSpeed().distance(0,0);
+        double XAddx,XAddy,YAddx,YAddy;
+        if (len == 0) {
+            XAddx = 1;
+            XAddy = 0;
+            YAddx = 0;
+            YAddy = 1;
+        } else{
+            XAddx=this.getSpeed().x / len / Math.sqrt(2);
+            XAddy=this.getSpeed().y / len / Math.sqrt(2);
+            YAddx=-XAddy;
+            YAddy=XAddx;
+        }
+        contour.addPoint((int) (this.getPos().x + 30 * XAddx + 30 * YAddx),(int) (this.getPos().y + 30 * XAddy + 30 * YAddy));
+        contour.addPoint((int) (this.getPos().x + 30 * XAddx - 30 * YAddx),(int) (this.getPos().y + 30 * XAddy - 30 * YAddy));
+        contour.addPoint((int) (this.getPos().x - 30 * XAddx - 30 * YAddx),(int) (this.getPos().y - 30 * XAddy - 30 * YAddy));
+        contour.addPoint((int) (this.getPos().x - 30 * XAddx + 30 * YAddx),(int) (this.getPos().y - 30 * XAddy + 30 * YAddy));
+        return contour;
     }
 }

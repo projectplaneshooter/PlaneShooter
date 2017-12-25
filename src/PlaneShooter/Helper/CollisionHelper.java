@@ -5,6 +5,8 @@ import PlaneShooter.Enemy.Enemy;
 import PlaneShooter.Enemy.EnemyPart;
 import PlaneShooter.Plane.Plane;
 
+import java.awt.*;
+import java.awt.geom.Area;
 import java.util.ArrayList;
 
 /**
@@ -15,9 +17,13 @@ public class CollisionHelper {
 //        if (enemy.getCollideType()==CollideType.ENEMYBULLET) System.out.println("EnemyBullet");
 //        if (plane.getCollideType()==CollideType.PLANEBULLET) System.out.println("PlaneBullet");
         if (enemy.getPos().distance(plane.getPos())<=enemy.getSize()+plane.getSize()){
+            Area area=new Area(enemy.getContour());
+            area.intersect(new Area(plane.getContour()));
+            if (!area.isEmpty()){
 //            System.out.println("ATTACK enemy "+enemy.getPos()+" + "+plane.getPos());
-            enemy.onCollide(plane);
-            plane.onCollide(enemy);
+                enemy.onCollide(plane);
+                plane.onCollide(enemy);
+            }
         }
     }
     public static void updateCombat(ArrayList<ICombatUnit> combatUnits){

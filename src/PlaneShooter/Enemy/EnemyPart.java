@@ -11,7 +11,7 @@ import java.util.LinkedList;
 abstract public class EnemyPart implements ICombatUnit, ICollidable {
     protected boolean alive;
     protected Enemy parent;
-    protected Point pos=new Point(),speed=new Point(),acceleration=new Point(),angle=new Point();
+    protected Point pos=new Point(),speed=new Point();
     int health;//maybe INF
 
     public EnemyPart(Point pos,Point speed, int health, Enemy parent){
@@ -28,16 +28,6 @@ abstract public class EnemyPart implements ICombatUnit, ICollidable {
         alive=true;
     }
 
-//     @Override
-//     public void setAcceleration(Point acceleration) {
-//        this.acceleration=acceleration;
-//     }
-//
-//     @Override
-//     public void setAngle(Point angle) {
-//         this.angle=angle;
-//     }
-
     @Override
     public Point getPos() {
         return this.pos;
@@ -48,12 +38,16 @@ abstract public class EnemyPart implements ICombatUnit, ICollidable {
     }
 
     @Override
+    public int getSize(){
+        return 100;
+    }
+
+    @Override
     abstract public void paintUnit(Graphics g,Combat combat);
 
     public void updateUnit(Combat combat){
         if (this.health <= 0) this.alive=false;
         this.pos.translate(this.speed.x,this.speed.y);
-        this.speed.translate(this.acceleration.x,this.acceleration.y);
     }
 
     @Override

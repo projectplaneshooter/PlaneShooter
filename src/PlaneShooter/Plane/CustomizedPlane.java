@@ -48,6 +48,12 @@ public class CustomizedPlane extends Plane {
         return 30;
     }
 
+    @Override
+    public Polygon getContour() {
+        Polygon contour = new Polygon();
+        return contour;
+    }
+
     public void calculateStats(){
         int maxHealthNow=planeStat.maxHealth;
         planeStat=new PlaneStat();

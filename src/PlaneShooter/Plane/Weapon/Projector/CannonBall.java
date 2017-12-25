@@ -52,7 +52,17 @@ public class CannonBall implements ICombatUnit,ICollidable{
 
     @Override
     public int getSize() {
-        return 1;
+        return 2;
+    }
+
+    @Override
+    public Polygon getContour() {
+        Polygon contour=new Polygon();
+        contour.addPoint(this.getPos().x - 1,this.getPos().y - 1);
+        contour.addPoint(this.getPos().x - 1,this.getPos().y + 1);
+        contour.addPoint(this.getPos().x + 1,this.getPos().y + 1);
+        contour.addPoint(this.getPos().x + 1,this.getPos().y - 1);
+        return contour;
     }
 
     @Override

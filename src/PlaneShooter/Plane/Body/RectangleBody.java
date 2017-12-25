@@ -4,7 +4,9 @@ import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
+import PlaneShooter.Helper.KeyHelper;
 import PlaneShooter.Helper.ResourceHelper;
+import PlaneShooter.Plane.Plane;
 import PlaneShooter.Plane.PlanePart;
 import PlaneShooter.Plane.PlaneStat;
 
@@ -54,6 +56,30 @@ public class RectangleBody extends PlanePart implements IBody {
     @Override
     public int getSize() {
         return 30;
+    }
+
+    @Override
+    public Polygon getContour() {
+        Polygon contour=new Polygon();
+        double XAddx,XAddy,YAddx,YAddy;
+        if (parent == null ||!(parent instanceof Plane)){
+            XAddx = 1;
+            XAddy = 0;
+            YAddx = 0;
+            YAddy = 1;
+        }else{
+            Point dp=((Plane) parent).dp;
+            double len = dp.distance(0,0);
+            XAddx=dp.x / len / Math.sqrt(2);
+            XAddy=dp.y / len / Math.sqrt(2);
+            YAddx=-XAddy;
+            YAddy=XAddx;
+        }
+        contour.addPoint((int) (this.getPos().x + 30 * XAddx + 30 * YAddx),(int) (this.getPos().y + 30 * XAddy + 30 * YAddy));
+        contour.addPoint((int) (this.getPos().x + 30 * XAddx - 30 * YAddx),(int) (this.getPos().y + 30 * XAddy - 30 * YAddy));
+        contour.addPoint((int) (this.getPos().x - 30 * XAddx - 30 * YAddx),(int) (this.getPos().y - 30 * XAddy - 30 * YAddy));
+        contour.addPoint((int) (this.getPos().x - 30 * XAddx + 30 * YAddx),(int) (this.getPos().y - 30 * XAddy + 30 * YAddy));
+        return contour;
     }
 
     @Override

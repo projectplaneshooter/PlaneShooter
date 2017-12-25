@@ -10,6 +10,7 @@ public interface ICollidable {
     Point getPos();
     int getPower();
     void onCollide(ICollidable object);
-    int getSize();//shape
+    int getSize();//shape,Avoid over detection
+    Polygon getContour();
     CollideType getCollideType();
 }

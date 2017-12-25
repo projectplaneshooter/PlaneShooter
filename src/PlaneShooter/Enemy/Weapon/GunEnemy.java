@@ -37,7 +37,8 @@ class GunEnemy extends EnemyPart implements IWeapon, ICollidable{
         g.setColor(Color.BLACK);
         Point parentPos=parent.getPos();
         Point parentSpeed=parent.getSpeed();
-        g.drawLine(parentPos.x,parentPos.y,parentPos.x+parentSpeed.x*5,parentPos.y+parentSpeed.y*5);
+//        g.drawLine(parentPos.x,parentPos.y,parentPos.x+parentSpeed.x*5,parentPos.y+parentSpeed.y*5);
+        g.drawPolygon(this.getContour());
     }
 
     public Point getPos(){
@@ -64,8 +65,33 @@ class GunEnemy extends EnemyPart implements IWeapon, ICollidable{
     }
 
     @Override
-    public int getSize() {
-        return 1;
+    public int getSize(){
+        return 20;
+    }
+
+    @Override
+    public Polygon getContour() {
+
+        Polygon contour=new Polygon();
+        double len = parent.getSpeed().distance(0,0);
+        double XAddx,XAddy,YAddx,YAddy;
+        if (len == 0) {
+            XAddx = 1;
+            XAddy = 0;
+            YAddx = 0;
+            YAddy = 1;
+        } else{
+            XAddx=parent.getSpeed().x / len / Math.sqrt(2);
+            XAddy=parent.getSpeed().y / len / Math.sqrt(2);
+            YAddx=-XAddy;
+            YAddy=XAddx;
+        }
+        contour.addPoint((int) (this.getPos().x + 10 * XAddx),(int) (this.getPos().y + 10 * XAddy));
+        contour.addPoint((int) (this.getPos().x + 5 * XAddx + 2 * YAddx),(int) (this.getPos().y + 5 * XAddy + 2 * YAddy));
+        contour.addPoint((int) (this.getPos().x + 2 * YAddx),(int) (this.getPos().y + 2 * YAddy));
+        contour.addPoint((int) (this.getPos().x - 2 * YAddx),(int) (this.getPos().y - 2 * YAddy));
+        contour.addPoint((int) (this.getPos().x + 5 * XAddx - 2 * YAddx),(int) (this.getPos().y + 5 * XAddy - 2 * YAddy));
+        return contour;
     }
 
     @Override
