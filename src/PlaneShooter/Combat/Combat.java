@@ -18,13 +18,13 @@ import java.util.function.Predicate;
 public class Combat{
 
     private boolean stillAlive=true;
-    private int endStat=0;
     private ArrayList<ICombatUnit> combatUnits=new ArrayList<>();
     private ArrayList<ICombatUnit> combatUnitsAdd=new ArrayList<>();
     private long worldTick=0;
     private Rectangle combatArea;
     public Point PlanePosition = new Point();
     private Stage stage;
+    public CombatStat combatStat=new CombatStat();
 
     /**
      * 构造器中需要传入这场战斗相对于父窗体的位置以便之后进行Graphics的裁剪。
@@ -77,10 +77,19 @@ public class Combat{
         combatUnitsAdd.clear();
         Predicate<ICombatUnit> p=(u) -> !u.isAlive();
         combatUnits.removeIf(p);
-        if(stage!=null&&canEndCombat())endCombat();
+        if(stage!=null&&canEndCombat())endCombat();else {
+            if(hasNoEnemy() && (stage.getNextEnemyTime()-worldTick>100)){
+                worldTick=stage.getNextEnemyTime()-100;
+            }
+        }
+
     }
 
     public void endCombat(){
+        stillAlive=false;
+    }
+    public void endCombat(int endStat){
+        this.combatStat.endStat=endStat;
         stillAlive=false;
     }
 
@@ -99,6 +108,12 @@ public class Combat{
     public boolean canEndCombat(){
         //if(combatUnitsAdd!=null)return false;
         if(!stage.isEmpty())return false;
+        boolean yy=hasNoEnemy();
+        if(yy)combatStat.endStat=1;
+        return yy;
+    }
+
+    private boolean hasNoEnemy(){
         boolean yy=true;
 
         for(ICombatUnit combatUnit: combatUnits){
@@ -107,7 +122,12 @@ public class Combat{
                 //System.out.println(combatUnit.getClass().getName());
             }
         }
-        if(yy)endStat=1;
         return yy;
     }
+
+    public int getEndStat() {
+        return combatStat.endStat;
+    }
+
+
 }

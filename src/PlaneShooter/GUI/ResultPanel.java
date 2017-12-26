@@ -1,5 +1,7 @@
 package PlaneShooter.GUI;
 
+import PlaneShooter.Combat.CombatStat;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,11 +11,11 @@ import java.awt.event.ActionListener;
 /**
  * Created by yuyuyzl on 2017/12/9.
  */
-public class AnotherPanel extends JPanel{
+public class ResultPanel extends JPanel{
     MainFrame mf;
     JLabel labelHeader;
     JButton btnSwitch;
-    public AnotherPanel(MainFrame mf) {
+    public ResultPanel(MainFrame mf) {
         super();
         this.mf=mf;
         labelHeader=new JLabel("Another Panel");
@@ -28,5 +30,17 @@ public class AnotherPanel extends JPanel{
             }
         });
         add(btnSwitch);
+    }
+
+    public void showCombatStat(CombatStat combatStat){
+        switch (combatStat.endStat){
+            case 1:
+                labelHeader.setText("You Win!!!");
+                break;
+            case 2:
+
+                labelHeader.setText("You Lose...");
+                break;
+        }
     }
 }

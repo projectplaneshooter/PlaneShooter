@@ -33,7 +33,12 @@ public class GamePanel extends JPanel{
         public void actionPerformed(ActionEvent e) {
             if(combat.isCombatAlive()){
                 combat.updateCombat();
-            }else timer.stop();
+            }else {
+                timer.stop();
+                mf.resultPanel.showCombatStat(combat.combatStat);
+                combat=null;
+                mf.showPanel(mf.resultPanel);
+            }
             repaint();
         }
     });
@@ -69,7 +74,7 @@ public class GamePanel extends JPanel{
                 //combat.addCombatUnit(new TestEnemy(new Point(300,100),new Point(1,0),200));
                 //combat.addCombatUnit(new TestEnemy(new Point(500,100),new Point(-1,0),200));
                 //combat.addCombatUnit(new Tank(new Point(500,50),new Point(0,1),500));
-                combat.setStage(DefaultStage.get(1));
+                combat.setStage(DefaultStage.get(1,0));
 
                 Plane plane= FileHelper.importPlane("PlaneFromDesigner.sav");
                 if(plane==null) plane=new TestPlane(new Point(500,400));else {
@@ -141,6 +146,7 @@ public class GamePanel extends JPanel{
         lbl_Back.add(p);
 
     }
+
 
     @Override
     protected void paintComponent(Graphics g) {

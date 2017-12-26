@@ -1,8 +1,6 @@
 package PlaneShooter;
 
-import PlaneShooter.GUI.AnotherPanel;
 import PlaneShooter.GUI.MainFrame;
-import PlaneShooter.GUI.StartPanel;
 import PlaneShooter.Helper.RegistryHelper;
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 

@@ -27,7 +27,7 @@ public class Stage {
      */
     public void processCombat(Combat combat){
 
-        while(!units.isEmpty()&&combat.getWorldTick()>=(units.peek().appearTime+tickZero)){
+        while(!units.isEmpty()&&combat.getWorldTick()>=getNextEnemyTime()){
             combat.addCombatUnit(units.peek().combatUnit);
             units.remove();
         }
@@ -46,5 +46,9 @@ public class Stage {
 
     public boolean isEmpty(){
         return units.isEmpty();
+    }
+
+    public int getNextEnemyTime(){
+        return units.peek().appearTime+tickZero;
     }
 }

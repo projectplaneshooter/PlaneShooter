@@ -80,7 +80,7 @@ public abstract class Plane implements Serializable,IPlane {
             unit.updateUnit(combat);
         }
         //if(pos.x>300)health--;
-        if(health<=0)combat.endCombat();
+        if(health<=0)combat.endCombat(2);
     }
 
     public LinkedList<PlanePart> getComponents() {

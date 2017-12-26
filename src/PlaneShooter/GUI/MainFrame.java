@@ -10,14 +10,14 @@ import java.awt.*;
  */
 public class MainFrame extends JFrame{
     StartPanel startPanel;
-    AnotherPanel anotherPanel;
+    ResultPanel resultPanel;
     GamePanel gamePanel;
     PlaneDesignerPanel planeDesignerPanel;
     public MainFrame() throws HeadlessException {
         super("PlaneShooter");
         setPreferredSize(new Dimension(1020,655));
         startPanel=new StartPanel(this);
-        anotherPanel=new AnotherPanel(this);
+        resultPanel =new ResultPanel(this);
         gamePanel=new GamePanel(this);
         planeDesignerPanel=new PlaneDesignerPanel(this);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
