@@ -85,4 +85,9 @@ public class Cannon extends PlanePart implements IWeapon {
         planeStat.maxHealth-=40;
         return planeStat;
     }
+
+    @Override
+    public int getPrice() {
+        return 400;
+    }
 }

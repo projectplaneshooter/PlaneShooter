@@ -70,4 +70,10 @@ public class CustomizedPlane extends Plane {
     public int getPartCount(){
         return components.size();
     }
+
+    public int getPrice(){
+        int sum=0;
+        for(PlanePart p:components)sum+=p.getPrice();
+        return sum;
+    }
 }

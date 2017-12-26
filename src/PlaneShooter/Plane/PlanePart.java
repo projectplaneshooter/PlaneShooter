@@ -70,4 +70,6 @@ public abstract class PlanePart implements Serializable,IPlane {
      * @return
      */
     public abstract PlaneStat calculateStats(PlaneStat planeStat);
+
+    public abstract int getPrice();
 }

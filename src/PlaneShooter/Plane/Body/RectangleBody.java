@@ -83,4 +83,9 @@ public class RectangleBody extends PlanePart implements IBody {
         if(planeStat.velocity<3)planeStat.velocity=3;
         return planeStat;
     }
+
+    @Override
+    public int getPrice() {
+        return 100;
+    }
 }

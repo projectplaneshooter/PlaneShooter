@@ -5,6 +5,7 @@ import PlaneShooter.Combat.DefaultStage;
 import PlaneShooter.Enemy.Tank;
 import PlaneShooter.Enemy.TestEnemy;
 import PlaneShooter.Helper.FileHelper;
+import PlaneShooter.Helper.ProfileHelper;
 import PlaneShooter.Helper.ResourceHelper;
 import PlaneShooter.Plane.Plane;
 import PlaneShooter.Plane.TestPlane;
@@ -31,11 +32,13 @@ public class GamePanel extends JPanel{
     Timer timer=new Timer(10, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            mf.requestFocus();
             if(combat.isCombatAlive()){
                 combat.updateCombat();
             }else {
                 timer.stop();
                 mf.resultPanel.showCombatStat(combat.combatStat);
+                ProfileHelper.processResult(combat.combatStat);
                 combat=null;
                 mf.showPanel(mf.resultPanel);
             }

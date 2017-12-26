@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
 /**
@@ -22,14 +24,35 @@ public class ResultPanel extends JPanel{
         labelHeader.setFont(new Font(null,0,36));
         setBackground(Color.WHITE);
         add(labelHeader);
-        btnSwitch=new JButton("Back");
-        btnSwitch.addActionListener(new ActionListener() {
+        JLabel lbl_Back=new JLabel(new ImageIcon("res/back02.png"));
+
+        lbl_Back.addMouseListener(new MouseListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void mouseClicked(MouseEvent e) {
                 mf.showPanel(mf.startPanel);
             }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
         });
-        add(btnSwitch);
+        add(lbl_Back);
     }
 
     public void showCombatStat(CombatStat combatStat){

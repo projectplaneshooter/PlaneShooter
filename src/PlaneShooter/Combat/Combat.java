@@ -77,9 +77,12 @@ public class Combat{
         combatUnitsAdd.clear();
         Predicate<ICombatUnit> p=(u) -> !u.isAlive();
         combatUnits.removeIf(p);
-        if(stage!=null&&canEndCombat())endCombat();else {
-            if(hasNoEnemy() && (stage.getNextEnemyTime()-worldTick>100)){
-                worldTick=stage.getNextEnemyTime()-100;
+        if(stage!=null) {
+            if (canEndCombat()) endCombat();
+            else {
+                if (hasNoEnemy() && (stage.getNextEnemyTime() - worldTick > 100)) {
+                    worldTick = stage.getNextEnemyTime() - 100;
+                }
             }
         }
 

@@ -1,6 +1,7 @@
 package PlaneShooter.GUI;
 
 import PlaneShooter.Helper.KeyHelper;
+import PlaneShooter.Helper.ProfileHelper;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,6 +23,7 @@ public class MainFrame extends JFrame{
         planeDesignerPanel=new PlaneDesignerPanel(this);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         KeyHelper.init();
+        ProfileHelper.load();
         setResizable(false);
         this.pack();
     }
