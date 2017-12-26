@@ -154,7 +154,7 @@ public class GamePanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(ResourceHelper.star,0,0,1000,600,null);
+        g.drawImage(ResourceHelper.star,0,0,getWidth(),getHeight(),null);
         repaint();
     }
         /*

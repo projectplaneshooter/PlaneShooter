@@ -132,7 +132,7 @@ public class StartPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if(KeyHelper.hasBackground())g.drawImage(ResourceHelper.main,0,0,1000,600,null);
+        if(KeyHelper.hasBackground())g.drawImage(ResourceHelper.main,0,0,getWidth(),getHeight(),null);
         repaint();
     }
 }
