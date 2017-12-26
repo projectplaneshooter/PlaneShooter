@@ -126,7 +126,7 @@ public class PlaneDesignerPanel extends JPanel {
                     return;
                 }
                 if(!KeyHelper.isKeyPressed(KeyEvent.VK_SHIFT)&&plane.getPrice()> ProfileHelper.getCredits()){
-                    JOptionPane.showMessageDialog(mf,"You can't afford such a big plane!");
+                    JOptionPane.showMessageDialog(mf,"You can't afford such a big plane! Play more to get more credit!");
                     return;
                 }
                 if(FileHelper.exportPlane("PlaneFromDesigner.sav",plane)){
