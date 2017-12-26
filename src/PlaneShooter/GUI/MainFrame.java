@@ -23,7 +23,6 @@ public class MainFrame extends JFrame{
         planeDesignerPanel=new PlaneDesignerPanel(this);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         KeyHelper.init();
-        ProfileHelper.load();
         setResizable(false);
         this.pack();
     }

@@ -1,6 +1,7 @@
 package PlaneShooter;
 
 import PlaneShooter.GUI.MainFrame;
+import PlaneShooter.Helper.ProfileHelper;
 import PlaneShooter.Helper.RegistryHelper;
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
@@ -19,6 +20,8 @@ public class Main {
         }
 
         RegistryHelper.initRegistry();
+
+        ProfileHelper.load();
 
         MainFrame mainFrame=new MainFrame();
         SwingUtilities.invokeLater(new Runnable() {

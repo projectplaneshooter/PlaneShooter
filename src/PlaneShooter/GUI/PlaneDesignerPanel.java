@@ -3,10 +3,7 @@ package PlaneShooter.GUI;
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.GUI.Component.PlaneComponentLabel;
-import PlaneShooter.Helper.FileHelper;
-import PlaneShooter.Helper.KeyHelper;
-import PlaneShooter.Helper.RegistryHelper;
-import PlaneShooter.Helper.ResourceHelper;
+import PlaneShooter.Helper.*;
 import PlaneShooter.Plane.CustomizedPlane;
 import PlaneShooter.Plane.Plane;
 import PlaneShooter.Plane.PlanePart;
@@ -14,10 +11,7 @@ import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.io.*;
 import java.util.Stack;
 
@@ -34,7 +28,7 @@ public class PlaneDesignerPanel extends JPanel {
     JButton btnUndo;
     JCheckBox cbGrid;
     JCheckBox cbMirror;
-
+    JLabel lblStat;
     PlanePart unitSelected=null;
     PlanePart unitSelectedMirror=null;
     Stack<byte[]> undoStack=new Stack<>();
@@ -44,6 +38,7 @@ public class PlaneDesignerPanel extends JPanel {
     Timer timer=new Timer(10, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            mf.requestFocus();
             if (pdp.mf.getContentPane() == pdp) {
                 if (unitSelected != null) {
                     Point mousePos = getMousePosition();
@@ -114,7 +109,7 @@ public class PlaneDesignerPanel extends JPanel {
 
             }
         });
-        add(lbl_Undo);
+        //add(lbl_Undo);
         lbl_Undo.add(p);
         pl01.add(lbl_Undo);
 
@@ -128,6 +123,10 @@ public class PlaneDesignerPanel extends JPanel {
                 }
                 if(!plane.isStatLegal()){
                     JOptionPane.showMessageDialog(mf,"Illegal Plane Stats. Please rebuild it.");
+                    return;
+                }
+                if(!KeyHelper.isKeyPressed(KeyEvent.VK_SHIFT)&&plane.getPrice()> ProfileHelper.getCredits()){
+                    JOptionPane.showMessageDialog(mf,"You can't afford such a big plane!");
                     return;
                 }
                 if(FileHelper.exportPlane("PlaneFromDesigner.sav",plane)){
@@ -155,7 +154,7 @@ public class PlaneDesignerPanel extends JPanel {
 
             }
         });
-        add(lbl_Save);
+        //add(lbl_Save);
         lbl_Save.add(p);
         pl01.add(lbl_Save);
 
@@ -187,9 +186,12 @@ public class PlaneDesignerPanel extends JPanel {
 
             }
         });
-        add(lbl_Back);
+        //add(lbl_Back);
         lbl_Back.add(p);
         pl01.add(lbl_Back);
+
+        lblStat=new JLabel();
+        pl01.add(lblStat);
 
         JLabel lbl_Blank03_05=new JLabel("   ");
         pl01.add(lbl_Blank03_05);
@@ -327,6 +329,7 @@ public class PlaneDesignerPanel extends JPanel {
                                     plane.addComponent(unitSelectedMirror);
                                 }
                                 plane.calculateStats();
+                                refreshLblStat();
                                 unitSelected=null;
                                 unitSelectedMirror=null;
                             }
@@ -370,6 +373,7 @@ public class PlaneDesignerPanel extends JPanel {
         combat=new Combat(new Rectangle(600,300,200,200));
         plane=new CustomizedPlane(new Point(combat.getCombatArea().width/2,combat.getCombatArea().height/2));
         combat.addCombatUnit(plane);
+        refreshLblStat();
     }
 
     /**
@@ -387,6 +391,7 @@ public class PlaneDesignerPanel extends JPanel {
         } catch (IOException e1) {
             e1.printStackTrace();
         }
+
     }
 
     private void popFromUndo(){
@@ -399,7 +404,7 @@ public class PlaneDesignerPanel extends JPanel {
             combat.addCombatUnit(plane);
             bais.close();
             is.close();
-
+            refreshLblStat();
         }catch (Exception e1){
             e1.printStackTrace();
         }
@@ -424,5 +429,9 @@ public class PlaneDesignerPanel extends JPanel {
         super.paintComponent(g);
         if(KeyHelper.hasBackground())g.drawImage(ResourceHelper.Factory,0,0,1000,600,null);
         repaint();
+    }
+
+    private void refreshLblStat(){
+        lblStat.setText("<html><body>Plane Price: "+plane.getPrice()+"<br>Your Credits: "+ProfileHelper.getCredits()+"</body></html>");
     }
 }
