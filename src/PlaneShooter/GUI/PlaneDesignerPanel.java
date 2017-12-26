@@ -57,7 +57,7 @@ public class PlaneDesignerPanel extends JPanel {
     public PlaneDesignerPanel(MainFrame mf) {
         super();
         this.mf=mf;
-        setLayout(null);
+        //setLayout(null);
 
         JLabel lbl_Undo=new JLabel(new ImageIcon("res/undo.png"));
         lbl_Undo.addMouseListener(new MouseListener() {
