@@ -403,6 +403,6 @@ public class PlaneDesignerPanel extends JPanel {
     }
 
     private void refreshLblStat(){
-        lblStat.setText("<html><body>Plane Price: "+plane.getPrice()+"<br>Your Credits: "+ProfileHelper.getCredits()+"</body></html>");
+        lblStat.setText("<html><body>Plane Price: "+plane.getPrice()+" cr<br>Your Credits: "+ProfileHelper.getCredits()+" cr</body></html>");
     }
 }

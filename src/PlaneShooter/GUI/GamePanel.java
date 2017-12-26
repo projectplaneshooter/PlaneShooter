@@ -25,9 +25,7 @@ import java.io.ObjectInputStream;
  */
 public class GamePanel extends JPanel{
     MainFrame mf;
-    JLabel labelHeader;
-    JButton btnStart;
-    JButton btnBack;
+    JLabel labelStat;
     Combat combat;
     Timer timer=new Timer(10, new ActionListener() {
         @Override
@@ -67,7 +65,9 @@ public class GamePanel extends JPanel{
         };
         //p.setBackground(null);
         //p.setOpaque(false);
+        labelStat=new JLabel();
 
+        add(labelStat);
         //JLabel lbl_Start=new JLabel("start");
         JLabel lbl_Start=new JLabel(new ImageIcon("res/start.png"));
         lbl_Start.addMouseListener(new MouseListener() {
@@ -77,7 +77,7 @@ public class GamePanel extends JPanel{
                 //combat.addCombatUnit(new TestEnemy(new Point(300,100),new Point(1,0),200));
                 //combat.addCombatUnit(new TestEnemy(new Point(500,100),new Point(-1,0),200));
                 //combat.addCombatUnit(new Tank(new Point(500,50),new Point(0,1),500));
-                combat.setStage(DefaultStage.get(1,0));
+                combat.setStage(DefaultStage.get(1,ProfileHelper.getDLevel()));
 
                 Plane plane= FileHelper.importPlane("PlaneFromDesigner.sav");
                 if(plane==null) plane=new TestPlane(new Point(500,400));else {

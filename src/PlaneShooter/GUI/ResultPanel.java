@@ -1,6 +1,7 @@
 package PlaneShooter.GUI;
 
 import PlaneShooter.Combat.CombatStat;
+import PlaneShooter.Helper.ProfileHelper;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +17,7 @@ import java.awt.event.MouseListener;
 public class ResultPanel extends JPanel{
     MainFrame mf;
     JLabel labelHeader;
+    JLabel lblStat;
     JButton btnSwitch;
     public ResultPanel(MainFrame mf) {
         super();
@@ -52,6 +54,8 @@ public class ResultPanel extends JPanel{
 
             }
         });
+        lblStat=new JLabel();
+        add(lblStat);
         add(lbl_Back);
     }
 
@@ -65,5 +69,15 @@ public class ResultPanel extends JPanel{
                 labelHeader.setText("You Lose...");
                 break;
         }
+        String str="<html>";
+        if(combatStat.endStat==1){
+            str+="Stage Clear: 300 cr<br>";
+        }
+        else {
+            str+="Failed: 10 cr<br>";
+        }
+        str+="Your credit: "+ ProfileHelper.getCredits()+" cr";
+        str+="</html>";
+        lblStat.setText(str);
     }
 }

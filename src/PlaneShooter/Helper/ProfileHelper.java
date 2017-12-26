@@ -9,6 +9,7 @@ public class ProfileHelper implements Serializable {
     private static ProfileHelper INSTANCE=new ProfileHelper();
 
     private int credits=1000;
+    private int dLevel=0;
 
     public static void load(){
         try {
@@ -41,10 +42,20 @@ public class ProfileHelper implements Serializable {
     }
 
     public static void processResult(CombatStat combatStat){
-        //todo add this
-        if(combatStat.endStat==1)addCredit(500);
-        else addCredit(100);
-        System.out.println("now credit: "+getCredits());
+        if(combatStat.endStat==1){
+            addCredit(300);
+        }
+        else {
+            addCredit(10);
+        }
         save();
+    }
+
+    public static int getDLevel(){
+        return INSTANCE.dLevel;
+    }
+
+    public static void addDLevel(int sum){
+        INSTANCE.dLevel+=sum;
     }
 }
