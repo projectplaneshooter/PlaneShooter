@@ -30,8 +30,9 @@ public class PlaneDesignerPanel extends JPanel {
     JLabel lblStat;
     PlanePart unitSelected=null;
     PlanePart unitSelectedMirror=null;
+    Rectangle combatRectangle=new Rectangle(600,300,300,300);
     Stack<byte[]> undoStack=new Stack<>();
-    Combat combat=new Combat(new Rectangle(600,300,200,200));
+    Combat combat;
     private PlaneDesignerPanel pdp=this;
     CustomizedPlane plane;
     Timer timer=new Timer(10, new ActionListener() {
@@ -57,7 +58,7 @@ public class PlaneDesignerPanel extends JPanel {
     public PlaneDesignerPanel(MainFrame mf) {
         super();
         this.mf=mf;
-        //setLayout(null);
+        setLayout(null);
 
         JLabel lbl_Undo=new JLabel(new ImageIcon("res/undo.png"));
         lbl_Undo.addMouseListener(new MouseListener() {
@@ -86,7 +87,8 @@ public class PlaneDesignerPanel extends JPanel {
 
             }
         });
-
+        lbl_Undo.setLocation(600,200);
+        lbl_Undo.setSize(lbl_Undo.getPreferredSize());
         add(lbl_Undo);
 
         JLabel lbl_Save=new JLabel(new ImageIcon("res/save.png"));
@@ -130,6 +132,8 @@ public class PlaneDesignerPanel extends JPanel {
 
             }
         });
+        lbl_Save.setSize(lbl_Save.getPreferredSize());
+        lbl_Save.setLocation(760,200);
         add(lbl_Save);
 
         JLabel lbl_Back=new JLabel(new ImageIcon("res/back01.png"));
@@ -160,9 +164,15 @@ public class PlaneDesignerPanel extends JPanel {
 
             }
         });
+        lbl_Back.setLocation(100,50);
+        lbl_Back.setSize(lbl_Back.getPreferredSize());
         add(lbl_Back);
 
         lblStat=new JLabel();
+        lblStat.setFont(new Font(null,0,20));
+        lblStat.setForeground(Color.white);
+        lblStat.setSize(200,100);
+        lblStat.setLocation(800,40);
         add(lblStat);
 
 
@@ -213,16 +223,28 @@ public class PlaneDesignerPanel extends JPanel {
 
 
         cbGrid=new JCheckBox("Grid");
+        cbGrid.setOpaque(false);
+        cbGrid.setSize(cbGrid.getPreferredSize());
+        cbGrid.setLocation(100,170);
         add(cbGrid);
 
 
         cbMirror=new JCheckBox("Mirror");
+        cbMirror.setOpaque(false);
+        cbMirror.setSize(cbMirror.getPreferredSize());
+        cbMirror.setLocation(160,170);
         add(cbMirror);
+
+        JPanel pnlComponentContainer=new JPanel();
+        pnlComponentContainer.setAutoscrolls(true);
+        JScrollPane scrollPane=new JScrollPane(pnlComponentContainer);
+        scrollPane.setSize(470,400);
+        scrollPane.setLocation(100,200);
 
         //PlaneComponentLabel labelComponent=new PlaneComponentLabel(new RectangleBody(new Point(0,0),null));
         //add(labelComponent);
         //timer.start();
-
+        //for(int i=0;i<=50;i++)
         for(Class clazz : RegistryHelper.getPlanePartClasses()){
             try {
                 PlaneComponentLabel labelComponent=new PlaneComponentLabel((ICombatUnit)clazz.newInstance());
@@ -236,13 +258,17 @@ public class PlaneDesignerPanel extends JPanel {
                         e.printStackTrace();
                     }
                 });
-                add(labelComponent);
+                pnlComponentContainer.add(labelComponent);
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
         }
+
+
+        pnlComponentContainer.setPreferredSize(new Dimension(450,pnlComponentContainer.getComponentCount()/4*105+110));
+        add(scrollPane);
 
         addMouseListener(new MouseListener() {
             @Override
@@ -308,13 +334,14 @@ public class PlaneDesignerPanel extends JPanel {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        if(unitSelected!=null && getMousePosition()!=null)unitSelected.paintUnit(g,null);
         combat.paintCombat(g);
+        if(unitSelected!=null && getMousePosition()!=null)unitSelected.paintUnit(g,null);
+
     }
 
     public void reset(){
         undoStack=new Stack<>();
-        combat=new Combat(new Rectangle(600,300,200,200));
+        combat=new Combat(combatRectangle);
         plane=new CustomizedPlane(new Point(combat.getCombatArea().width/2,combat.getCombatArea().height/2));
         combat.addCombatUnit(plane);
         refreshLblStat();
@@ -343,7 +370,7 @@ public class PlaneDesignerPanel extends JPanel {
         try {
             ByteArrayInputStream bais=new ByteArrayInputStream(undoStack.pop());
             ObjectInputStream is=new ObjectInputStream(bais);
-            combat=new Combat(new Rectangle(600,300,200,200));
+            combat=new Combat(combatRectangle);
             plane=(CustomizedPlane)is.readObject();
             combat.addCombatUnit(plane);
             bais.close();
