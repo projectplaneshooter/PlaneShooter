@@ -1,8 +1,6 @@
 package PlaneShooter.Enemy.Weapon.Bullet;
 
 import PlaneShooter.Combat.Combat;
-import PlaneShooter.Combat.ICombatUnit;
-import PlaneShooter.Enemy.Enemy;
 import PlaneShooter.Enemy.EnemyPart;
 import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
@@ -22,7 +20,7 @@ public class BulletEnemy extends EnemyPart implements ICollidable {
     }
 
     @Override
-    public void onCollide(ICollidable object) {
+    public void onCollide(ICollidable object, Combat combat) {
         if (object.getCollideType() != CollideType.PLANEBULLET)
             this.alive=false;
     }

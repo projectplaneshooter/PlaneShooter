@@ -4,9 +4,7 @@ import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
-import PlaneShooter.Helper.KeyHelper;
 import PlaneShooter.Helper.ResourceHelper;
-import PlaneShooter.Plane.Plane;
 import PlaneShooter.Plane.PlanePart;
 import PlaneShooter.Plane.PlaneStat;
 
@@ -50,8 +48,8 @@ public class RectangleBody extends PlanePart implements IBody {
     }
 
     @Override
-    public void onCollide(ICollidable object) {
-        super.onCollide(object);
+    public void onCollide(ICollidable object, Combat combat) {
+        super.onCollide(object, combat);
     }
 
     @Override

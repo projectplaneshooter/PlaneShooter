@@ -1,11 +1,10 @@
 package PlaneShooter.Helper;
 
+import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Enemy.Enemy;
-import PlaneShooter.Enemy.EnemyPart;
 import PlaneShooter.Plane.Plane;
 
-import java.awt.*;
 import java.awt.geom.Area;
 import java.util.ArrayList;
 
@@ -13,20 +12,18 @@ import java.util.ArrayList;
  * Created by yuyuyzl on 2017/12/8.
  */
 public class CollisionHelper {
-    private static void checkCollision(ICollidable enemy,ICollidable plane){
+    private static boolean checkCollision(ICollidable enemy,ICollidable plane){
 //        if (enemy.getCollideType()==CollideType.ENEMYBULLET) System.out.println("EnemyBullet");
 //        if (plane.getCollideType()==CollideType.PLANEBULLET) System.out.println("PlaneBullet");
         if (enemy.getPos().distance(plane.getPos())<=enemy.getSize()+plane.getSize()){
             Area area=new Area(enemy.getContour());
             area.intersect(new Area(plane.getContour()));
-            if (!area.isEmpty()){
-//            System.out.println("ATTACK enemy "+enemy.getPos()+" + "+plane.getPos());
-                enemy.onCollide(plane);
-                plane.onCollide(enemy);
-            }
+            return !area.isEmpty();
         }
+        return false;
     }
-    public static void updateCombat(ArrayList<ICombatUnit> combatUnits){
+    public static void updateCombat(ArrayList<ICombatUnit> combatUnits,Combat combat){
+
         ArrayList<ICollidable> enemyParts=new ArrayList<>();
         ArrayList<ICollidable> planeParts=new ArrayList<>();
         for (ICombatUnit Unit:combatUnits)
@@ -49,7 +46,10 @@ public class CollisionHelper {
         //System.out.println("THIS SIZE : "+enemyParts.size()+"  "+planeParts.size());
         for (ICollidable enemy:enemyParts) {
             for (ICollidable plane : planeParts) {
-                checkCollision(enemy, plane);
+                if(checkCollision(enemy, plane)){
+                    enemy.onCollide(plane, combat);
+                    plane.onCollide(enemy, combat);
+                }
             }
         }
     }

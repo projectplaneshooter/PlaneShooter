@@ -46,7 +46,7 @@ public class CannonBall implements ICombatUnit,ICollidable{
     }
 
     @Override
-    public void onCollide(ICollidable object) {
+    public void onCollide(ICollidable object, Combat combat) {
         if (object.getCollideType() != CollideType.ENEMYBULLET)
             this.alive=false;
     }

@@ -1,5 +1,6 @@
 package PlaneShooter.Plane;
 
+import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
@@ -49,9 +50,9 @@ public abstract class PlanePart implements Serializable,IPlane {
     }
 
     @Override
-    public void onCollide(ICollidable object) {
+    public void onCollide(ICollidable object, Combat combat) {
         if (this.parent instanceof ICollidable)
-            ((ICollidable) this.parent).onCollide(object);
+            ((ICollidable) this.parent).onCollide(object, combat);
     }
 
     public void setParent(ICombatUnit parent){

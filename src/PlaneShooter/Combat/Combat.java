@@ -71,7 +71,7 @@ public class Combat{
             unit.updateUnit(this);
         }
         if (worldTick % 1 == 0) {
-            CollisionHelper.updateCombat(combatUnits);
+            CollisionHelper.updateCombat(combatUnits,this);
         }
         combatUnits.addAll(combatUnitsAdd);
         combatUnitsAdd.clear();

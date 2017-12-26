@@ -1,5 +1,7 @@
 package PlaneShooter.Helper;
 
+import PlaneShooter.Combat.Combat;
+
 import java.awt.*;
 
 /**
@@ -9,7 +11,7 @@ import java.awt.*;
 public interface ICollidable {
     Point getPos();
     int getPower();
-    void onCollide(ICollidable object);
+    void onCollide(ICollidable object, Combat combat);
     int getSize();//shape,Avoid over detection
     Polygon getContour();
     CollideType getCollideType();
