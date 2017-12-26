@@ -228,6 +228,9 @@ public class PlaneDesignerPanel extends JPanel {
         cbGrid.setLocation(100,170);
         add(cbGrid);
 
+        JPanel pnlCheckboxContainer=new JPanel();
+        pnlCheckboxContainer.setSize(470,200);
+        pnlCheckboxContainer.setLocation(100,100);
 
         cbMirror=new JCheckBox("Mirror");
         cbMirror.setOpaque(false);
@@ -238,8 +241,8 @@ public class PlaneDesignerPanel extends JPanel {
         JPanel pnlComponentContainer=new JPanel();
         pnlComponentContainer.setAutoscrolls(true);
         JScrollPane scrollPane=new JScrollPane(pnlComponentContainer);
-        scrollPane.setSize(470,400);
-        scrollPane.setLocation(100,200);
+        scrollPane.setSize(470,200);
+        scrollPane.setLocation(100,300);
 
         //PlaneComponentLabel labelComponent=new PlaneComponentLabel(new RectangleBody(new Point(0,0),null));
         //add(labelComponent);
