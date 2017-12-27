@@ -30,7 +30,7 @@ public class GamePanel extends JPanel{
     Timer timer=new Timer(10, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            mf.requestFocus();
+            //mf.requestFocus();
             if(combat.isCombatAlive()){
                 combat.updateCombat();
                 labelStat.setText(""+combat.updateTime);
@@ -157,7 +157,7 @@ public class GamePanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(ResourceHelper.star,0,0,getWidth(),getHeight(),null);
-        repaint();
+
     }
         /*
         setBackground(Color.WHITE);

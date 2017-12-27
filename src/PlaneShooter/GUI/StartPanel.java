@@ -70,6 +70,7 @@ public class StartPanel extends JPanel{
         lbl_Start.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                mf.requestFocus();
                 mf.showPanel(mf.gamePanel);
             }
 
@@ -101,6 +102,8 @@ public class StartPanel extends JPanel{
         lbl_Design.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                mf.requestFocus();
+                mf.planeDesignerPanel.timer.start();
                 mf.showPanel(mf.planeDesignerPanel);
             }
 
@@ -133,6 +136,6 @@ public class StartPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if(KeyHelper.hasBackground())g.drawImage(ResourceHelper.main,0,0,getWidth(),getHeight(),null);
-        repaint();
+
     }
 }

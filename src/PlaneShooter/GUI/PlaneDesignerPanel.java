@@ -35,22 +35,21 @@ public class PlaneDesignerPanel extends JPanel {
     Combat combat;
     private PlaneDesignerPanel pdp=this;
     CustomizedPlane plane;
-    Timer timer=new Timer(10, new ActionListener() {
+    public Timer timer=new Timer(10, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            mf.requestFocus();
-            if (pdp.mf.getContentPane() == pdp) {
-                if (unitSelected != null) {
-                    Point mousePos = getMousePosition();
-                    if (mousePos != null) {
-                        if(cbGrid.isSelected())unitSelected.setPos(getGrided(mousePos));
-                        else unitSelected.setPos(mousePos);
-                    }
 
+            if (unitSelected != null) {
+                Point mousePos = getMousePosition();
+                if (mousePos != null) {
+                    if(cbGrid.isSelected())unitSelected.setPos(getGrided(mousePos));
+                    else unitSelected.setPos(mousePos);
                 }
-                combat.updateCombat();
-                repaint();
+
             }
+            combat.updateCombat();
+            repaint();
+
         }
     });
 
@@ -141,6 +140,7 @@ public class PlaneDesignerPanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 reset();
+                timer.stop();
                 mf.showPanel(mf.startPanel);
             }
 
@@ -331,7 +331,6 @@ public class PlaneDesignerPanel extends JPanel {
         });
         reset();
 
-        timer.start();
     }
 
     @Override
@@ -402,7 +401,7 @@ public class PlaneDesignerPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if(KeyHelper.hasBackground())g.drawImage(ResourceHelper.Factory,0,0,getWidth(),getHeight(),null);
-        repaint();
+
     }
 
     private void refreshLblStat(){

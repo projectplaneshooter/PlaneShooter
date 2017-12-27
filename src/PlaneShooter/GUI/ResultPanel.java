@@ -108,6 +108,6 @@ public class ResultPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if(KeyHelper.hasBackground())g.drawImage(ResourceHelper.result,0,0,getWidth(),getHeight(),null);
-        repaint();
+
     }
 }
