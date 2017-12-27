@@ -33,6 +33,7 @@ public class GamePanel extends JPanel{
             mf.requestFocus();
             if(combat.isCombatAlive()){
                 combat.updateCombat();
+                labelStat.setText(""+combat.updateTime);
             }else {
                 timer.stop();
                 mf.resultPanel.showCombatStat(combat.combatStat);
@@ -66,7 +67,8 @@ public class GamePanel extends JPanel{
         //p.setBackground(null);
         //p.setOpaque(false);
         labelStat=new JLabel();
-
+        labelStat.setPreferredSize(new Dimension(50,30));
+        labelStat.setOpaque(true);
         add(labelStat);
         //JLabel lbl_Start=new JLabel("start");
         JLabel lbl_Start=new JLabel(new ImageIcon("res/start.png"));

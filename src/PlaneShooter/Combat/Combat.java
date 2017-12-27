@@ -25,6 +25,8 @@ public class Combat{
     public Point PlanePosition = new Point();
     private Stage stage;
     public CombatStat combatStat=new CombatStat();
+    public long lastUpdateTime=0;
+    public long updateTime=0;
 
     /**
      * 构造器中需要传入这场战斗相对于父窗体的位置以便之后进行Graphics的裁剪。
@@ -64,6 +66,8 @@ public class Combat{
      */
     public void updateCombat(){
         worldTick++;
+        updateTime=System.currentTimeMillis()-lastUpdateTime;
+        lastUpdateTime=System.currentTimeMillis();
         if(stage!=null)stage.processCombat(this);
         combatUnits.addAll(combatUnitsAdd);
         combatUnitsAdd.clear();
