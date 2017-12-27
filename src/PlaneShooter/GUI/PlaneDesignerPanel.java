@@ -254,7 +254,7 @@ public class PlaneDesignerPanel extends JPanel {
                 labelComponent.setMouseClickAction(() -> {
                     try {
                         unitSelected = (PlanePart) clazz.newInstance();
-                        unitSelectedMirror = (PlanePart) clazz.newInstance();
+                        unitSelectedMirror = unitSelected.getMirroredPart();
                     } catch (InstantiationException e) {
                         e.printStackTrace();
                     } catch (IllegalAccessException e) {

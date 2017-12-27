@@ -72,4 +72,15 @@ public abstract class PlanePart implements Serializable,IPlane {
     public abstract PlaneStat calculateStats(PlaneStat planeStat);
 
     public abstract int getPrice();
+
+    public PlanePart getMirroredPart(){
+        try {
+            return this.getClass().newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
