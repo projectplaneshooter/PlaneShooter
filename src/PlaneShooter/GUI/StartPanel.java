@@ -48,14 +48,6 @@ public class StartPanel extends JPanel{
         add(btnDesigner);
         //todo @ZST check this
 */
-        JPanel p = new JPanel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-                ImageIcon icon = new ImageIcon("res/main.jpg");
-                Image img = icon.getImage();
-                g.drawImage(img, 0, 0, 1000, 600, icon.getImageObserver());
-            }
-        };
         //p.setBackground(null);
         //p.setOpaque(false);
 
@@ -66,17 +58,18 @@ public class StartPanel extends JPanel{
         JLabel lbl_Blank02=new JLabel("   ");
         add(lbl_Blank02);
 
+
         JLabel lbl_Start=new JLabel(new ImageIcon("res/start.png"));
         lbl_Start.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                mf.requestFocus();
-                mf.showPanel(mf.gamePanel);
+
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-
+                mf.requestFocus();
+                mf.showPanel(mf.gamePanel);
             }
 
             @Override
@@ -94,22 +87,24 @@ public class StartPanel extends JPanel{
 
             }
         });
-        add(lbl_Start);
-        lbl_Start.add(p);
+        JPanel pnl_Blank03=new JPanel();
+        pnl_Blank03.setOpaque(false);
+        pnl_Blank03.add(lbl_Start);
+        add(pnl_Blank03);
 
         JLabel lbl_Design=new JLabel(new ImageIcon("res/design.png"));
 
         lbl_Design.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                mf.requestFocus();
-                mf.planeDesignerPanel.timer.start();
-                mf.showPanel(mf.planeDesignerPanel);
+
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-
+                mf.requestFocus();
+                mf.planeDesignerPanel.timer.start();
+                mf.showPanel(mf.planeDesignerPanel);
             }
 
             @Override
@@ -127,8 +122,10 @@ public class StartPanel extends JPanel{
 
             }
         });
-        add(lbl_Design);
-        lbl_Design.add(p);
+        JPanel pnl_Blank04=new JPanel();
+        pnl_Blank04.setOpaque(false);
+        pnl_Blank04.add(lbl_Design);
+        add(pnl_Blank04);
 
     }
 

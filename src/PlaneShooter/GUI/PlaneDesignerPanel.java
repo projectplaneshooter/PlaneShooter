@@ -241,8 +241,8 @@ public class PlaneDesignerPanel extends JPanel {
         JPanel pnlComponentContainer=new JPanel();
         pnlComponentContainer.setAutoscrolls(true);
         JScrollPane scrollPane=new JScrollPane(pnlComponentContainer);
-        scrollPane.setSize(470,200);
-        scrollPane.setLocation(100,300);
+        scrollPane.setSize(470,400);
+        scrollPane.setLocation(100,200);
 
         //PlaneComponentLabel labelComponent=new PlaneComponentLabel(new RectangleBody(new Point(0,0),null));
         //add(labelComponent);
