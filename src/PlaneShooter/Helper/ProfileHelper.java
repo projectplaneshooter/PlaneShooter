@@ -44,9 +44,11 @@ public class ProfileHelper implements Serializable {
     public static void processResult(CombatStat combatStat){
         if(combatStat.endStat==1){
             addCredit(300);
+            addDLevel(1);
         }
         else {
             addCredit(10);
+            addDLevel(-2);
         }
         save();
     }
@@ -57,5 +59,6 @@ public class ProfileHelper implements Serializable {
 
     public static void addDLevel(int sum){
         INSTANCE.dLevel+=sum;
+        if(INSTANCE.dLevel<0)INSTANCE.dLevel=0;
     }
 }

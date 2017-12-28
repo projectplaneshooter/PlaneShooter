@@ -16,9 +16,9 @@ public class CannonBall implements ICombatUnit,ICollidable{
     Point pos;
     boolean alive;
     ICombatUnit parent;
-    int speedX,speedY;
+    double speedX,speedY;
 
-    public CannonBall(Cannon parent,int speedX,int speedY){
+    public CannonBall(Cannon parent,double speedX,double speedY){
         this.pos=new Point(parent.getPos());
         this.speedX=speedX;
         this.speedY=speedY;
@@ -42,7 +42,7 @@ public class CannonBall implements ICombatUnit,ICollidable{
 
     @Override
     public int getPower() {
-        return 10;
+        return (int)(8+Math.random()*4);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class CannonBall implements ICombatUnit,ICollidable{
 
     @Override
     public void updateUnit(Combat combat) {
-        pos.translate(speedX,speedY);
+        pos.translate((int)(speedX*combat.getWorldTick())-(int)(speedX*(combat.getWorldTick()-1)),(int)(speedY*combat.getWorldTick())-(int)(speedY*(combat.getWorldTick()-1)));
         if(getPos().getX()>combat.getCombatArea().getWidth()||getPos().getX()<0||
             getPos().getY()>combat.getCombatArea().getHeight()||getPos().getY()<0)this.alive=false;
     }

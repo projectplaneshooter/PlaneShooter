@@ -5,6 +5,8 @@ import PlaneShooter.Plane.Body.RectangleBody;
 import PlaneShooter.Plane.Body.TriangleBodyL;
 import PlaneShooter.Plane.Body.TriangleBodyR;
 import PlaneShooter.Plane.Weapon.Cannon;
+import PlaneShooter.Plane.Weapon.CannonMk2;
+import PlaneShooter.Plane.Weapon.CannonSpray;
 
 import java.util.ArrayList;
 
@@ -27,5 +29,7 @@ public class RegistryHelper {
         registerClass(Cannon.class);
         registerClass(TriangleBodyL.class);
         registerClass(TriangleBodyR.class);
+        registerClass(CannonMk2.class);
+        registerClass(CannonSpray.class);
     }
 }

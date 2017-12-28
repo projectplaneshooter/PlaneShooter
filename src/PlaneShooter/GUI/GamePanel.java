@@ -54,28 +54,22 @@ public class GamePanel extends JPanel{
     public GamePanel(MainFrame mf) {
         super();
         this.mf=mf;
+        this.setLayout(null);
 
 
-        JPanel p = new JPanel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-                ImageIcon icon = new ImageIcon("res/star.jpg");
-                Image img = icon.getImage();
-                g.drawImage(img, 0, 0, 1000, 600, icon.getImageObserver());
-            }
-        };
         //p.setBackground(null);
         //p.setOpaque(false);
         labelStat=new JLabel();
-        labelStat.setPreferredSize(new Dimension(50,30));
+        labelStat.setSize(new Dimension(50,30));
         labelStat.setOpaque(true);
+        labelStat.setLocation(0,500);
         add(labelStat);
         //JLabel lbl_Start=new JLabel("start");
         JLabel lbl_Start=new JLabel(new ImageIcon("res/start.png"));
         lbl_Start.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                combat=new Combat(new Rectangle(0,100,1000,500));
+                combat=new Combat(new Rectangle(200,0,600,600));
                 //combat.addCombatUnit(new TestEnemy(new Point(300,100),new Point(1,0),200));
                 //combat.addCombatUnit(new TestEnemy(new Point(500,100),new Point(-1,0),200));
                 //combat.addCombatUnit(new Tank(new Point(500,50),new Point(0,1),500));
@@ -114,8 +108,9 @@ public class GamePanel extends JPanel{
 
             }
         });
+        lbl_Start.setSize(lbl_Start.getPreferredSize());
+        lbl_Start.setLocation(0,400);
         add(lbl_Start);
-        lbl_Start.add(p);
 
         JLabel lbl_Back=new JLabel(new ImageIcon("res/back02.png"));
 
@@ -147,8 +142,9 @@ public class GamePanel extends JPanel{
 
             }
         });
+        lbl_Back.setLocation(0,300);
+        lbl_Back.setSize(lbl_Back.getPreferredSize());
         add(lbl_Back);
-        lbl_Back.add(p);
 
     }
 
