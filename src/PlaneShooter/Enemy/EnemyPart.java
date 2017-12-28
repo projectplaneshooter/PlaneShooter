@@ -24,7 +24,7 @@ abstract public class EnemyPart implements ICombatUnit, ICollidable {
 
     @Override
     public void setPos(Point pos) {
-        pos.setLocation(pos);
+        this.pos.setLocation(pos);
         alive=true;
     }
 

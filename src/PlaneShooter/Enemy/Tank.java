@@ -51,17 +51,17 @@ public class Tank extends Enemy{
         Polygon contour=new Polygon();
         double len = this.getSpeed().distance(0,0);
         double XAddx,XAddy,YAddx,YAddy;
-        if (len == 0) {
+//        if (len == 0) {
             XAddx = 0;
             XAddy = 1;
             YAddx = -XAddy;
             YAddy = XAddx;
-        } else{
-            XAddx = this.getSpeed().x / len;
-            XAddy = this.getSpeed().y / len;
-            YAddx = -XAddy;
-            YAddy = XAddx;
-        }
+//        } else{
+//            XAddx = this.getSpeed().x / len;
+//            XAddy = this.getSpeed().y / len;
+//            YAddx = -XAddy;
+//            YAddy = XAddx;
+//        }
         contour.addPoint((int) (this.getPos().x + 25 * XAddx + 25 * YAddx),(int) (this.getPos().y + 25 * XAddy + 25 * YAddy));
         contour.addPoint((int) (this.getPos().x + 25 * XAddx - 25 * YAddx),(int) (this.getPos().y + 25 * XAddy - 25 * YAddy));
         contour.addPoint((int) (this.getPos().x - 25 * XAddx - 25 * YAddx),(int) (this.getPos().y - 25 * XAddy - 25 * YAddy));

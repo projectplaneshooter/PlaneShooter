@@ -2,6 +2,8 @@ package PlaneShooter.Enemy;
 
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.ICombatUnit;
+import PlaneShooter.Enemy.Route.Route;
+import PlaneShooter.Enemy.Route.RouteFactory;
 import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
 
@@ -14,9 +16,14 @@ import java.util.function.Predicate;
  */
 public abstract class Enemy extends EnemyPart implements IEnemy {
     LinkedList<EnemyPart> components=new LinkedList<>();
-
+    private LinkedList<Route> routes;
     public Enemy(Point pos, Point speed, int health) {
         super(pos, speed, health, null);
+    }
+
+    public Enemy addRoute(LinkedList<Route> routes){
+        this.routes=new LinkedList<>(routes);
+        return this;
     }
 
     @Override
@@ -29,7 +36,10 @@ public abstract class Enemy extends EnemyPart implements IEnemy {
     }
 
     public void updateUnit(Combat combat) {
+        if(getPos().getX()>combat.getCombatArea().getWidth()+100 || getPos().getX()<-100||
+           getPos().getY()>combat.getCombatArea().getHeight()+100 || getPos().getY()<-100) this.alive=false;
         super.updateUnit(combat);
+        RouteFactory.turnAround(this,routes);
         for (ICombatUnit unit:components)
             unit.updateUnit(combat);
         Predicate<ICombatUnit> p=(u) -> !u.isAlive();//组件打掉了

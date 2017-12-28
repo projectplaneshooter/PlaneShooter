@@ -40,15 +40,11 @@ public class TestEnemy extends Enemy {
         Polygon contour=new Polygon();
         double len = this.getSpeed().distance(0,0);
         double XAddx,XAddy,YAddx,YAddy;
-        XAddx = 0;
-        XAddy = 1;
-        YAddx = -XAddy;
-        YAddy = XAddx;
 //        if (len == 0) {
-//            XAddx = 0;
-//            XAddy = 1 / Math.sqrt(2);
-//            YAddx = -XAddy;
-//            YAddy = XAddx;
+            XAddx = 0;
+            XAddy = 1;
+            YAddx = -XAddy;
+            YAddy = XAddx;
 //        } else{
 //            XAddx = this.getSpeed().x / len / Math.sqrt(2);
 //            XAddy = this.getSpeed().y / len / Math.sqrt(2);

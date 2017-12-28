@@ -32,10 +32,6 @@ public class RectangleBarrier extends Enemy{
         return 2;
     }
 
-    public int getSize(){
-        return 100000;
-    }
-
     @Override
     public Polygon getContour() {
         return contour;
