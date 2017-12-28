@@ -27,6 +27,6 @@ public class CannonSpray extends Cannon {
 
     @Override
     public int getPrice() {
-        return 1000;//123
+        return 1100;
     }
 }
