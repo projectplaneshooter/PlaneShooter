@@ -38,8 +38,8 @@ public abstract class Enemy extends EnemyPart implements IEnemy {
     public void updateUnit(Combat combat) {
         if(getPos().getX()>combat.getCombatArea().getWidth()+100 || getPos().getX()<-100||
            getPos().getY()>combat.getCombatArea().getHeight()+100 || getPos().getY()<-100) this.alive=false;
-        super.updateUnit(combat);
         RouteFactory.turnAround(this,routes);
+        super.updateUnit(combat);
         for (ICombatUnit unit:components)
             unit.updateUnit(combat);
         Predicate<ICombatUnit> p=(u) -> !u.isAlive();//组件打掉了
