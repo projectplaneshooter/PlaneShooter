@@ -34,6 +34,7 @@ public class Tank extends Enemy{
 //        g.setColor(Color.RED);
 //        g.drawRect(pos.x-25,pos.y-25,50,50);
         g.drawImage(ResourceHelper.Enemy_Tank,getPos().x-25,getPos().y-25,50,50,null);
+//        g.drawPolygon(this.getContour());
     }
 
     @Override

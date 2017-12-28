@@ -17,7 +17,10 @@ public class BulletEnemy extends EnemyPart implements ICollidable {
     }
 
     public int getPower() {
-        return power;
+        double damage=(ProfileHelper.getDLevel() / 10.0 + 1) * power;
+        double p=5 * Math.random() + damage - 2;
+//        System.out.println(p);
+        return (int) p;
     }
 
     @Override
