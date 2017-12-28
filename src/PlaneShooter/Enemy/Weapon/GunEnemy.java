@@ -1,6 +1,7 @@
 package PlaneShooter.Enemy.Weapon;
 
 import PlaneShooter.Combat.Combat;
+import PlaneShooter.Combat.CombatStat;
 import PlaneShooter.Enemy.Enemy;
 import PlaneShooter.Enemy.EnemyPart;
 import PlaneShooter.Helper.CollideType;
@@ -61,6 +62,7 @@ class GunEnemy extends EnemyPart implements IWeapon, ICollidable{
     @Override
     public void onCollide(ICollidable object, Combat combat) {
         this.health -= object.getPower();
+        combat.combatStat.damageDone += object.getPower();
     }
 
     @Override

@@ -58,6 +58,7 @@ public abstract class Plane implements Serializable,IPlane {
     @Override
     public void onCollide(ICollidable object, Combat combat) {
         health-=object.getPower();
+        combat.combatStat.damageTaken+=object.getPower();
     }
 
     @Override

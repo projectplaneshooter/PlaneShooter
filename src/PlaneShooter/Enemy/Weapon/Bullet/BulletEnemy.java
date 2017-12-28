@@ -4,6 +4,7 @@ import PlaneShooter.Combat.Combat;
 import PlaneShooter.Enemy.EnemyPart;
 import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
+import PlaneShooter.Helper.ProfileHelper;
 
 import java.awt.*;
 
