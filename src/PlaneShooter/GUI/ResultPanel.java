@@ -48,6 +48,7 @@ public class ResultPanel extends JPanel{
             @Override
             public void mouseClicked(MouseEvent e) {
                 mf.showPanel(mf.startPanel);
+                mf.planeDesignerPanel.refreshLblStat();
             }
 
             @Override

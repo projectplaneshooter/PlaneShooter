@@ -65,7 +65,8 @@ public abstract class Enemy extends EnemyPart implements IEnemy {
 
     @Override
     public void onCollide(ICollidable object, Combat combat) {
-        this.health-=object.getPower();
-        combat.combatStat.damageDone+=object.getPower();
+        int dmg=object.getPower();
+        this.health-=dmg;
+        combat.combatStat.damageDone+=dmg;
     }
 }

@@ -9,6 +9,7 @@ import PlaneShooter.Helper.ProfileHelper;
 import PlaneShooter.Helper.ResourceHelper;
 import PlaneShooter.Plane.Plane;
 import PlaneShooter.Plane.TestPlane;
+import jdk.nashorn.internal.scripts.JO;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,11 +34,11 @@ public class GamePanel extends JPanel{
             //mf.requestFocus();
             if(combat.isCombatAlive()){
                 combat.updateCombat();
-                labelStat.setText(""+combat.updateTime);
+                labelStat.setText("<html>Level "+ProfileHelper.getDLevel()+"<br>FPS:"+String.format("%.2f",1000.0/combat.updateTime)+"</html>");
             }else {
                 timer.stop();
-                mf.resultPanel.showCombatStat(combat.combatStat);
                 ProfileHelper.processResult(combat.combatStat);
+                mf.resultPanel.showCombatStat(combat.combatStat);
                 combat=null;
                 mf.showPanel(mf.resultPanel);
             }
@@ -60,25 +61,31 @@ public class GamePanel extends JPanel{
         //p.setBackground(null);
         //p.setOpaque(false);
         labelStat=new JLabel();
-        labelStat.setSize(new Dimension(50,30));
-        labelStat.setOpaque(true);
-        labelStat.setLocation(0,500);
+        labelStat.setSize(new Dimension(100,100));
+        labelStat.setForeground(Color.white);
+        labelStat.setLocation(50,100);
         add(labelStat);
         //JLabel lbl_Start=new JLabel("start");
         JLabel lbl_Start=new JLabel(new ImageIcon("res/start02.png"));
         lbl_Start.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Plane plane= FileHelper.importPlane("PlaneFromDesigner.sav");
+                if(plane==null) {
+                    JOptionPane.showMessageDialog(mf,"You have't got a plane, going to the designer panel.");
+                    mf.showPanel(mf.planeDesignerPanel);
+                    mf.planeDesignerPanel.timer.start();
+                    return;
+                }else {
+                    plane.setPos(new Point(500,400));
+                }
                 combat=new Combat(new Rectangle(200,0,600,600));
                 //combat.addCombatUnit(new TestEnemy(new Point(300,100),new Point(1,0),200));
                 //combat.addCombatUnit(new TestEnemy(new Point(500,100),new Point(-1,0),200));
                 //combat.addCombatUnit(new Tank(new Point(500,50),new Point(0,1),500));
                 combat.setStage(DefaultStage.get(1,ProfileHelper.getDLevel()));
 
-                Plane plane= FileHelper.importPlane("PlaneFromDesigner.sav");
-                if(plane==null) plane=new TestPlane(new Point(500,400));else {
-                    plane.setPos(new Point(500,400));
-                }
+
                 combat.addCombatUnit(plane);
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override

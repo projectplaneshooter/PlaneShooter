@@ -57,8 +57,9 @@ public abstract class Plane implements Serializable,IPlane {
 
     @Override
     public void onCollide(ICollidable object, Combat combat) {
-        health-=object.getPower();
-        combat.combatStat.damageTaken+=object.getPower();
+        int dmg=object.getPower();
+        health-=dmg;
+        combat.combatStat.damageTaken+=dmg;
     }
 
     @Override
@@ -77,6 +78,10 @@ public abstract class Plane implements Serializable,IPlane {
         //testNumber=(int)(Math.random()*10);
         Point dp=KeyHelper.getMoveVector(this.planeStat.velocity,moveKeySet);
         pos.translate(dp.x,dp.y);
+        if(pos.x<0)pos.x=0;
+        if(pos.x>combat.getCombatArea().getWidth())pos.x=(int)combat.getCombatArea().getWidth();
+        if(pos.y<0)pos.y=0;
+        if(pos.y>combat.getCombatArea().getHeight())pos.y=(int)combat.getCombatArea().getHeight();
         for (ICombatUnit unit: components) {
             unit.updateUnit(combat);
         }
