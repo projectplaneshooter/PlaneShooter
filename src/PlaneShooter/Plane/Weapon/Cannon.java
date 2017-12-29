@@ -36,6 +36,7 @@ public class Cannon extends PlanePart implements IWeapon {
     public void updateUnit(Combat combat) {
         if(combat.getWorldTick()%10==0){
             combat.addCombatUnit(new CannonBall(this,0,-5));
+            combat.combatStat.bulletCount+=1;
         }
     }
 

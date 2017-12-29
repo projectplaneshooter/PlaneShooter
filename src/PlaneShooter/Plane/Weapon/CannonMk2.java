@@ -11,12 +11,13 @@ public class CannonMk2 extends Cannon {
     public void updateUnit(Combat combat) {
         if(combat.getWorldTick()%5==0){
             combat.addCombatUnit(new CannonBall(this,0,-5));
+            combat.combatStat.bulletCount+=1;
         }
     }
 
     @Override
     public String getName() {
-        return "Cannon Mk.II (Fast)";
+        return "Cannon Mk.II";
     }
 
     @Override

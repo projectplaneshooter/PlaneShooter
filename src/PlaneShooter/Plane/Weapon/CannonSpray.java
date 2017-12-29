@@ -17,6 +17,7 @@ public class CannonSpray extends Cannon {
             combat.addCombatUnit(new CannonBall(this,-0.6,-2.4));
             combat.addCombatUnit(new CannonBall(this,1,-2));
             combat.addCombatUnit(new CannonBall(this,-1,-2));
+            combat.combatStat.bulletCount+=7;
         }
     }
 

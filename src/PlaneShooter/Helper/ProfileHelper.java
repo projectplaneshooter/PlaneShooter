@@ -50,6 +50,8 @@ public class ProfileHelper implements Serializable {
             addCredit(10);
             addDLevel(-2);
         }
+        addCredit(combatStat.damageDone/10-combatStat.damageTaken/10);
+
         save();
     }
 

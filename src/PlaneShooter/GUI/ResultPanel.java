@@ -73,11 +73,11 @@ public class ResultPanel extends JPanel{
         lblStat=new JLabel();
         lblStat.setFont(new Font(null,0,20));
         lblStat.setForeground(Color.white);
-        lblStat.setSize(200,100);
-        lblStat.setLocation(800,40);
+        lblStat.setSize(400,400);
+        lblStat.setLocation(300,150);
         add(lblStat);
 
-        lbl_Back.setLocation(400,200);
+        lbl_Back.setLocation(400,500);
         lbl_Back.setSize(lbl_Back.getPreferredSize());
         add(lbl_Back);
 
@@ -95,13 +95,27 @@ public class ResultPanel extends JPanel{
         }
         String str="<html>";
         if(combatStat.endStat==1){
-            str+="Stage Clear: 300 cr<br>";
+            str+="Stage Clear: +300 cr<br>";
         }
         else {
-            str+="Failed: 10 cr<br>";
+            str+="Failed: +10 cr<br>";
         }
+        str+="Bullet count: "+combatStat.bulletCount;
+        str+="<br>";
+        str+="Damage done: "+ combatStat.damageDone+"  …………  +"+combatStat.damageDone/10+" cr";
+        str+="<br>";
+        str+="Damage taken: "+ combatStat.damageTaken+"  …………  -"+combatStat.damageTaken/10+" cr";
+        str+="<br>";
         str+="Your credit: "+ ProfileHelper.getCredits()+" cr";
+        str+="<br>";
+        if(combatStat.endStat==1){
+            str+="Difficulty level +1, now "+ProfileHelper.getDLevel()+"<br>";
+        }
+        else {
+            str+="Difficulty level -2, now "+ProfileHelper.getDLevel()+"<br>";
+        }
         str+="</html>";
+        System.out.println(combatStat);
         lblStat.setText(str);
     }
     @Override
