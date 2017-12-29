@@ -43,25 +43,25 @@ public class Cannon extends PlanePart implements IWeapon {
     @Override
     public String getName() {
         return "Cannon";
-    }
+    }//planePart
 
     @Override
     public int getPower() {
         return 1;
-    }
+    }//ICollidable
 
     @Override
     public void onCollide(ICollidable object, Combat combat) {
         super.onCollide(object, combat);
-    }
+    }//ICollidable
 
     @Override
     public int getSize() {
         return 5;
-    }
+    }//ICollidable
 
     @Override
-    public Polygon getContour() {
+    public Polygon getContour() {//ICollidable
         Polygon contour=new Polygon();
         double XAddx,XAddy,YAddx,YAddy;
         XAddx = 0;
@@ -79,15 +79,15 @@ public class Cannon extends PlanePart implements IWeapon {
     @Override
     public CollideType getCollideType() {
         return CollideType.PLANEPART;
-    }
+    }//ICollidable
 
     @Override
     public PlaneStat calculateStats(PlaneStat planeStat) {
         return planeStat;
-    }
+    }//PlanePart
 
     @Override
     public int getPrice() {
         return 400;
-    }
+    }//PlanePart
 }

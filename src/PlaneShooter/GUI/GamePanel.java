@@ -65,7 +65,7 @@ public class GamePanel extends JPanel{
         labelStat.setLocation(0,500);
         add(labelStat);
         //JLabel lbl_Start=new JLabel("start");
-        JLabel lbl_Start=new JLabel(new ImageIcon("res/start.png"));
+        JLabel lbl_Start=new JLabel(new ImageIcon("res/start02.png"));
         lbl_Start.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -109,7 +109,7 @@ public class GamePanel extends JPanel{
             }
         });
         lbl_Start.setSize(lbl_Start.getPreferredSize());
-        lbl_Start.setLocation(0,400);
+        lbl_Start.setLocation(0,200);
         add(lbl_Start);
 
         JLabel lbl_Back=new JLabel(new ImageIcon("res/back02.png"));
