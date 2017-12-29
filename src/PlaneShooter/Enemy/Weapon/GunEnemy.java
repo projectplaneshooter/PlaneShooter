@@ -2,10 +2,13 @@ package PlaneShooter.Enemy.Weapon;
 
 import PlaneShooter.Combat.Combat;
 import PlaneShooter.Combat.CombatStat;
+import PlaneShooter.Combat.ICombatUnit;
 import PlaneShooter.Enemy.Enemy;
 import PlaneShooter.Enemy.EnemyPart;
 import PlaneShooter.Helper.CollideType;
 import PlaneShooter.Helper.ICollidable;
+import PlaneShooter.Helper.ProfileHelper;
+import PlaneShooter.Plane.PlanePart;
 
 import java.awt.*;
 
@@ -13,32 +16,36 @@ class GunEnemy extends EnemyPart implements IWeapon, ICollidable{
     int power;
     public GunEnemy(Point pos, int power, Enemy parent) {
         super(pos,new Point(),1, parent);
-        this.power=power;this.health=1000000;
+        this.power=power;
+        this.health= (int) (40 * Math.pow(1.3, ProfileHelper.getDLevel()));
     }
 
     public GunEnemy(Point pos, int health, int power, Enemy parent) {
         super(pos,new Point(),health, parent);
-        this.power=power;this.health=1000000;
+        this.power=power;
+        this.health= (int) (40 * Math.pow(1.3, ProfileHelper.getDLevel()));
     }
 
     public GunEnemy(Point pos, Point speed, int power, Enemy parent) {
         super(pos, speed,1, parent);
-        this.power=power;this.health=1000000;
+        this.power=power;
+        this.health= (int) (40 * Math.pow(1.3, ProfileHelper.getDLevel()));
     }
 
     public GunEnemy(Point pos, Point speed, int health, int power, Enemy parent) {
         super(pos, speed, health, parent);
-        this.power=power;this.health=1000000;
+        this.power=power;
+        this.health= (int) (40 * Math.pow(1.3, ProfileHelper.getDLevel()));
     }
 
     /*drawn nothing*/
     @Override
     public void paintUnit(Graphics g,Combat combat) {
-        g.setColor(Color.white);
+        g.setColor(Color.darkGray);
         Point parentPos=parent.getPos();
         Point parentSpeed=parent.getSpeed();
 //        g.drawLine(parentPos.x,parentPos.y,parentPos.x+parentSpeed.x*5,parentPos.y+parentSpeed.y*5);
-        g.drawPolygon(this.getContour());
+//        g.drawPolygon(this.getContour());
     }
 
     public Point getPos(){
@@ -61,6 +68,7 @@ class GunEnemy extends EnemyPart implements IWeapon, ICollidable{
 
     @Override
     public void onCollide(ICollidable object, Combat combat) {
+        if (object.getCollideType()== CollideType.PLANEBULLET && ((ICombatUnit)object).isAlive()) return;
         this.health -= object.getPower();
 //        System.out.println("collide "+object.getPower());
         combat.combatStat.damageDone += object.getPower();
@@ -87,7 +95,7 @@ class GunEnemy extends EnemyPart implements IWeapon, ICollidable{
 //            YAddx = -XAddy;
 //            YAddy = XAddx;
 //        }
-        contour.addPoint((int) (this.getPos().x + 10 * XAddx),(int) (this.getPos().y + 10 * XAddy));
+        contour.addPoint((int) (this.getPos().x + 8 * XAddx),(int) (this.getPos().y + 8 * XAddy));
         contour.addPoint((int) (this.getPos().x + 5 * XAddx + 2 * YAddx),(int) (this.getPos().y + 5 * XAddy + 2 * YAddy));
         contour.addPoint((int) (this.getPos().x + 2 * YAddx),(int) (this.getPos().y + 2 * YAddy));
         contour.addPoint((int) (this.getPos().x - 2 * YAddx),(int) (this.getPos().y - 2 * YAddy));

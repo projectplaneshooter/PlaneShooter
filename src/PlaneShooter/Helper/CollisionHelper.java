@@ -31,7 +31,9 @@ public class CollisionHelper {
                 ICollidable unit=(ICollidable) Unit;
                 switch (unit.getCollideType()){
                     case ENEMY:
+                        enemyParts.add(unit);
                         enemyParts.addAll(((Enemy)unit).getComponents());//实现不同
+                        break;
                     case ENEMYBULLET:
                         enemyParts.add(unit);
                         break;

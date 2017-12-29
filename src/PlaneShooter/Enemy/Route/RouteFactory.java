@@ -25,9 +25,9 @@ public class RouteFactory {
                 routes.removeFirst();
             }
         }
-        System.out.println("checking "+firstRoute + "  angle="+firstRoute.angle + "  center-pos="+firstRoute.centerPos);
-        System.out.println("checking  start="+firstRoute.startTime + " now="+firstRoute.nowTime + "   end="+firstRoute.endTime);
-        System.out.println("enemy_pos:"+enemy.getPos());
+//        System.out.println("checking "+firstRoute + "  angle="+firstRoute.angle + "  center-pos="+firstRoute.centerPos);
+//        System.out.println("checking  start="+firstRoute.startTime + " now="+firstRoute.nowTime + "   end="+firstRoute.endTime);
+//        System.out.println("enemy_pos:"+enemy.getPos());
         firstRoute.nowTime++;
     }
 }

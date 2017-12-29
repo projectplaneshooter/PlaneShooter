@@ -54,7 +54,7 @@ public class TestEnemy extends Enemy {
         contour.addPoint((int) (this.getPos().x - 20 * XAddx),(int) (this.getPos().y - 20 * XAddy));
         contour.addPoint((int) (this.getPos().x - 3 * XAddx  + 10 * YAddx),(int) (this.getPos().y - 3 * XAddy + 10 * YAddy));
         contour.addPoint((int) (this.getPos().x + 20 * YAddx),(int) (this.getPos().y + 20 * YAddy));
-        contour.addPoint((int) (this.getPos().x + 8 * XAddx),(int) (this.getPos().y + 8 * XAddy));
+        contour.addPoint((int) (this.getPos().x + 9 * XAddx),(int) (this.getPos().y + 8 * XAddy));
         contour.addPoint((int) (this.getPos().x - 20 * YAddx),(int) (this.getPos().y - 20 * YAddy));
         contour.addPoint((int) (this.getPos().x - 3 * XAddx - 10 * YAddx),(int) (this.getPos().y - 3 * XAddy - 10 * YAddy));
         return contour;
