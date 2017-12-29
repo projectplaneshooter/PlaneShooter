@@ -10,6 +10,14 @@ public class Route {
     public Route(int radius, int startTime, RouteSpecies species) {
         this.radius = radius;
         this.startTime = Math.max(0,startTime);
+        this.endTime = -1;
+        this.species = species;
+        this.nowTime = 0;
+    }
+    public Route(int radius, int startTime, int endTime, RouteSpecies species) {
+        this.radius = radius;
+        this.startTime = Math.max(0,startTime);
+        this.endTime = Math.max(startTime, endTime);
         this.species = species;
         this.nowTime = 0;
     }

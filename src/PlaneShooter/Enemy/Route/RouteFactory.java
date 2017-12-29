@@ -12,7 +12,10 @@ public class RouteFactory {
         if (firstRoute.startTime == firstRoute.nowTime) {
             firstRoute.angle = enemy.getSpeed().distance(new Point(0,0)) / firstRoute.radius;
             firstRoute.centerPos = firstRoute.getCenter(enemy.getPos());
-            firstRoute.endTime= (int) (0.5+firstRoute.startTime + Math.PI / 2 / firstRoute.angle);
+            if (firstRoute.endTime == -1)
+                firstRoute.endTime = (int) (0.5 + firstRoute.startTime + Math.PI / 2 / firstRoute.angle);
+            else
+                firstRoute.endTime = Math.min(firstRoute.endTime, (int) (0.5 + firstRoute.startTime + Math.PI / 2 / firstRoute.angle));
             enemy.setSpeed(new Point(0, 0));
         }
         if (firstRoute.startTime <= firstRoute.nowTime){
@@ -22,9 +25,9 @@ public class RouteFactory {
                 routes.removeFirst();
             }
         }
-//        System.out.println("checking "+firstRoute + "  angle="+firstRoute.angle + "  center-pos="+firstRoute.centerPos);
-//        System.out.println("checking  start="+firstRoute.startTime + " now="+firstRoute.nowTime + "   end="+firstRoute.endTime);
-//        System.out.println("enemy_pos:"+enemy.getPos());
+        System.out.println("checking "+firstRoute + "  angle="+firstRoute.angle + "  center-pos="+firstRoute.centerPos);
+        System.out.println("checking  start="+firstRoute.startTime + " now="+firstRoute.nowTime + "   end="+firstRoute.endTime);
+        System.out.println("enemy_pos:"+enemy.getPos());
         firstRoute.nowTime++;
     }
 }
