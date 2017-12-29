@@ -10,25 +10,25 @@ import PlaneShooter.Helper.ICollidable;
 import java.awt.*;
 
 class GunEnemy extends EnemyPart implements IWeapon, ICollidable{
-    int power=5;//默认战五渣
+    int power;
     public GunEnemy(Point pos, int power, Enemy parent) {
         super(pos,new Point(),1, parent);
-        this.power=power;this.health=20;
+        this.power=power;this.health=100000;
     }
 
     public GunEnemy(Point pos, int health, int power, Enemy parent) {
         super(pos,new Point(),health, parent);
-        this.power=power;this.health=20;
+        this.power=power;this.health=100000;
     }
 
     public GunEnemy(Point pos, Point speed, int power, Enemy parent) {
         super(pos, speed,1, parent);
-        this.power=power;this.health=20;
+        this.power=power;this.health=100000;
     }
 
     public GunEnemy(Point pos, Point speed, int health, int power, Enemy parent) {
         super(pos, speed, health, parent);
-        this.power=power;this.health=20;
+        this.power=power;this.health=100000;
     }
 
     /*drawn nothing*/
