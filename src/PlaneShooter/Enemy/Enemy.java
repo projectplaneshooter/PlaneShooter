@@ -21,8 +21,15 @@ public abstract class Enemy extends EnemyPart implements IEnemy {
         super(pos, speed, health, null);
     }
 
+    /**
+     * 这个方法传入将一个enemy加上了改变方向的方式
+     * @param routes
+     * @return Enemy
+     */
     public Enemy addRoute(LinkedList<Route> routes){
-        this.routes=new LinkedList<>(routes);
+        this.routes=new LinkedList<>();
+        for (Route route:routes)
+            this.routes.add(new Route(route));
         return this;
     }
 

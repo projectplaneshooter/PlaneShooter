@@ -5,6 +5,8 @@ import java.awt.*;
 /**
  * startTime是相对时间(即按照加入时间为0开始计算)
  * startTime不是时间轴，是两个事件之间的相对时间
+ * endTime是结束时间，即达到结束时间就这个route就停了，方向为四分之一圆弧之后的方向
+ * 没有endTime会默认画满圆弧
  */
 public class Route {
     public Route(int radius, int startTime, RouteSpecies species) {
@@ -25,7 +27,12 @@ public class Route {
     int radius;
     double angle;
     Point centerPos;
-    private RouteSpecies species;
+    RouteSpecies species;
+
+    public Route(Route route) {
+        this(route.radius,route.startTime,route.endTime,route.species);
+    }
+
     public Point getCenter(Point enemyPos){
         Point center = new Point(enemyPos);
         switch (species){
