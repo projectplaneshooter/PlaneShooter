@@ -103,7 +103,7 @@ public class PlaneDesignerPanel extends JPanel {
                     return;
                 }
                 if(!KeyHelper.isKeyPressed(KeyEvent.VK_SHIFT)&&plane.getPrice()> ProfileHelper.getCredits()){
-                    JOptionPane.showMessageDialog(mf,"You can't afford such a big plane! Play more to get more credit!");
+                    JOptionPane.showMessageDialog(mf,"You can't afford such a big plane! Play more to get more credit! 出于测试用途，按住SHIFT可以忽略金钱限制保存飞机。");
                     return;
                 }
                 if(FileHelper.exportPlane("PlaneFromDesigner.sav",plane)){
